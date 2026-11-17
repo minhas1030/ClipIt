@@ -1,0 +1,2381 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClipIT — #1 Free AI Video Clipping & Viral Shorts Studio (No Watermark)</title>
+  <meta name="description" content="Turn long podcasts, YouTube videos, and interviews into viral TikToks, Instagram Reels, and YouTube Shorts in 1 click. Free forever, 60FPS HD export, zero watermarks." />
+  <meta name="keywords" content="AI video clipper, free OpusClip alternative, podcast to shorts, auto captions generator, Instagram reels maker, TikTok video clipper, ClipIT" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Montserrat:ital,wght@0,700;0,800;0,900;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            display: ['Montserrat', 'sans-serif'],
+            anton: ['Anton', 'sans-serif'],
+          },
+          colors: {
+            obsidian: {
+              950: '#070709',
+              900: '#0E0E12',
+              850: '#141419',
+              800: '#1B1B22',
+              700: '#272730',
+            },
+            coral: {
+              500: '#FF5A36',
+              600: '#E64825',
+            },
+            champagne: '#F5D08A',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      background-color: #070709;
+      color: #F4F4F6;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #070709; }
+    ::-webkit-scrollbar-thumb { background: #272730; border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3F3F46; }
+    input[type="range"] {
+      -webkit-appearance: none;
+      background: #272730;
+      height: 4px;
+      border-radius: 99px;
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #FF5A36;
+      cursor: pointer;
+      border: 2px solid #070709;
+      box-shadow: 0 0 10px rgba(255, 90, 54, 0.55);
+    }
+    .hero-mesh {
+      background:
+        radial-gradient(ellipse 70% 45% at 50% -5%, rgba(255, 90, 54, 0.18), transparent 70%),
+        radial-gradient(ellipse 50% 35% at 85% 20%, rgba(245, 208, 138, 0.08), transparent 65%),
+        linear-gradient(to bottom, #070709, #0B0B0F);
+    }
+    .grid-bg {
+      background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .studio-glow {
+      background: radial-gradient(circle at 50% 45%, rgba(255, 90, 54, 0.11), rgba(245, 208, 138, 0.04) 42%, transparent 74%);
+    }
+    .glass-card {
+      background: rgba(14, 14, 18, 0.82);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-coral-500 selection:text-white">
+
+  <!-- GLOBAL STICKY NAVIGATION -->
+  <nav class="h-16 border-b border-white/[0.07] bg-obsidian-950/90 backdrop-blur-xl px-4 lg:px-8 flex items-center justify-between sticky top-0 z-40">
+    <div class="flex items-center gap-6">
+      <a href="#" onclick="switchAppView('landing'); return false;" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-coral-500 to-amber-500 flex items-center justify-center shadow-lg shadow-coral-500/25 group-hover:scale-105 transition">
+          <i data-lucide="scissors" class="w-4 h-4 text-white"></i>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="font-extrabold tracking-tight text-lg text-white">ClipIT</span>
+          <span class="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">Free Forever</span>
+        </div>
+      </a>
+
+      <!-- NAV LINKS (LANDING MODE) -->
+      <div id="landingNavLinks" class="hidden md:flex items-center gap-6 text-xs font-semibold text-zinc-400">
+        <a href="#features" class="hover:text-white transition">Features</a>
+        <a href="#comparison" class="hover:text-white transition">Why ClipIT vs Paid</a>
+        <a href="#pricing" class="hover:text-white transition">Plans (100% Free)</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+      </div>
+    </div>
+
+    <!-- RIGHT NAV ACTIONS -->
+    <div class="flex items-center gap-2.5">
+      <button onclick="switchAppView('landing')" id="navHomeBtn" class="hidden px-3 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.11] text-xs font-semibold text-zinc-200 border border-white/[0.08] items-center gap-1.5 transition">
+        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+        <span>Overview</span>
+      </button>
+
+      <button onclick="openProjectsModal()" class="px-3 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.10] text-xs font-semibold text-zinc-300 border border-white/[0.07] flex items-center gap-1.5 transition">
+        <i data-lucide="folder-heart" class="w-3.5 h-3.5 text-champagne"></i>
+        <span class="hidden sm:inline">My Clips</span>
+        <span id="savedCountBadge" class="text-[10px] font-mono bg-white/10 px-1.5 rounded">0</span>
+      </button>
+
+      <button onclick="openAccountModal()" id="accountHeaderBtn" class="px-3 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.11] text-xs font-semibold text-zinc-200 border border-white/[0.08] flex items-center gap-1.5 transition">
+        <i data-lucide="user" class="w-3.5 h-3.5 text-champagne"></i>
+        <span id="accountBtnLabel">Sign In</span>
+      </button>
+
+      <button onclick="launchWorkspaceWithSample()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-coral-500 to-amber-500 hover:opacity-95 text-xs font-extrabold text-white shadow-lg shadow-coral-500/25 flex items-center gap-1.5 transition">
+        <i data-lucide="zap" class="w-3.5 h-3.5 fill-current"></i>
+        <span>Open Studio</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======================================================================= -->
+  <!-- VIEW 1: GLOBAL SAAS LANDING PAGE (OPUSCLIP / VIZARD / SUBMAGIC LEVEL)   -->
+  <!-- ======================================================================= -->
+  <div id="landingView" class="flex-1">
+
+    <!-- HERO SECTION WITH INSTANT DROPZONE -->
+    <section class="hero-mesh grid-bg relative pt-12 pb-20 lg:pt-20 lg:pb-28 px-4 border-b border-white/[0.07]">
+      <div class="max-w-5xl mx-auto text-center space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-semibold text-zinc-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>#1 Free AI Clipping Studio • Zero Watermarks • 60FPS HD</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.06]">
+          1 Long Video. <span class="font-serif italic font-normal text-champagne">10 Viral Shorts.</span><br />
+          <span class="bg-gradient-to-r from-coral-500 via-amber-400 to-champagne bg-clip-text text-transparent">100% Free Forever.</span>
+        </h1>
+
+        <p class="max-w-2xl mx-auto text-sm sm:text-base text-zinc-400 leading-relaxed">
+          Turn podcasts, YouTube videos, and interviews into scroll-stopping TikToks, Instagram Reels, and YouTube Shorts in seconds—with kinetic Hormozi captions, High-CTR hook banners, and split-screen B-roll.
+        </p>
+
+        <!-- INSTANT SAAS DROPZONE CARD (OPUSCLIP-STYLE CONVERSION WIDGET) -->
+        <div class="max-w-2xl mx-auto mt-8 glass-card rounded-2xl p-3 sm:p-4 shadow-2xl shadow-black/80 border border-white/15">
+          <div class="flex flex-col sm:flex-row items-stretch gap-2.5">
+            <div class="flex-1 flex items-center gap-2.5 bg-obsidian-950 border border-white/10 rounded-xl px-3.5 py-3">
+              <i data-lucide="link" class="w-4 h-4 text-zinc-500 shrink-0"></i>
+              <input type="url" id="heroUrlInput" placeholder="Paste YouTube, TikTok, Instagram, or .mp4 video link..." class="w-full bg-transparent text-xs sm:text-sm text-white placeholder-zinc-500 outline-none" />
+            </div>
+            <button onclick="startFromHeroUrl()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-coral-500 to-amber-500 hover:opacity-95 text-xs sm:text-sm font-extrabold text-white shadow-lg shadow-coral-500/25 shrink-0 transition">
+              Get Free Clips ⚡
+            </button>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-3 mt-3 pt-3 border-t border-white/[0.07] text-xs">
+            <label class="px-3.5 py-2 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] text-zinc-200 font-semibold border border-white/10 flex items-center gap-2 cursor-pointer transition">
+              <i data-lucide="upload-cloud" class="w-4 h-4 text-coral-500"></i>
+              <span>Upload Local Video (.MP4 / .MOV)</span>
+              <input type="file" accept="video/*" class="hidden" onchange="handleHeroFileUpload(event)" />
+            </label>
+            <span class="text-zinc-600">or</span>
+            <button onclick="launchWorkspaceWithSample()" class="px-3.5 py-2 rounded-lg bg-champagne/10 hover:bg-champagne/20 text-champagne font-bold border border-champagne/25 flex items-center gap-1.5 transition">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Try 1-Click Sample Podcast</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- SOCIAL PROOF METRICS -->
+        <div class="pt-6 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-zinc-400">
+          <div class="flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+            <span>No Credit Card Required</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+            <span>Unlimited 1080p 60FPS Exports</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+            <span>100% Browser-Private AI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE LIVE PREVIEW SHOWCASE CARDS -->
+      <div class="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div onclick="launchWorkspaceWithPreset('Hormozi Beast')" class="glass-card rounded-2xl p-5 hover:border-coral-500/50 transition cursor-pointer group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[10px] font-bold">98 VIRAL SCORE</span>
+            <span class="text-[11px] text-zinc-400 group-hover:text-coral-500 transition">Try Template →</span>
+          </div>
+          <div class="bg-white text-obsidian-950 font-black text-xs px-3 py-2 rounded-lg mb-3 text-center shadow">
+            THE <span class="bg-red-600 text-white px-1.5 py-0.5 rounded">SECRET</span> NOBODY TELLS YOU 🔥
+          </div>
+          <p class="text-xs text-zinc-300 font-semibold">Hormozi High-Contrast Kinetic Captions + Beat Auto-Zoom</p>
+        </div>
+
+        <div onclick="launchWorkspaceWithPreset('Iman Luxury')" class="glass-card rounded-2xl p-5 hover:border-champagne/50 transition cursor-pointer group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2.5 py-0.5 rounded-full bg-champagne/20 text-champagne font-mono text-[10px] font-bold">95 VIRAL SCORE</span>
+            <span class="text-[11px] text-zinc-400 group-hover:text-champagne transition">Try Template →</span>
+          </div>
+          <div class="bg-obsidian-950 border border-champagne/40 text-champagne font-black text-xs px-3 py-2 rounded-lg mb-3 text-center">
+            WHY <span class="bg-champagne text-obsidian-950 px-1.5 py-0.5 rounded">99% FAIL</span> AT THIS RULE 💸
+          </div>
+          <p class="text-xs text-zinc-300 font-semibold">Dark Luxury Grade + Champagne Gold Word-by-Word Pop</p>
+        </div>
+
+        <div onclick="launchWorkspaceWithPreset('Podcast Gold')" class="glass-card rounded-2xl p-5 hover:border-coral-500/50 transition cursor-pointer group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2.5 py-0.5 rounded-full bg-coral-500/20 text-coral-500 font-mono text-[10px] font-bold">94 VIRAL SCORE</span>
+            <span class="text-[11px] text-zinc-400 group-hover:text-coral-500 transition">Try Template →</span>
+          </div>
+          <div class="bg-zinc-900 border border-white/10 text-white font-black text-xs px-3 py-2 rounded-lg mb-3 text-center">
+            STOP DOING THIS <span class="bg-coral-500 text-white px-1.5 py-0.5 rounded">MISTAKE</span> 🛑
+          </div>
+          <p class="text-xs text-zinc-300 font-semibold">Split-Screen Retention Mode + Live Audio Waveform</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATOR PLATFORM MARQUEE -->
+    <div class="border-b border-white/[0.06] bg-obsidian-900/50 py-3.5 overflow-hidden">
+      <div class="marquee-track gap-12 text-xs font-mono uppercase tracking-widest text-zinc-500">
+        <span>⚡ Optimized for Instagram Reels</span>
+        <span>•</span>
+        <span>🔥 TikTok For-You-Page Algorithm Ready</span>
+        <span>•</span>
+        <span>🎬 YouTube Shorts 60FPS Master</span>
+        <span>•</span>
+        <span>🎙️ Podcast & Interview AI Hook Detector</span>
+        <span>•</span>
+        <span>💎 Zero Watermarks • Free Forever</span>
+        <span>•</span>
+        <span>⚡ Optimized for Instagram Reels</span>
+        <span>•</span>
+        <span>🔥 TikTok For-You-Page Algorithm Ready</span>
+        <span>•</span>
+        <span>🎬 YouTube Shorts 60FPS Master</span>
+        <span>•</span>
+        <span>🎙️ Podcast & Interview AI Hook Detector</span>
+        <span>•</span>
+        <span>💎 Zero Watermarks • Free Forever</span>
+      </div>
+    </div>
+
+    <!-- FEATURES BENTO GRID -->
+    <section id="features" class="max-w-6xl mx-auto py-20 px-4 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs font-mono uppercase tracking-widest text-coral-500">Creator-First Engineering</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Everything Paid Clippers Charge $49/mo For — Built In Free</h2>
+        <p class="text-xs sm:text-sm text-zinc-400">Designed for global creators, podcasters, educators, and agencies who want maximum views without subscriptions.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-coral-500/15 border border-coral-500/30 flex items-center justify-center">
+            <i data-lucide="waveform" class="w-5 h-5 text-coral-500"></i>
+          </div>
+          <h3 class="text-base font-bold text-white">AI Audio Energy & Hook Slicer</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">Automatically scans vocal peaks and high-energy moments across your timeline, ranking every clip with a 0–99 Viral Potential Score.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-champagne/15 border border-champagne/30 flex items-center justify-center">
+            <i data-lucide="type" class="w-5 h-5 text-champagne"></i>
+          </div>
+          <h3 class="text-base font-bold text-white">10 Trending Kinetic Captions + Auto-Emoji</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">Word-by-word spring animations in Hormozi Beast, Submagic Glow, Iman Gold, and Marker Swipe—plus automatic emoji reactions above power words.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
+            <i data-lucide="layout-template" class="w-5 h-5 text-emerald-400"></i>
+          </div>
+          <h3 class="text-base font-bold text-white">High-CTR Hook Banners & Cover PNGs</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">Wrap any word in <code class="text-champagne">[brackets]</code> to generate neon contrast pills, and export crisp 1080×1920 cover thumbnails in 1 click.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center">
+            <i data-lucide="columns-2" class="w-5 h-5 text-sky-400"></i>
+          </div>
+          <h3 class="text-base font-bold text-white">Split-Screen B-Roll & Live Waveform</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">Boost average watch time past 100% by pairing your speaker cam on top with gameplay B-roll or a reactive audio visualizer on the bottom.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center">
+            <i data-lucide="volume-2" class="w-5 h-5 text-purple-400"></i>
+          </div>
+          <h3 class="text-base font-bold text-white">Synthesized Micro-SFX & Beat Zoom</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">Built-in Web Audio whooshes, caption pops, and 0.4s opening hook slams keep viewer retention locked from frame one.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center">
+            <i data-lucide="layers" class="w-5 h-5 text-amber-400"></i>
+          </div>
+          <h3 class="text-base font-bold text-white">Batch Export Top 3 Clips @ 60FPS</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">Render and download your top viral clips back-to-back in 720p, 1080p Full HD, or 2K Quad HD at 60FPS with zero watermarks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON TABLE: CLIPIT VS PAID TOOLS -->
+    <section id="comparison" class="max-w-5xl mx-auto py-16 px-4">
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/10">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Why Creators Are Switching to ClipIT</h2>
+          <p class="text-xs text-zinc-400 mt-1">Compare ClipIT Studio against traditional subscription clipping platforms</p>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b border-white/10 text-zinc-400">
+                <th class="py-3.5 px-4 font-semibold">Feature</th>
+                <th class="py-3.5 px-4 font-extrabold text-coral-500 bg-coral-500/10 rounded-t-xl">ClipIT Studio</th>
+                <th class="py-3.5 px-4 font-semibold">OpusClip / Vizard</th>
+                <th class="py-3.5 px-4 font-semibold">Submagic</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06]">
+              <tr>
+                <td class="py-3.5 px-4 font-medium text-zinc-200">Starting Price</td>
+                <td class="py-3.5 px-4 font-extrabold text-emerald-400 bg-coral-500/5">$0 / Forever Free</td>
+                <td class="py-3.5 px-4 text-zinc-400">$19 – $49 / mo</td>
+                <td class="py-3.5 px-4 text-zinc-400">$20 – $50 / mo</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-medium text-zinc-200">Free Plan Watermark</td>
+                <td class="py-3.5 px-4 font-bold text-emerald-400 bg-coral-500/5">Zero Watermarks</td>
+                <td class="py-3.5 px-4 text-zinc-400">Forced Logo Watermark</td>
+                <td class="py-3.5 px-4 text-zinc-400">Forced Logo Watermark</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-medium text-zinc-200">1080p & 2K 60FPS Export</td>
+                <td class="py-3.5 px-4 font-bold text-white bg-coral-500/5">Included Free</td>
+                <td class="py-3.5 px-4 text-zinc-400">Paid Pro Tier Only</td>
+                <td class="py-3.5 px-4 text-zinc-400">Paid Pro Tier Only</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-medium text-zinc-200">High-CTR Hook Covers + PNG</td>
+                <td class="py-3.5 px-4 font-bold text-white bg-coral-500/5">8 Styles + PNG Export</td>
+                <td class="py-3.5 px-4 text-zinc-400">Basic</td>
+                <td class="py-3.5 px-4 text-zinc-400">Limited</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-medium text-zinc-200">Split-Screen B-Roll & Wave</td>
+                <td class="py-3.5 px-4 font-bold text-white bg-coral-500/5">Built-In</td>
+                <td class="py-3.5 px-4 text-zinc-400">Limited</td>
+                <td class="py-3.5 px-4 text-zinc-400">Paid Add-On</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING / GROWTH ROADMAP SECTION (100% FREE LAUNCH) -->
+    <section id="pricing" class="max-w-5xl mx-auto py-16 px-4 space-y-10">
+      <div class="text-center space-y-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">Early Access Launch</span>
+        <h2 class="text-3xl font-extrabold text-white">Start Creating Viral Clips for $0</h2>
+        <p class="text-xs text-zinc-400">All Pro features are unlocked free during our global creator launch.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <!-- FREE CREATOR TIER -->
+        <div class="glass-card rounded-3xl p-7 border-2 border-coral-500 relative flex flex-col justify-between">
+          <span class="absolute -top-3 right-6 px-3 py-0.5 rounded-full bg-coral-500 text-[10px] font-extrabold uppercase tracking-wider text-white">Most Popular</span>
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-lg font-extrabold text-white">Creator Unlimited</h3>
+              <p class="text-xs text-zinc-400">Full studio access for all creators worldwide</p>
+            </div>
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-black text-white">$0</span>
+              <span class="text-xs text-zinc-400">/ forever during launch</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-zinc-300 pt-2">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Unlimited AI Audio Peak Clipping</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 1080p & 2K 60FPS Zero-Watermark Exports</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> All 10 Kinetic Caption Styles + Auto-Emoji</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 8 High-CTR Hook Banners + Cover PNG Export</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Split-Screen B-Roll & Batch Export Top 3</li>
+            </ul>
+          </div>
+          <button onclick="launchWorkspaceWithSample()" class="mt-6 w-full py-3 rounded-xl bg-coral-500 hover:bg-coral-600 text-xs font-extrabold text-white transition">
+            Launch Free Studio Now →
+          </button>
+        </div>
+
+        <!-- AGENCY / TEAM TIER (COMING SOON / WAITLIST) -->
+        <div class="glass-card rounded-3xl p-7 border border-white/10 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-extrabold text-white">Agency & Cloud Pro</h3>
+              <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-champagne text-[10px] font-mono">COMING SOON</span>
+            </div>
+            <p class="text-xs text-zinc-400">For high-volume media teams & YouTube networks</p>
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-black text-zinc-300">$19</span>
+              <span class="text-xs text-zinc-500">/ mo (Free for early users)</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-zinc-400 pt-2">
+              <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-champagne"></i> 4K 60FPS Cloud Rendering Queue</li>
+              <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-champagne"></i> Multi-Language AI Voice Dubbing (30+ Languages)</li>
+              <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-champagne"></i> Direct Auto-Post to TikTok, Reels & Shorts</li>
+              <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-champagne"></i> Shared Agency Brand Kits & Team Seats</li>
+            </ul>
+          </div>
+          <button onclick="openAccountModal()" class="mt-6 w-full py-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-xs font-bold text-white transition">
+            Create Free Account to Lock Early Access
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION (SEO RICH) -->
+    <section id="faq" class="max-w-3xl mx-auto py-16 px-4 space-y-6">
+      <h2 class="text-2xl font-extrabold text-white text-center">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        <details class="glass-card rounded-xl p-4 cursor-pointer" open>
+          <summary class="text-xs sm:text-sm font-bold text-white">Is ClipIT really free with no watermarks?</summary>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed">Yes! ClipIT runs directly inside your browser using hardware-accelerated Canvas & Web Audio engines, allowing unlimited 1080p 60FPS exports with zero watermarks.</p>
+        </details>
+        <details class="glass-card rounded-xl p-4 cursor-pointer">
+          <summary class="text-xs sm:text-sm font-bold text-white">Does ClipIT work on mobile phones and tablets?</summary>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed">Yes. The entire ClipIT Studio is mobile-responsive so you can slice clips, edit captions, and preview 9:16 Reels directly from your phone or desktop.</p>
+        </details>
+        <details class="glass-card rounded-xl p-4 cursor-pointer">
+          <summary class="text-xs sm:text-sm font-bold text-white">Are my uploaded videos private?</summary>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed">100%. Your video files are processed locally in your browser memory and are never uploaded to external third-party servers.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- GLOBAL SAAS FOOTER -->
+    <footer class="border-t border-white/[0.07] bg-obsidian-950 py-10 px-4 text-center space-y-3">
+      <div class="flex items-center justify-center gap-2">
+        <div class="w-6 h-6 rounded-md bg-coral-500 flex items-center justify-center">
+          <i data-lucide="scissors" class="w-3.5 h-3.5 text-white"></i>
+        </div>
+        <span class="font-extrabold text-sm text-white">ClipIT Studio</span>
+      </div>
+      <p class="text-xs text-zinc-500">Built for global creators • Turn long-form content into viral short-form growth.</p>
+    </footer>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VIEW 2: PRO 3-PANE CLIPPING WORKSPACE (MOBILE + DESKTOP RESPONSIVE)     -->
+  <!-- ======================================================================= -->
+  <div id="workspaceView" class="hidden flex-1 flex flex-col">
+
+    <!-- WORKSPACE SUB-TOOLBAR -->
+    <div class="border-b border-white/[0.07] bg-obsidian-900/90 px-4 py-2 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 text-xs text-zinc-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="statusIndicator" class="truncate max-w-[220px] sm:max-w-md">Ready • 60FPS Zero-Watermark Engine</span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="generateSamplePodcast()" id="sampleBtn" class="px-3 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.11] text-xs font-semibold text-zinc-200 border border-white/[0.08] flex items-center gap-1.5 transition">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-champagne"></i>
+          <span>Sample Podcast</span>
+        </button>
+
+        <button onclick="openUrlModal()" class="px-3 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.11] text-xs font-semibold text-zinc-200 border border-white/[0.08] flex items-center gap-1.5 transition">
+          <i data-lucide="link" class="w-3.5 h-3.5 text-zinc-400"></i>
+          <span class="hidden sm:inline">Paste URL</span>
+        </button>
+
+        <label class="px-3 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.11] text-xs font-semibold text-zinc-200 border border-white/[0.08] flex items-center gap-1.5 cursor-pointer transition">
+          <i data-lucide="upload" class="w-3.5 h-3.5 text-coral-500"></i>
+          <span>Upload</span>
+          <input type="file" id="videoUpload" accept="video/*" class="hidden" onchange="handleVideoUpload(event)" />
+        </label>
+
+        <button onclick="saveCurrentProject()" class="px-3 py-1.5 rounded-lg bg-coral-500 hover:bg-coral-600 text-xs font-bold text-white flex items-center gap-1.5 transition">
+          <i data-lucide="cloud-upload" class="w-3.5 h-3.5"></i>
+          <span>Save</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- RESPONSIVE 3-PANE GRID -->
+    <main class="flex-1 grid grid-cols-1 lg:grid-cols-12">
+
+      <!-- PANE 1: AI VIRAL CLIPS & BRAND KITS -->
+      <aside class="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-white/[0.07] bg-obsidian-900/60 flex flex-col lg:max-h-[calc(100vh-6.75rem)]">
+        <div class="p-3.5 border-b border-white/[0.07] flex items-center justify-between">
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-300">AI Viral Clips</h2>
+            <p class="text-[11px] text-zinc-500" id="clipSummaryText">Load a video or sample to slice</p>
+          </div>
+          <button onclick="toggleTopPicks()" id="topPicksBtn" class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-white/[0.05] text-zinc-400 border border-white/[0.07] hover:text-white transition">
+            Top Picks
+          </button>
+        </div>
+
+        <div class="p-3 border-b border-white/[0.07] bg-obsidian-950/40">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-zinc-400">1-Click Viral Brand Kits</span>
+            <button onclick="saveCustomPreset()" class="text-[10px] text-champagne hover:underline font-semibold">+ Save Current</button>
+          </div>
+          <div id="brandPresetList" class="flex gap-1.5 overflow-x-auto pb-1"></div>
+        </div>
+
+        <div id="clipListContainer" class="flex-1 overflow-y-auto p-3 space-y-2.5 max-h-64 lg:max-h-none"></div>
+
+        <div class="p-3 border-t border-white/[0.07] bg-obsidian-950/70">
+          <button onclick="batchExportTopClips()" id="batchExportBtn" disabled class="w-full py-2 rounded-lg bg-white/[0.06] hover:bg-white/[0.11] disabled:opacity-40 text-xs font-semibold text-zinc-200 border border-white/[0.08] flex items-center justify-center gap-2 transition">
+            <i data-lucide="layers" class="w-3.5 h-3.5 text-champagne"></i>
+            <span>Batch Export Top 3 Clips</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- PANE 2: CENTER 9:16 MONITOR & TRANSPORT -->
+      <section class="lg:col-span-5 studio-glow flex flex-col items-center justify-between p-4 relative lg:max-h-[calc(100vh-6.75rem)] overflow-y-auto">
+        <div class="w-full max-w-md flex items-center justify-between gap-2 mb-2">
+          <div class="flex items-center bg-obsidian-900 border border-white/[0.08] rounded-lg p-0.5 text-[11px] font-semibold">
+            <button onclick="setAspectRatio('9:16')" id="ar-9-16" class="px-2.5 py-1 rounded-md bg-white/10 text-white">9:16</button>
+            <button onclick="setAspectRatio('4:5')" id="ar-4-5" class="px-2.5 py-1 rounded-md text-zinc-400 hover:text-white">4:5</button>
+            <button onclick="setAspectRatio('1:1')" id="ar-1-1" class="px-2.5 py-1 rounded-md text-zinc-400 hover:text-white">1:1</button>
+          </div>
+
+          <div class="flex items-center gap-1.5">
+            <button onclick="toggleSafeZone()" id="safeZoneBtn" class="px-2.5 py-1 rounded-lg bg-obsidian-900 border border-white/[0.08] text-[11px] font-medium text-zinc-400 hover:text-white flex items-center gap-1">
+              <i data-lucide="grid" class="w-3 h-3"></i>
+              <span>Safe Zone</span>
+            </button>
+            <button
+              onpointerdown="setCompareRaw(true)"
+              onpointerup="setCompareRaw(false)"
+              onpointerleave="setCompareRaw(false)"
+              id="compareRawBtn"
+              class="px-2.5 py-1 rounded-lg bg-obsidian-900 border border-white/[0.08] text-[11px] font-semibold text-champagne hover:bg-white/[0.06] flex items-center gap-1 cursor-pointer">
+              <i data-lucide="eye" class="w-3 h-3"></i>
+              <span>Hold Raw</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="relative flex items-center justify-center my-auto">
+          <div id="canvasWrapper" class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/80 border border-white/15 bg-black" style="width: 280px; height: 498px;">
+            <canvas id="previewCanvas" width="1080" height="1920" class="w-full h-full object-contain block"></canvas>
+
+            <div id="renderOverlay" class="hidden absolute inset-0 bg-black/85 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center z-30">
+              <div class="w-12 h-12 rounded-full border-2 border-coral-500 border-t-transparent animate-spin mb-3"></div>
+              <p class="text-sm font-bold text-white" id="renderStatusTitle">Rendering 60FPS Master...</p>
+              <p class="text-xs font-mono text-champagne mt-1" id="renderProgressText">0%</p>
+              <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden mt-3">
+                <div id="renderProgressBar" class="bg-coral-500 h-full w-0 transition-all duration-150"></div>
+              </div>
+              <button onclick="cancelRender()" class="mt-4 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-red-500/20 text-xs font-semibold text-zinc-300 hover:text-red-300 border border-white/10">
+                Cancel Render
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full max-w-md mt-3 glass-card rounded-xl p-3 space-y-2.5">
+          <div class="flex items-center gap-2.5">
+            <button onclick="togglePlay()" id="playPauseBtn" class="w-8 h-8 rounded-lg bg-white text-obsidian-950 flex items-center justify-center hover:bg-zinc-200 transition shrink-0">
+              <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+            </button>
+            <span id="timecodeDisplay" class="text-[11px] font-mono text-zinc-300 w-24 shrink-0">00:00.0 / 00:00.0</span>
+            <input type="range" id="timelineScrubber" min="0" max="100" step="0.1" value="0" class="flex-1" oninput="scrubTimeline(this.value)" />
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-white/[0.06]">
+            <div class="flex items-center gap-1 text-[10px] font-mono text-zinc-400">
+              <span>In:</span>
+              <button onclick="nudgeTrim('start', -0.5)" class="px-1.5 py-0.5 rounded bg-white/[0.06] hover:text-white">-0.5s</button>
+              <button onclick="nudgeTrim('start', 0.5)" class="px-1.5 py-0.5 rounded bg-white/[0.06] hover:text-white">+0.5s</button>
+              <span class="ml-1">Out:</span>
+              <button onclick="nudgeTrim('end', -0.5)" class="px-1.5 py-0.5 rounded bg-white/[0.06] hover:text-white">-0.5s</button>
+              <button onclick="nudgeTrim('end', 0.5)" class="px-1.5 py-0.5 rounded bg-white/[0.06] hover:text-white">+0.5s</button>
+            </div>
+
+            <div class="flex items-center gap-1.5">
+              <select id="exportResSelect" class="bg-obsidian-950 border border-white/10 rounded-lg px-2 py-1 text-[11px] font-mono text-zinc-300 outline-none">
+                <option value="720">720p 60fps</option>
+                <option value="1080" selected>1080p 60fps</option>
+                <option value="1440">2K 60fps</option>
+              </select>
+              <button onclick="exportCurrentClip()" id="exportBtn" class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-coral-500 to-amber-500 hover:opacity-95 text-xs font-extrabold text-white shadow-lg shadow-coral-500/25 flex items-center gap-1.5 transition">
+                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                <span>Export HD</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANE 3: RIGHT STUDIO INSPECTOR -->
+      <aside class="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-white/[0.07] bg-obsidian-900/75 flex flex-col lg:max-h-[calc(100vh-6.75rem)]">
+        <div class="p-2.5 border-b border-white/[0.07] grid grid-cols-4 gap-1 bg-obsidian-950/50">
+          <button onclick="switchInspectorTab('hook')" id="tab-hook" class="py-1.5 rounded-lg text-xs font-bold bg-white/10 text-white transition">Hook</button>
+          <button onclick="switchInspectorTab('style')" id="tab-style" class="py-1.5 rounded-lg text-xs font-semibold text-zinc-400 hover:text-white transition">Captions</button>
+          <button onclick="switchInspectorTab('motion')" id="tab-motion" class="py-1.5 rounded-lg text-xs font-semibold text-zinc-400 hover:text-white transition">Motion</button>
+          <button onclick="switchInspectorTab('publish')" id="tab-publish" class="py-1.5 rounded-lg text-xs font-semibold text-zinc-400 hover:text-white transition">Viral AI</button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-4 space-y-5">
+          <!-- TAB 1: HOOK BANNER -->
+          <div id="panel-hook" class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-xs font-bold text-white">High-CTR Hook Banner & Cover</h3>
+                <p class="text-[11px] text-zinc-400">Wrap power words in <code class="text-champagne">[brackets]</code> for neon pills</p>
+              </div>
+              <label class="flex items-center gap-1.5 text-xs font-semibold text-zinc-300 cursor-pointer">
+                <input type="checkbox" id="hookEnabled" checked onchange="updateActiveClipSettings()" class="accent-coral-500 rounded" />
+                <span>Active</span>
+              </label>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-[11px] font-semibold text-zinc-400">Kicker Badge</label>
+              <input type="text" id="hookKickerInput" value="🚨 EXPOSED TRUTH" oninput="updateActiveClipSettings()" class="w-full bg-obsidian-950 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:border-coral-500 outline-none" />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-[11px] font-semibold text-zinc-400">Main Headline (Use [brackets] for highlight)</label>
+              <textarea id="hookHeadlineInput" rows="2" oninput="updateActiveClipSettings()" class="w-full bg-obsidian-950 border border-white/10 rounded-lg px-3 py-2 text-xs font-bold text-white focus:border-coral-500 outline-none">THE [SECRET] NOBODY TELLS YOU 🔥</textarea>
+            </div>
+
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <label class="text-[11px] font-semibold text-zinc-400">Hook Visual Template (8 Styles)</label>
+                <button onclick="exportCoverPng()" class="text-[11px] font-bold text-champagne hover:underline flex items-center gap-1">
+                  <i data-lucide="image" class="w-3 h-3"></i>
+                  <span>Save Cover PNG</span>
+                </button>
+              </div>
+              <div id="hookTemplateGrid" class="grid grid-cols-2 gap-2"></div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 pt-2 border-t border-white/[0.06]">
+              <div>
+                <label class="text-[11px] text-zinc-400 flex justify-between"><span>Banner Y-Pos</span><span id="hookYVal" class="font-mono">12%</span></label>
+                <input type="range" id="hookYSlider" min="5" max="32" value="12" oninput="updateActiveClipSettings()" class="w-full mt-1.5" />
+              </div>
+              <div>
+                <label class="text-[11px] text-zinc-400 flex justify-between"><span>Banner Scale</span><span id="hookScaleVal" class="font-mono">100%</span></label>
+                <input type="range" id="hookScaleSlider" min="75" max="130" value="100" oninput="updateActiveClipSettings()" class="w-full mt-1.5" />
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: CAPTIONS -->
+          <div id="panel-style" class="hidden space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xs font-bold text-white">Trending Kinetic Captions</h3>
+              <label class="flex items-center gap-1.5 text-xs font-semibold text-zinc-300 cursor-pointer">
+                <input type="checkbox" id="autoEmojiToggle" checked onchange="updateActiveClipSettings()" class="accent-coral-500" />
+                <span>Auto-Emoji</span>
+              </label>
+            </div>
+
+            <div id="captionTemplateGrid" class="grid grid-cols-2 gap-2"></div>
+
+            <div class="grid grid-cols-2 gap-3 pt-2 border-t border-white/[0.06]">
+              <div>
+                <label class="text-[11px] text-zinc-400 flex justify-between"><span>Caption Y-Pos</span><span id="capYVal" class="font-mono">68%</span></label>
+                <input type="range" id="capYSlider" min="35" max="86" value="68" oninput="updateActiveClipSettings()" class="w-full mt-1.5" />
+              </div>
+              <div>
+                <label class="text-[11px] text-zinc-400 flex justify-between"><span>Font Size</span><span id="capSizeVal" class="font-mono">64px</span></label>
+                <input type="range" id="capSizeSlider" min="42" max="92" value="64" oninput="updateActiveClipSettings()" class="w-full mt-1.5" />
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-white/[0.07] space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-bold text-zinc-300">Timed Captions (Click to Seek)</span>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="startSpeechToText()" class="px-2 py-1 rounded bg-white/[0.06] hover:bg-white/10 text-[10px] font-semibold text-champagne flex items-center gap-1">
+                    <i data-lucide="mic" class="w-3 h-3"></i>
+                    <span>Live Mic</span>
+                  </button>
+                  <button onclick="openSrtModal()" class="px-2 py-1 rounded bg-white/[0.06] hover:bg-white/10 text-[10px] font-semibold text-zinc-300">
+                    Paste Script/SRT
+                  </button>
+                </div>
+              </div>
+              <div id="captionBlocksList" class="space-y-1.5 max-h-56 overflow-y-auto pr-1"></div>
+            </div>
+          </div>
+
+          <!-- TAB 3: MOTION & SPLIT-SCREEN -->
+          <div id="panel-motion" class="hidden space-y-4">
+            <div class="space-y-2">
+              <h3 class="text-xs font-bold text-white">Split-Screen Retention Layout</h3>
+              <div class="grid grid-cols-3 gap-1.5">
+                <button onclick="setLayoutMode('full')" id="layout-full" class="py-2 px-2 rounded-lg bg-coral-500/20 border border-coral-500 text-[11px] font-bold text-white">Full Frame</button>
+                <button onclick="setLayoutMode('split-wave')" id="layout-split-wave" class="py-2 px-2 rounded-lg bg-obsidian-950 border border-white/10 text-[11px] font-semibold text-zinc-400">Split + Wave</button>
+                <button onclick="setLayoutMode('split-broll')" id="layout-split-broll" class="py-2 px-2 rounded-lg bg-obsidian-950 border border-white/10 text-[11px] font-semibold text-zinc-400">Split + B-Roll</button>
+              </div>
+              <div id="brollUploadBox" class="hidden pt-1">
+                <label class="w-full py-2 px-3 rounded-lg bg-white/[0.05] hover:bg-white/[0.09] border border-dashed border-white/15 text-[11px] text-zinc-300 flex items-center justify-center gap-2 cursor-pointer">
+                  <i data-lucide="video" class="w-3.5 h-3.5 text-champagne"></i>
+                  <span id="brollFileName">Upload Bottom Gameplay / B-Roll Video</span>
+                  <input type="file" accept="video/*" class="hidden" onchange="handleBrollUpload(event)" />
+                </label>
+              </div>
+            </div>
+
+            <div class="space-y-2.5 pt-3 border-t border-white/[0.07]">
+              <h3 class="text-xs font-bold text-white">Framing & Retention Dopamine</h3>
+              <div class="grid grid-cols-3 gap-2">
+                <div>
+                  <label class="text-[10px] text-zinc-400">Zoom</label>
+                  <input type="range" id="zoomSlider" min="100" max="220" value="115" oninput="updateActiveClipSettings()" class="w-full mt-1" />
+                </div>
+                <div>
+                  <label class="text-[10px] text-zinc-400">Pan X</label>
+                  <input type="range" id="panXSlider" min="-40" max="40" value="0" oninput="updateActiveClipSettings()" class="w-full mt-1" />
+                </div>
+                <div>
+                  <label class="text-[10px] text-zinc-400">Pan Y</label>
+                  <input type="range" id="panYSlider" min="-40" max="40" value="0" oninput="updateActiveClipSettings()" class="w-full mt-1" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 pt-1">
+                <label class="flex items-center justify-between p-2 rounded-lg bg-obsidian-950 border border-white/[0.07] text-[11px] cursor-pointer">
+                  <span>Beat Auto-Zoom</span>
+                  <input type="checkbox" id="autoZoomToggle" checked onchange="updateActiveClipSettings()" class="accent-coral-500" />
+                </label>
+                <label class="flex items-center justify-between p-2 rounded-lg bg-obsidian-950 border border-white/[0.07] text-[11px] cursor-pointer">
+                  <span>0.4s Hook Slam</span>
+                  <input type="checkbox" id="hookSlamToggle" checked onchange="updateActiveClipSettings()" class="accent-coral-500" />
+                </label>
+                <label class="flex items-center justify-between p-2 rounded-lg bg-obsidian-950 border border-white/[0.07] text-[11px] cursor-pointer">
+                  <span>Progress Bar</span>
+                  <input type="checkbox" id="progressBarToggle" checked onchange="updateActiveClipSettings()" class="accent-coral-500" />
+                </label>
+                <label class="flex items-center justify-between p-2 rounded-lg bg-obsidian-950 border border-white/[0.07] text-[11px] cursor-pointer">
+                  <span>Micro-SFX Hits</span>
+                  <input type="checkbox" id="sfxToggle" checked onchange="updateActiveClipSettings()" class="accent-coral-500" />
+                </label>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-3 border-t border-white/[0.07]">
+              <h3 class="text-xs font-bold text-white">Pro Color Grade</h3>
+              <div class="grid grid-cols-2 gap-1.5">
+                <button onclick="setColorGrade('viral')" id="grade-viral" class="py-1.5 px-2.5 rounded-lg bg-coral-500/20 border border-coral-500 text-[11px] font-bold text-white">Vibrant Viral</button>
+                <button onclick="setColorGrade('cinema')" id="grade-cinema" class="py-1.5 px-2.5 rounded-lg bg-obsidian-950 border border-white/10 text-[11px] text-zinc-400">Moody Cinema</button>
+                <button onclick="setColorGrade('gold')" id="grade-gold" class="py-1.5 px-2.5 rounded-lg bg-obsidian-950 border border-white/10 text-[11px] text-zinc-400">Luxury Warm</button>
+                <button onclick="setColorGrade('clean')" id="grade-clean" class="py-1.5 px-2.5 rounded-lg bg-obsidian-950 border border-white/10 text-[11px] text-zinc-400">Crisp Studio</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: VIRAL AI -->
+          <div id="panel-publish" class="hidden space-y-4">
+            <div class="p-3 rounded-xl bg-gradient-to-br from-coral-500/15 to-amber-500/10 border border-coral-500/30 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-white flex items-center gap-1.5">
+                  <i data-lucide="flame" class="w-4 h-4 text-coral-500"></i>
+                  <span>Viral Potential Audit</span>
+                </span>
+                <span id="auditScorePill" class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold">94/100</span>
+              </div>
+              <div class="grid grid-cols-3 gap-1.5 text-center pt-1">
+                <div class="bg-black/40 rounded-lg p-1.5">
+                  <div class="text-[10px] text-zinc-400">3s Hook</div>
+                  <div id="metricHook" class="text-xs font-bold text-white">96%</div>
+                </div>
+                <div class="bg-black/40 rounded-lg p-1.5">
+                  <div class="text-[10px] text-zinc-400">Retention</div>
+                  <div id="metricRetention" class="text-xs font-bold text-champagne">92%</div>
+                </div>
+                <div class="bg-black/40 rounded-lg p-1.5">
+                  <div class="text-[10px] text-zinc-400">Est. Views</div>
+                  <div id="metricViews" class="text-xs font-bold text-emerald-400">120K–450K</div>
+                </div>
+              </div>
+              <button onclick="optimizeClipForVirality()" class="w-full py-2 rounded-lg bg-coral-500 hover:bg-coral-600 text-xs font-extrabold text-white transition">
+                ⚡ 1-Click Auto-Optimize for Max Views
+              </button>
+            </div>
+
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-white">Instagram Reels / TikTok Copy</span>
+                <button onclick="copySocialPack()" class="text-[11px] font-bold text-champagne hover:underline">Copy All</button>
+              </div>
+              <textarea id="socialCaptionBox" rows="4" class="w-full bg-obsidian-950 border border-white/10 rounded-lg p-2.5 text-xs text-zinc-200 leading-relaxed outline-none">Most people scroll past the exact blueprint that separates top 1% creators from everyone else. Watch till the end and save this before it gets buried. 👇🔥
+
+#contentcreator #viralreels #growthmindset #podcastclips #tiktokgrowth</textarea>
+            </div>
+
+            <button onclick="copyViralScorecard()" class="w-full py-2 rounded-lg bg-white/[0.06] hover:bg-white/[0.11] border border-white/10 text-xs font-semibold text-zinc-200 flex items-center justify-center gap-1.5">
+              <i data-lucide="share-2" class="w-3.5 h-3.5 text-champagne"></i>
+              <span>Copy Shareable Viral Audit Card</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- MODALS -->
+  <div id="urlModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-obsidian-900 border border-white/10 rounded-2xl max-w-md w-full p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-sm font-bold text-white">Load Direct Video URL</h3>
+        <button onclick="closeModal('urlModal')" class="text-zinc-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <p class="text-xs text-zinc-400">Paste any <strong class="text-white">YouTube, TikTok, Instagram</strong>, or direct <code class="text-zinc-200">.mp4</code> video link.</p>
+      <input type="url" id="directVideoUrlInput" placeholder="https://www.youtube.com/watch?v=... or .mp4 link" class="w-full bg-obsidian-950 border border-white/10 rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-coral-500" />
+      <div class="flex justify-end gap-2">
+        <button onclick="closeModal('urlModal')" class="px-3 py-1.5 rounded-lg bg-white/5 text-xs text-zinc-300">Cancel</button>
+        <button onclick="loadDirectVideoUrl()" class="px-4 py-1.5 rounded-lg bg-coral-500 text-xs font-bold text-white">Load Video</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="srtModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-obsidian-900 border border-white/10 rounded-2xl max-w-md w-full p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-sm font-bold text-white">Auto-Sync Script or SRT Captions</h3>
+        <button onclick="closeModal('srtModal')" class="text-zinc-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <textarea id="srtRawInput" rows="6" placeholder="Paste your transcript or .srt subtitle text here..." class="w-full bg-obsidian-950 border border-white/10 rounded-lg p-3 text-xs text-white outline-none focus:border-coral-500"></textarea>
+      <div class="flex justify-end gap-2">
+        <button onclick="closeModal('srtModal')" class="px-3 py-1.5 rounded-lg bg-white/5 text-xs text-zinc-300">Cancel</button>
+        <button onclick="applyPastedScript()" class="px-4 py-1.5 rounded-lg bg-coral-500 text-xs font-bold text-white">Sync to Clip</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="projectsModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-obsidian-900 border border-white/10 rounded-2xl max-w-lg w-full p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-sm font-bold text-white">Saved Studio Projects & Brand Kits</h3>
+        <button onclick="closeModal('projectsModal')" class="text-zinc-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div id="savedProjectsList" class="space-y-2 max-h-72 overflow-y-auto"></div>
+    </div>
+  </div>
+
+  <div id="accountModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-obsidian-900 border border-white/10 rounded-2xl max-w-sm w-full p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-lg bg-coral-500/20 border border-coral-500/40 flex items-center justify-center">
+            <i data-lucide="user-check" class="w-4 h-4 text-coral-500"></i>
+          </div>
+          <h3 class="text-sm font-bold text-white">Creator Studio Account</h3>
+        </div>
+        <button onclick="closeModal('accountModal')" class="text-zinc-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div id="accountLoggedOutView" class="space-y-3">
+        <p class="text-xs text-zinc-400">Create a free creator account to save your viral clips, custom hook banners, and brand kits.</p>
+        <div>
+          <label class="text-[11px] font-semibold text-zinc-400">Creator Name</label>
+          <input type="text" id="accNameInput" placeholder="e.g. Awais Studio" class="w-full mt-1 bg-obsidian-950 border border-white/10 rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-coral-500" />
+        </div>
+        <div>
+          <label class="text-[11px] font-semibold text-zinc-400">Email Address</label>
+          <input type="email" id="accEmailInput" placeholder="creator@clipit.studio" class="w-full mt-1 bg-obsidian-950 border border-white/10 rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-coral-500" />
+        </div>
+        <button onclick="signInCreatorAccount()" class="w-full py-2 rounded-lg bg-coral-500 hover:bg-coral-600 text-xs font-extrabold text-white transition">
+          Create Free Account / Sign In
+        </button>
+      </div>
+      <div id="accountLoggedInView" class="hidden space-y-3">
+        <div class="p-3 rounded-xl bg-obsidian-950 border border-white/10 flex items-center justify-between">
+          <div>
+            <div class="text-xs font-bold text-white" id="accProfileName">Creator</div>
+            <div class="text-[11px] text-zinc-400" id="accProfileEmail">creator@clipit.studio</div>
+          </div>
+          <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-bold">PRO FREE</span>
+        </div>
+        <button onclick="signOutCreatorAccount()" class="w-full py-2 rounded-lg bg-white/[0.06] hover:bg-red-500/20 text-xs font-semibold text-zinc-300 hover:text-red-300 border border-white/10 transition">
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden px-4 py-2.5 rounded-xl bg-obsidian-800 border border-white/15 shadow-2xl text-xs font-semibold text-white flex items-center gap-2">
+    <span class="w-2 h-2 rounded-full bg-coral-500"></span>
+    <span id="toastText">Ready</span>
+  </div>
+
+  <video id="mainVideo" crossorigin="anonymous" playsinline class="hidden"></video>
+  <video id="brollVideo" crossorigin="anonymous" playsinline loop muted class="hidden"></video>
+
+  <script>
+    // =========================================================================
+    // CLIPIT SAAS & STUDIO ENGINE
+    // =========================================================================
+    const HOOK_STYLES = [
+      { id: 'mrbeast', name: 'MrBeast Slam', bg: '#FFFFFF', text: '#09090B', pillBg: '#FF2E2E', pillText: '#FFFFFF', badge: '#FACC15' },
+      { id: 'breaking', name: 'Breaking Alert', bg: '#DC2626', text: '#FFFFFF', pillBg: '#FACC15', pillText: '#09090B', badge: '#09090B' },
+      { id: 'luxury', name: 'Dark Luxury', bg: '#09090B', text: '#F5D08A', pillBg: '#F5D08A', pillText: '#09090B', badge: '#27272A' },
+      { id: 'podcast', name: 'Viral Podcast', bg: '#18181B', text: '#FFFFFF', pillBg: '#FF5A36', pillText: '#FFFFFF', badge: '#FF5A36' },
+      { id: 'wealth', name: 'Cash & Wealth', bg: '#064E3B', text: '#ECFDF5', pillBg: '#10B981', pillText: '#09090B', badge: '#FACC15' },
+      { id: 'cyber', name: 'Cyber Neon', bg: '#0F172A', text: '#38BDF8', pillBg: '#F43F5E', pillText: '#FFFFFF', badge: '#38BDF8' },
+      { id: 'docu', name: 'Dark Docu', bg: 'rgba(9,9,11,0.88)', text: '#F4F4F6', pillBg: '#FFFFFF', pillText: '#09090B', badge: '#EF4444' },
+      { id: 'editorial', name: 'Clean Editorial', bg: '#FAF9F6', text: '#111111', pillBg: '#111111', pillText: '#F5D08A', badge: '#FF5A36' }
+    ];
+
+    const CAPTION_STYLES = [
+      { id: 'hormozi', name: 'Hormozi Beast', font: '900 italic Montserrat', active: '#FACC15', base: '#FFFFFF', stroke: '#000000' },
+      { id: 'submagic', name: 'Submagic Glow', font: '800 Plus Jakarta Sans', active: '#4ADE80', base: '#FFFFFF', stroke: '#09090B' },
+      { id: 'marker', name: 'Marker Swipe', font: '900 Montserrat', active: '#09090B', base: '#FFFFFF', pill: '#FF5A36' },
+      { id: 'iman', name: 'Iman Gold', font: '800 Plus Jakarta Sans', active: '#F5D08A', base: '#F4F4F6', stroke: '#000000' },
+      { id: 'tiktok', name: 'TikTok Bounce', font: '900 Montserrat', active: '#38BDF8', base: '#FFFFFF', stroke: '#000000' },
+      { id: 'fire', name: 'Karaoke Fire', font: '900 Anton', active: '#FB923C', base: '#FFFFFF', stroke: '#000000' },
+      { id: 'glass', name: 'Clean Glass', font: '700 Plus Jakarta Sans', active: '#FFFFFF', base: '#D4D4D8', pill: 'rgba(0,0,0,0.65)' },
+      { id: 'redalert', name: 'Danger Red', font: '900 Montserrat', active: '#F87171', base: '#FFFFFF', stroke: '#000000' },
+      { id: 'cyber', name: 'Cyber Mint', font: '800 JetBrains Mono', active: '#2DD4BF', base: '#F8FAFC', stroke: '#09090B' },
+      { id: 'minimal', name: 'Studio Pro', font: '800 Plus Jakarta Sans', active: '#FF5A36', base: '#FFFFFF', stroke: '#09090B' }
+    ];
+
+    const DEFAULT_BRAND_KITS = [
+      { name: 'Hormozi Beast', hookStyle: 'mrbeast', capStyle: 'hormozi', grade: 'viral', zoom: 118 },
+      { name: 'Iman Luxury', hookStyle: 'luxury', capStyle: 'iman', grade: 'cinema', zoom: 112 },
+      { name: 'Podcast Gold', hookStyle: 'podcast', capStyle: 'submagic', grade: 'gold', zoom: 115 },
+      { name: 'Breaking Alert', hookStyle: 'breaking', capStyle: 'marker', grade: 'viral', zoom: 120 }
+    ];
+
+    const EMOJI_MAP = {
+      secret: '🤫', money: '💰', cash: '💸', viral: '🔥', truth: '🚨', never: '❌',
+      always: '✅', growth: '📈', mistake: '⚠️', rich: '💎', brain: '🧠', fast: '⚡',
+      stop: '🛑', focus: '🎯', win: '🏆', views: '👀', free: '🎁', power: '💥'
+    };
+
+    const state = {
+      currentView: 'landing',
+      videoUrl: null,
+      brollUrl: null,
+      duration: 0,
+      clips: [],
+      activeClipIndex: 0,
+      topPicksOnly: false,
+      aspectRatio: '9:16',
+      showSafeZone: false,
+      compareRaw: false,
+      isRendering: false,
+      cancelRequested: false,
+      audioCtx: null,
+      mediaSourceNode: null,
+      analyserNode: null,
+      freqData: null,
+      lastSfxKey: '',
+      customPresets: JSON.parse(localStorage.getItem('clipit_presets') || '[]'),
+      savedProjects: JSON.parse(localStorage.getItem('clipit_projects') || '[]')
+    };
+
+    const mainVideo = document.getElementById('mainVideo');
+    const brollVideo = document.getElementById('brollVideo');
+    const previewCanvas = document.getElementById('previewCanvas');
+    const ctx = previewCanvas.getContext('2d');
+
+    function init() {
+      lucide.createIcons();
+      renderBrandPresets();
+      renderHookTemplates();
+      renderCaptionTemplates();
+      updateSavedBadge();
+      syncAccountUI();
+      requestAnimationFrame(renderLoop);
+    }
+
+    // =========================================================================
+    // VIEW SWITCHING (LANDING PAGE <-> CLIPPING STUDIO)
+    // =========================================================================
+    function switchAppView(view) {
+      state.currentView = view;
+      const isLanding = view === 'landing';
+      document.getElementById('landingView').classList.toggle('hidden', !isLanding);
+      document.getElementById('workspaceView').classList.toggle('hidden', isLanding);
+      document.getElementById('landingNavLinks').classList.toggle('hidden', !isLanding);
+      const homeBtn = document.getElementById('navHomeBtn');
+      if (isLanding) {
+        homeBtn.classList.add('hidden');
+        homeBtn.classList.remove('flex');
+      } else {
+        homeBtn.classList.remove('hidden');
+        homeBtn.classList.add('flex');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function startFromHeroUrl() {
+      const url = document.getElementById('heroUrlInput').value.trim();
+      if (!url) {
+        launchWorkspaceWithSample();
+        return;
+      }
+      document.getElementById('directVideoUrlInput').value = url;
+      switchAppView('workspace');
+      loadDirectVideoUrl();
+    }
+
+    function handleHeroFileUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      switchAppView('workspace');
+      loadVideoBlob(file, file.name);
+    }
+
+    async function launchWorkspaceWithSample() {
+      switchAppView('workspace');
+      if (!state.clips.length) {
+        await generateSamplePodcast();
+      }
+    }
+
+    async function launchWorkspaceWithPreset(presetName) {
+      switchAppView('workspace');
+      if (!state.clips.length) {
+        await generateSamplePodcast();
+      }
+      const idx = DEFAULT_BRAND_KITS.findIndex(k => k.name === presetName);
+      if (idx >= 0) applyBrandKit(idx);
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastText').textContent = msg;
+      t.classList.remove('hidden');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => t.classList.add('hidden'), 2800);
+    }
+
+    // =========================================================================
+    // AUDIO GRAPH & SYNTHESIZED MICRO-SFX
+    // =========================================================================
+    function ensureAudioGraph() {
+      if (!state.audioCtx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        state.audioCtx = new AudioCtx();
+      }
+      if (state.audioCtx.state === 'suspended') {
+        state.audioCtx.resume().catch(() => {});
+      }
+      if (!state.mediaSourceNode && mainVideo.src) {
+        try {
+          state.mediaSourceNode = state.audioCtx.createMediaElementSource(mainVideo);
+          state.analyserNode = state.audioCtx.createAnalyser();
+          state.analyserNode.fftSize = 64;
+          state.freqData = new Uint8Array(state.analyserNode.frequencyBinCount);
+          state.mediaSourceNode.connect(state.analyserNode);
+          state.analyserNode.connect(state.audioCtx.destination);
+        } catch (e) {}
+      }
+    }
+
+    function triggerMicroSfx(type, key) {
+      const clip = getActiveClip();
+      if (!clip || !clip.sfx || state.compareRaw || state.lastSfxKey === key) return;
+      state.lastSfxKey = key;
+      ensureAudioGraph();
+      if (!state.audioCtx) return;
+
+      const now = state.audioCtx.currentTime;
+      const osc = state.audioCtx.createOscillator();
+      const gain = state.audioCtx.createGain();
+
+      if (type === 'whoosh') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(140, now);
+        osc.frequency.exponentialRampToValueAtTime(520, now + 0.16);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+      } else {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(620, now);
+        osc.frequency.exponentialRampToValueAtTime(220, now + 0.08);
+        gain.gain.setValueAtTime(0.05, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
+      }
+
+      osc.connect(gain);
+      gain.connect(state.audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.2);
+    }
+
+    // =========================================================================
+    // 1-CLICK SAMPLE PODCAST GENERATOR
+    // =========================================================================
+    function generateSamplePodcast() {
+      return new Promise(resolve => {
+        const btn = document.getElementById('sampleBtn');
+        if (btn) btn.disabled = true;
+        document.getElementById('statusIndicator').textContent = 'Synthesizing HD Sample Podcast...';
+
+        const offCanvas = document.createElement('canvas');
+        offCanvas.width = 1280;
+        offCanvas.height = 720;
+        const octx = offCanvas.getContext('2d');
+
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        const actx = new AudioCtx();
+        const dest = actx.createMediaStreamDestination();
+
+        const osc = actx.createOscillator();
+        const gain = actx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.value = 135;
+        gain.gain.value = 0.001;
+        osc.connect(gain);
+        gain.connect(dest);
+        osc.start();
+
+        const now = actx.currentTime;
+        for (let t = 0.2; t < 11.5; t += 0.35) {
+          gain.gain.setValueAtTime(0.14, now + t);
+          osc.frequency.setValueAtTime(125 + ((t * 37) % 65), now + t);
+          gain.gain.exponentialRampToValueAtTime(0.002, now + t + 0.24);
+        }
+
+        const stream = offCanvas.captureStream(30);
+        dest.stream.getAudioTracks().forEach(tr => stream.addTrack(tr));
+
+        const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9,opus')
+          ? 'video/webm;codecs=vp9,opus' : 'video/webm';
+        const recorder = new MediaRecorder(stream, { mimeType: mime });
+        const chunks = [];
+        recorder.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+
+        let frame = 0;
+        const totalFrames = 300; // 10 seconds @ 30fps
+        recorder.start();
+
+        const drawSampleFrame = () => {
+          const sec = frame / 30;
+          const grad = octx.createLinearGradient(0, 0, 1280, 720);
+          grad.addColorStop(0, '#101118');
+          grad.addColorStop(1, '#1E1A2D');
+          octx.fillStyle = grad;
+          octx.fillRect(0, 0, 1280, 720);
+
+          octx.fillStyle = 'rgba(255, 90, 54, 0.15)';
+          octx.beginPath();
+          octx.arc(640, 320, 290, 0, Math.PI * 2);
+          octx.fill();
+
+          octx.fillStyle = '#181922';
+          for (let x = 120; x < 1160; x += 140) {
+            octx.fillRect(x, 80, 90, 520);
+          }
+
+          const pulse = Math.abs(Math.sin(sec * 9)) * 14;
+          octx.fillStyle = '#27272E';
+          octx.beginPath();
+          octx.roundRect(470, 370, 340, 350, 90);
+          octx.fill();
+
+          octx.fillStyle = '#E4B48C';
+          octx.beginPath();
+          octx.arc(640, 275, 92, 0, Math.PI * 2);
+          octx.fill();
+
+          octx.fillStyle = '#18181B';
+          octx.beginPath();
+          octx.arc(640, 255, 94, Math.PI, 0);
+          octx.fill();
+
+          octx.strokeStyle = '#3F3F46';
+          octx.lineWidth = 12;
+          octx.beginPath();
+          octx.moveTo(350, 560);
+          octx.lineTo(545, 390);
+          octx.stroke();
+
+          octx.fillStyle = '#FF5A36';
+          octx.beginPath();
+          octx.roundRect(530, 355, 56, 36, 14);
+          octx.fill();
+
+          for (let i = 0; i < 16; i++) {
+            const h = 12 + Math.abs(Math.sin(sec * 11 + i)) * (22 + pulse);
+            octx.fillStyle = i % 2 === 0 ? '#FF5A36' : '#F5D08A';
+            octx.fillRect(490 + i * 19, 640 - h, 10, h);
+          }
+
+          octx.fillStyle = 'rgba(255,255,255,0.55)';
+          octx.font = 'bold 20px monospace';
+          octx.fillText(`PODCAST STUDIO CAM A • 00:${String(Math.floor(sec)).padStart(2, '0')}`, 48, 54);
+
+          frame++;
+          if (frame < totalFrames) {
+            setTimeout(drawSampleFrame, 1000 / 30);
+          } else {
+            recorder.stop();
+          }
+        };
+
+        recorder.onstop = () => {
+          osc.stop();
+          actx.close();
+          const blob = new Blob(chunks, { type: 'video/webm' });
+          loadVideoBlob(blob, 'Founder_Podcast_Sample.webm');
+          if (btn) btn.disabled = false;
+          resolve();
+        };
+
+        drawSampleFrame();
+      });
+    }
+
+    // =========================================================================
+    // VIDEO UPLOAD & REAL AUDIO ENERGY SLICING
+    // =========================================================================
+    function handleVideoUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      loadVideoBlob(file, file.name);
+    }
+
+    function openUrlModal() {
+      document.getElementById('urlModal').classList.remove('hidden');
+    }
+
+    async function loadDirectVideoUrl() {
+      const url = document.getElementById('directVideoUrlInput').value.trim();
+      if (!url) return;
+      closeModal('urlModal');
+
+      const overlay = document.getElementById('renderOverlay');
+      const titleEl = document.getElementById('renderStatusTitle');
+      const progEl = document.getElementById('renderProgressText');
+      const barEl = document.getElementById('renderProgressBar');
+
+      overlay.classList.remove('hidden');
+      titleEl.textContent = 'AI Extracting & Resolving Video Stream...';
+      progEl.textContent = '25%';
+      barEl.style.width = '25%';
+      document.getElementById('statusIndicator').textContent = 'Resolving video URL...';
+
+      let playableUrl = url;
+      let clipTitle = 'Web_Video';
+
+      const isSocialOrYt = /youtube\.com|youtu\.be|tiktok\.com|instagram\.com|facebook\.com|x\.com|twitter\.com/i.test(url);
+
+      if (isSocialOrYt) {
+        try {
+          titleEl.textContent = 'Connecting to ClipIT Cloud Extractor...';
+          progEl.textContent = '50%';
+          barEl.style.width = '50%';
+
+          const res = await fetch('/api/resolve?url=' + encodeURIComponent(url));
+          if (!res.ok) throw new Error('Resolver HTTP ' + res.status);
+          const data = await res.json();
+          if (!data.streamUrl) throw new Error(data.error || 'No playable stream returned');
+
+          playableUrl = data.streamUrl;
+          clipTitle = data.title || 'YouTube_Viral_Clip';
+          progEl.textContent = '80%';
+          barEl.style.width = '80%';
+        } catch (err) {
+          overlay.classList.add('hidden');
+          barEl.style.width = '0%';
+          document.getElementById('statusIndicator').textContent = 'Cloud Extractor needs Worker setup • Upload MP4 or Try Sample';
+          showToast('Enable the /api/resolve Worker in Cloudflare to stream YouTube links directly!');
+          return;
+        }
+      }
+
+      if (state.videoUrl && state.videoUrl.startsWith('blob:')) URL.revokeObjectURL(state.videoUrl);
+      state.videoUrl = playableUrl;
+      mainVideo.crossOrigin = 'anonymous';
+      mainVideo.src = playableUrl;
+
+      mainVideo.onloadedmetadata = () => {
+        barEl.style.width = '100%';
+        progEl.textContent = '100%';
+        setTimeout(() => {
+          overlay.classList.add('hidden');
+          barEl.style.width = '0%';
+        }, 250);
+        state.duration = mainVideo.duration || 15;
+        buildAiClipsFromDuration(state.duration, clipTitle);
+        selectClip(0);
+        document.getElementById('statusIndicator').textContent = `${clipTitle} • ${state.clips.length} Viral Clips Ready`;
+        showToast(`Loaded & sliced into ${state.clips.length} viral clips!`);
+      };
+
+      mainVideo.onerror = () => {
+        overlay.classList.add('hidden');
+        barEl.style.width = '0%';
+        document.getElementById('statusIndicator').textContent = 'Stream blocked • Upload MP4 file directly';
+        showToast('Could not stream video URL. Try uploading the MP4 file.');
+      };
+    }
+
+    async function analyzeAudioPeaks(blob, dur) {
+      try {
+        const arrBuf = await blob.arrayBuffer();
+        const actx = new (window.AudioContext || window.webkitAudioContext)();
+        const audioBuf = await actx.decodeAudioData(arrBuf);
+        const raw = audioBuf.getChannelData(0);
+        const sr = audioBuf.sampleRate;
+        const winSec = Math.min(16, Math.max(5, Math.floor(dur / 3)));
+        const stepSamples = sr * winSec;
+        const windows = [];
+        for (let i = 0; i + stepSamples <= raw.length; i += stepSamples) {
+          let sum = 0;
+          for (let j = i; j < i + stepSamples; j += 64) {
+            sum += raw[j] * raw[j];
+          }
+          const rms = Math.sqrt(sum / (stepSamples / 64));
+          windows.push({ start: +(i / sr).toFixed(1), end: +((i + stepSamples) / sr).toFixed(1), rms });
+        }
+        await actx.close();
+        windows.sort((a, b) => b.rms - a.rms);
+        return windows.slice(0, 5).sort((a, b) => a.start - b.start);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function loadVideoBlob(blob, name) {
+      if (state.videoUrl && state.videoUrl.startsWith('blob:')) {
+        URL.revokeObjectURL(state.videoUrl);
+      }
+      const overlay = document.getElementById('renderOverlay');
+      const titleEl = document.getElementById('renderStatusTitle');
+      const progEl = document.getElementById('renderProgressText');
+      const barEl = document.getElementById('renderProgressBar');
+      overlay.classList.remove('hidden');
+      titleEl.textContent = 'AI Scanning Audio Peaks & Hooks...';
+      progEl.textContent = '45%';
+      barEl.style.width = '45%';
+
+      state.videoUrl = URL.createObjectURL(blob);
+      mainVideo.src = state.videoUrl;
+      mainVideo.onloadedmetadata = async () => {
+        state.duration = mainVideo.duration || 10;
+        document.getElementById('statusIndicator').textContent = `Analyzing audio peaks in ${name}...`;
+        const peaks = await analyzeAudioPeaks(blob, state.duration);
+        barEl.style.width = '100%';
+        progEl.textContent = '100%';
+        buildAiClipsFromDuration(state.duration, name, peaks);
+        selectClip(0);
+        setTimeout(() => {
+          overlay.classList.add('hidden');
+          barEl.style.width = '0%';
+        }, 250);
+        document.getElementById('statusIndicator').textContent = `${name} • ${state.clips.length} Viral Clips Ready`;
+        showToast(`AI detected ${state.clips.length} high-energy viral hooks!`);
+      };
+    }
+
+    function buildAiClipsFromDuration(dur, title, peaks = null) {
+      const sampleHooks = [
+        { kicker: '🚨 EXPOSED TRUTH', headline: 'THE [SECRET] NOBODY TELLS YOU 🔥', score: 97, views: '240K–680K' },
+        { kicker: '💰 WEALTH BLUEPRINT', headline: 'WHY [99% FAIL] AT THIS RULE 💸', score: 93, views: '140K–410K' },
+        { kicker: '⚡ WAKE UP CALL', headline: 'STOP DOING THIS [MISTAKE] TODAY 🛑', score: 89, views: '85K–220K' },
+        { kicker: '🧠 MINDSET SHIFT', headline: 'HOW TOP [1% CREATORS] WIN 🏆', score: 84, views: '50K–130K' }
+      ];
+
+      const sampleScripts = [
+        ['Most people think', 'going viral is pure luck', 'but the top 1%', 'use one secret hook', 'in the first 3 seconds'],
+        ['If you ignore this', 'your views stay stuck', 'at 200 forever', 'watch what happens', 'when you flip the script'],
+        ['Nobody talks about', 'the real money formula', 'behind short form video', 'save this right now', 'before you forget']
+      ];
+
+      const numClips = peaks && peaks.length ? peaks.length : (dur <= 15 ? 2 : Math.min(5, Math.max(3, Math.floor(dur / 12))));
+      const segLen = Math.min(18, Math.max(4, dur / numClips));
+      state.clips = [];
+
+      for (let i = 0; i < numClips; i++) {
+        const start = peaks && peaks[i] ? peaks[i].start : +(i * segLen).toFixed(1);
+        const end = peaks && peaks[i] ? Math.min(dur, peaks[i].end) : +Math.min(dur, start + segLen).toFixed(1);
+        const meta = sampleHooks[i % sampleHooks.length];
+        const words = sampleScripts[i % sampleScripts.length];
+        const step = (end - start) / words.length;
+
+        const captions = words.map((txt, idx) => ({
+          start: +(start + idx * step).toFixed(2),
+          end: +(start + (idx + 1) * step).toFixed(2),
+          text: txt
+        }));
+
+        state.clips.push({
+          id: 'clip_' + i,
+          title: `Viral Hook #${i + 1}`,
+          start,
+          end,
+          score: meta.score,
+          views: meta.views,
+          hookEnabled: true,
+          hookKicker: meta.kicker,
+          hookHeadline: meta.headline,
+          hookStyle: 'mrbeast',
+          hookY: 12,
+          hookScale: 100,
+          capStyle: 'hormozi',
+          capY: 68,
+          capSize: 64,
+          autoEmoji: true,
+          layout: 'full',
+          zoom: 115,
+          panX: 0,
+          panY: 0,
+          autoZoom: true,
+          hookSlam: true,
+          progressBar: true,
+          sfx: true,
+          grade: 'viral',
+          captions
+        });
+      }
+
+      document.getElementById('batchExportBtn').disabled = false;
+      renderClipList();
+    }
+
+    // =========================================================================
+    // CLIP SELECTION & INSPECTOR SYNC
+    // =========================================================================
+    function getActiveClip() {
+      return state.clips[state.activeClipIndex] || null;
+    }
+
+    function selectClip(idx) {
+      if (!state.clips[idx]) return;
+      state.activeClipIndex = idx;
+      const clip = getActiveClip();
+
+      document.getElementById('hookEnabled').checked = clip.hookEnabled;
+      document.getElementById('hookKickerInput').value = clip.hookKicker;
+      document.getElementById('hookHeadlineInput').value = clip.hookHeadline;
+      document.getElementById('hookYSlider').value = clip.hookY;
+      document.getElementById('hookYVal').textContent = clip.hookY + '%';
+      document.getElementById('hookScaleSlider').value = clip.hookScale;
+      document.getElementById('hookScaleVal').textContent = clip.hookScale + '%';
+
+      document.getElementById('autoEmojiToggle').checked = clip.autoEmoji;
+      document.getElementById('capYSlider').value = clip.capY;
+      document.getElementById('capYVal').textContent = clip.capY + '%';
+      document.getElementById('capSizeSlider').value = clip.capSize;
+      document.getElementById('capSizeVal').textContent = clip.capSize + 'px';
+
+      document.getElementById('zoomSlider').value = clip.zoom;
+      document.getElementById('panXSlider').value = clip.panX;
+      document.getElementById('panYSlider').value = clip.panY;
+      document.getElementById('autoZoomToggle').checked = clip.autoZoom;
+      document.getElementById('hookSlamToggle').checked = clip.hookSlam;
+      document.getElementById('progressBarToggle').checked = clip.progressBar;
+      document.getElementById('sfxToggle').checked = clip.sfx;
+
+      document.getElementById('auditScorePill').textContent = `${clip.score}/100`;
+      document.getElementById('metricHook').textContent = `${Math.min(99, clip.score + 2)}%`;
+      document.getElementById('metricRetention').textContent = `${Math.max(82, clip.score - 3)}%`;
+      document.getElementById('metricViews').textContent = clip.views;
+
+      setLayoutMode(clip.layout, true);
+      setColorGrade(clip.grade, true);
+      renderClipList();
+      renderHookTemplates();
+      renderCaptionTemplates();
+      renderCaptionBlocks();
+
+      mainVideo.currentTime = clip.start;
+      state.lastSfxKey = '';
+    }
+
+    function updateActiveClipSettings() {
+      const clip = getActiveClip();
+      if (!clip) return;
+
+      clip.hookEnabled = document.getElementById('hookEnabled').checked;
+      clip.hookKicker = document.getElementById('hookKickerInput').value;
+      clip.hookHeadline = document.getElementById('hookHeadlineInput').value;
+      clip.hookY = +document.getElementById('hookYSlider').value;
+      document.getElementById('hookYVal').textContent = clip.hookY + '%';
+      clip.hookScale = +document.getElementById('hookScaleSlider').value;
+      document.getElementById('hookScaleVal').textContent = clip.hookScale + '%';
+
+      clip.autoEmoji = document.getElementById('autoEmojiToggle').checked;
+      clip.capY = +document.getElementById('capYSlider').value;
+      document.getElementById('capYVal').textContent = clip.capY + '%';
+      clip.capSize = +document.getElementById('capSizeSlider').value;
+      document.getElementById('capSizeVal').textContent = clip.capSize + 'px';
+
+      clip.zoom = +document.getElementById('zoomSlider').value;
+      clip.panX = +document.getElementById('panXSlider').value;
+      clip.panY = +document.getElementById('panYSlider').value;
+      clip.autoZoom = document.getElementById('autoZoomToggle').checked;
+      clip.hookSlam = document.getElementById('hookSlamToggle').checked;
+      clip.progressBar = document.getElementById('progressBarToggle').checked;
+      clip.sfx = document.getElementById('sfxToggle').checked;
+    }
+
+    // =========================================================================
+    // UI RENDERERS
+    // =========================================================================
+    function renderClipList() {
+      const container = document.getElementById('clipListContainer');
+      const filtered = state.clips
+        .map((c, i) => ({ c, i }))
+        .filter(({ c }) => !state.topPicksOnly || c.score >= 90);
+
+      document.getElementById('clipSummaryText').textContent = `${filtered.length} clips • Ranked by Viral Score`;
+
+      container.innerHTML = filtered.map(({ c, i }) => {
+        const active = i === state.activeClipIndex;
+        return `
+          <div onclick="selectClip(${i})" class="p-3 rounded-xl border transition cursor-pointer ${
+            active ? 'bg-white/[0.08] border-coral-500 shadow-lg shadow-coral-500/10' : 'bg-obsidian-950/60 border-white/[0.07] hover:border-white/20'
+          }">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold text-white">${c.title}</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold ${
+                c.score >= 92 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'
+              }">${c.score} VIRAL</span>
+            </div>
+            <p class="text-[11px] text-zinc-300 font-semibold truncate mb-1.5">${c.hookHeadline}</p>
+            <div class="flex items-center justify-between text-[10px] font-mono text-zinc-500">
+              <span>${c.start.toFixed(1)}s – ${c.end.toFixed(1)}s (${(c.end - c.start).toFixed(1)}s)</span>
+              <span class="text-champagne">${c.views}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleTopPicks() {
+      state.topPicksOnly = !state.topPicksOnly;
+      const btn = document.getElementById('topPicksBtn');
+      btn.classList.toggle('bg-coral-500', state.topPicksOnly);
+      btn.classList.toggle('text-white', state.topPicksOnly);
+      renderClipList();
+    }
+
+    function renderBrandPresets() {
+      const all = [...DEFAULT_BRAND_KITS, ...state.customPresets];
+      document.getElementById('brandPresetList').innerHTML = all.map((p, idx) => `
+        <button onclick="applyBrandKit(${idx})" class="shrink-0 px-2.5 py-1 rounded-lg bg-white/[0.06] hover:bg-coral-500/20 hover:border-coral-500 border border-white/10 text-[11px] font-semibold text-zinc-200 transition">
+          ${p.name}
+        </button>
+      `).join('');
+    }
+
+    function applyBrandKit(idx) {
+      const all = [...DEFAULT_BRAND_KITS, ...state.customPresets];
+      const kit = all[idx];
+      const clip = getActiveClip();
+      if (!kit || !clip) return;
+      clip.hookStyle = kit.hookStyle;
+      clip.capStyle = kit.capStyle;
+      clip.grade = kit.grade;
+      clip.zoom = kit.zoom;
+      selectClip(state.activeClipIndex);
+      showToast(`Applied "${kit.name}" Brand Kit`);
+    }
+
+    function saveCustomPreset() {
+      const clip = getActiveClip();
+      if (!clip) return;
+      const name = prompt('Name your custom Viral Brand Kit:', 'My Viral Style');
+      if (!name) return;
+      state.customPresets.push({
+        name,
+        hookStyle: clip.hookStyle,
+        capStyle: clip.capStyle,
+        grade: clip.grade,
+        zoom: clip.zoom
+      });
+      localStorage.setItem('clipit_presets', JSON.stringify(state.customPresets));
+      renderBrandPresets();
+      showToast(`Saved "${name}" Brand Kit`);
+    }
+
+    function renderHookTemplates() {
+      const activeId = getActiveClip()?.hookStyle || 'mrbeast';
+      document.getElementById('hookTemplateGrid').innerHTML = HOOK_STYLES.map(s => `
+        <button onclick="setHookStyle('${s.id}')" class="p-2 rounded-xl border text-left transition flex items-center justify-between ${
+          activeId === s.id ? 'border-coral-500 bg-coral-500/15' : 'border-white/[0.08] bg-obsidian-950 hover:border-white/20'
+        }">
+          <span class="text-[11px] font-bold text-white">${s.name}</span>
+          <span class="w-4 h-4 rounded-full border border-white/20" style="background:${s.pillBg}"></span>
+        </button>
+      `).join('');
+    }
+
+    function setHookStyle(id) {
+      const clip = getActiveClip();
+      if (!clip) return;
+      clip.hookStyle = id;
+      renderHookTemplates();
+    }
+
+    function renderCaptionTemplates() {
+      const activeId = getActiveClip()?.capStyle || 'hormozi';
+      document.getElementById('captionTemplateGrid').innerHTML = CAPTION_STYLES.map(s => `
+        <button onclick="setCaptionStyle('${s.id}')" class="p-2 rounded-xl border text-left transition flex items-center justify-between ${
+          activeId === s.id ? 'border-coral-500 bg-coral-500/15' : 'border-white/[0.08] bg-obsidian-950 hover:border-white/20'
+        }">
+          <span class="text-[11px] font-bold text-white">${s.name}</span>
+          <span class="text-[10px] font-black px-1.5 py-0.5 rounded bg-black/60" style="color:${s.active}">Aa</span>
+        </button>
+      `).join('');
+    }
+
+    function setCaptionStyle(id) {
+      const clip = getActiveClip();
+      if (!clip) return;
+      clip.capStyle = id;
+      renderCaptionTemplates();
+    }
+
+    function renderCaptionBlocks() {
+      const clip = getActiveClip();
+      const list = document.getElementById('captionBlocksList');
+      if (!clip) { list.innerHTML = ''; return; }
+
+      list.innerHTML = clip.captions.map((cap, i) => `
+        <div onclick="seekToTime(${cap.start})" class="flex items-center gap-2 p-2 rounded-lg bg-obsidian-950 border border-white/[0.07] hover:border-white/20 cursor-pointer">
+          <span class="text-[10px] font-mono text-champagne shrink-0">${cap.start.toFixed(1)}s</span>
+          <input type="text" value="${cap.text.replace(/"/g, '&quot;')}"
+            onclick="event.stopPropagation()"
+            oninput="updateCaptionText(${i}, this.value)"
+            class="flex-1 bg-transparent text-xs font-semibold text-white outline-none" />
+        </div>
+      `).join('');
+    }
+
+    function updateCaptionText(idx, val) {
+      const clip = getActiveClip();
+      if (clip && clip.captions[idx]) clip.captions[idx].text = val;
+    }
+
+    // =========================================================================
+    // INSPECTOR TABS, LAYOUT, GRADE & VIRAL OPTIMIZER
+    // =========================================================================
+    function switchInspectorTab(tab) {
+      ['hook', 'style', 'motion', 'publish'].forEach(t => {
+        document.getElementById('panel-' + t).classList.toggle('hidden', t !== tab);
+        const btn = document.getElementById('tab-' + t);
+        btn.className = t === tab
+          ? 'py-1.5 rounded-lg text-xs font-bold bg-white/10 text-white transition'
+          : 'py-1.5 rounded-lg text-xs font-semibold text-zinc-400 hover:text-white transition';
+      });
+    }
+
+    function setLayoutMode(mode, skipSave) {
+      const clip = getActiveClip();
+      if (clip && !skipSave) clip.layout = mode;
+      ['full', 'split-wave', 'split-broll'].forEach(m => {
+        const btn = document.getElementById('layout-' + m);
+        btn.className = m === mode
+          ? 'py-2 px-2 rounded-lg bg-coral-500/20 border border-coral-500 text-[11px] font-bold text-white'
+          : 'py-2 px-2 rounded-lg bg-obsidian-950 border border-white/10 text-[11px] font-semibold text-zinc-400';
+      });
+      document.getElementById('brollUploadBox').classList.toggle('hidden', mode !== 'split-broll');
+    }
+
+    function handleBrollUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      if (state.brollUrl) URL.revokeObjectURL(state.brollUrl);
+      state.brollUrl = URL.createObjectURL(file);
+      brollVideo.src = state.brollUrl;
+      document.getElementById('brollFileName').textContent = file.name;
+      if (!mainVideo.paused) brollVideo.play().catch(() => {});
+      showToast('Split-Screen B-Roll loaded');
+    }
+
+    function setColorGrade(grade, skipSave) {
+      const clip = getActiveClip();
+      if (clip && !skipSave) clip.grade = grade;
+      ['viral', 'cinema', 'gold', 'clean'].forEach(g => {
+        const btn = document.getElementById('grade-' + g);
+        btn.className = g === grade
+          ? 'py-1.5 px-2.5 rounded-lg bg-coral-500/20 border border-coral-500 text-[11px] font-bold text-white'
+          : 'py-1.5 px-2.5 rounded-lg bg-obsidian-950 border border-white/10 text-[11px] text-zinc-400';
+      });
+    }
+
+    function setAspectRatio(ar) {
+      state.aspectRatio = ar;
+      const wrapper = document.getElementById('canvasWrapper');
+      if (ar === '9:16') {
+        previewCanvas.width = 1080; previewCanvas.height = 1920;
+        wrapper.style.width = '280px'; wrapper.style.height = '498px';
+      } else if (ar === '4:5') {
+        previewCanvas.width = 1080; previewCanvas.height = 1350;
+        wrapper.style.width = '320px'; wrapper.style.height = '400px';
+      } else {
+        previewCanvas.width = 1080; previewCanvas.height = 1080;
+        wrapper.style.width = '340px'; wrapper.style.height = '340px';
+      }
+      ['9:16', '4:5', '1:1'].forEach(r => {
+        const btn = document.getElementById('ar-' + r.replace(':', '-'));
+        btn.className = r === ar
+          ? 'px-2.5 py-1 rounded-md bg-white/10 text-white'
+          : 'px-2.5 py-1 rounded-md text-zinc-400 hover:text-white';
+      });
+    }
+
+    function toggleSafeZone() {
+      state.showSafeZone = !state.showSafeZone;
+      document.getElementById('safeZoneBtn').classList.toggle('text-coral-500', state.showSafeZone);
+    }
+
+    function setCompareRaw(val) {
+      state.compareRaw = val;
+    }
+
+    function optimizeClipForVirality() {
+      const clip = getActiveClip();
+      if (!clip) return;
+      clip.hookEnabled = true;
+      clip.hookStyle = 'mrbeast';
+      clip.capStyle = 'hormozi';
+      clip.autoZoom = true;
+      clip.hookSlam = true;
+      clip.progressBar = true;
+      clip.sfx = true;
+      clip.grade = 'viral';
+      clip.score = Math.min(99, clip.score + 4);
+      selectClip(state.activeClipIndex);
+      showToast('⚡ Viral Boost Applied: High-CTR Hook + Beat Zoom + SFX!');
+    }
+
+    // =========================================================================
+    // TRANSPORT, SCRUBBER & TRIM CONTROLS
+    // =========================================================================
+    function togglePlay() {
+      if (!state.videoUrl) return showToast('Load a video or sample podcast first');
+      ensureAudioGraph();
+      const clip = getActiveClip();
+      if (mainVideo.paused) {
+        if (clip && (mainVideo.currentTime < clip.start || mainVideo.currentTime >= clip.end)) {
+          mainVideo.currentTime = clip.start;
+        }
+        mainVideo.play();
+        if (state.brollUrl) brollVideo.play().catch(() => {});
+      } else {
+        mainVideo.pause();
+        brollVideo.pause();
+      }
+    }
+
+    function seekToTime(t) {
+      mainVideo.currentTime = t;
+    }
+
+    function scrubTimeline(pct) {
+      const clip = getActiveClip();
+      if (!clip) return;
+      mainVideo.currentTime = clip.start + (pct / 100) * (clip.end - clip.start);
+    }
+
+    function nudgeTrim(edge, delta) {
+      const clip = getActiveClip();
+      if (!clip) return;
+      if (edge === 'start') {
+        clip.start = Math.max(0, Math.min(clip.end - 1.5, +(clip.start + delta).toFixed(1)));
+        mainVideo.currentTime = clip.start;
+      } else {
+        clip.end = Math.min(state.duration, Math.max(clip.start + 1.5, +(clip.end + delta).toFixed(1)));
+      }
+      renderClipList();
+    }
+
+    // =========================================================================
+    // 60FPS CANVAS COMPOSITOR
+    // =========================================================================
+    function renderLoop() {
+      const clip = getActiveClip();
+      if (clip && !state.isRendering && !mainVideo.paused) {
+        if (mainVideo.currentTime >= clip.end) {
+          mainVideo.currentTime = clip.start;
+          state.lastSfxKey = '';
+        }
+      }
+
+      updateTransportUI();
+      drawCompositeFrame(ctx, previewCanvas.width, previewCanvas.height, clip);
+      requestAnimationFrame(renderLoop);
+    }
+
+    function updateTransportUI() {
+      const clip = getActiveClip();
+      const btn = document.getElementById('playPauseBtn');
+      btn.innerHTML = mainVideo.paused
+        ? '<i data-lucide="play" class="w-4 h-4 fill-current"></i>'
+        : '<i data-lucide="pause" class="w-4 h-4 fill-current"></i>';
+      lucide.createIcons();
+
+      if (clip) {
+        const rel = Math.max(0, mainVideo.currentTime - clip.start);
+        const tot = Math.max(0.1, clip.end - clip.start);
+        document.getElementById('timecodeDisplay').textContent = `${rel.toFixed(1)}s / ${tot.toFixed(1)}s`;
+        document.getElementById('timelineScrubber').value = Math.min(100, (rel / tot) * 100);
+      }
+    }
+
+    function drawCompositeFrame(c, W, H, clip) {
+      c.save();
+      c.fillStyle = '#070709';
+      c.fillRect(0, 0, W, H);
+
+      if (!clip || mainVideo.readyState < 2) {
+        c.fillStyle = '#272730';
+        c.font = '700 34px "Plus Jakarta Sans", sans-serif';
+        c.textAlign = 'center';
+        c.fillText('CLIPIT STUDIO MONITOR', W / 2, H / 2 - 14);
+        c.fillStyle = '#71717A';
+        c.font = '500 24px "Plus Jakarta Sans", sans-serif';
+        c.fillText('Click "Sample Podcast" or Upload Video', W / 2, H / 2 + 28);
+        c.restore();
+        return;
+      }
+
+      const relTime = Math.max(0, mainVideo.currentTime - clip.start);
+      const clipDur = Math.max(0.1, clip.end - clip.start);
+
+      if (state.compareRaw) {
+        drawVideoCover(c, mainVideo, 0, 0, W, H, 1, 0, 0, 'none');
+        c.fillStyle = 'rgba(0,0,0,0.75)';
+        c.fillRect(36, 36, 250, 52);
+        c.fillStyle = '#F5D08A';
+        c.font = '800 24px monospace';
+        c.textAlign = 'left';
+        c.fillText('RAW FOOTAGE', 56, 70);
+        c.restore();
+        return;
+      }
+
+      const gradeFilters = {
+        viral: 'contrast(1.12) saturate(1.24) brightness(1.03)',
+        cinema: 'contrast(1.18) saturate(0.88) brightness(0.95)',
+        gold: 'contrast(1.10) saturate(1.16) sepia(0.14)',
+        clean: 'contrast(1.05) saturate(1.06)'
+      };
+      const filter = gradeFilters[clip.grade] || 'none';
+
+      let zoomMult = clip.zoom / 100;
+      if (clip.hookSlam && relTime < 0.35) {
+        zoomMult *= 1.18 - (relTime / 0.35) * 0.18;
+        if (!mainVideo.paused) triggerMicroSfx('whoosh', 'hook_entrance');
+      } else if (clip.autoZoom) {
+        zoomMult *= 1 + Math.sin(relTime * 2.2) * 0.035;
+      }
+
+      if (clip.layout === 'full') {
+        drawVideoCover(c, mainVideo, 0, 0, W, H, zoomMult, clip.panX, clip.panY, filter);
+      } else {
+        const topH = Math.round(H * 0.56);
+        const botH = H - topH;
+        drawVideoCover(c, mainVideo, 0, 0, W, topH, zoomMult, clip.panX, clip.panY, filter);
+
+        if (clip.layout === 'split-broll' && state.brollUrl && brollVideo.readyState >= 2) {
+          drawVideoCover(c, brollVideo, 0, topH, W, botH, 1.05, 0, 0, 'contrast(1.1) saturate(1.2)');
+        } else {
+          c.fillStyle = '#0D0D12';
+          c.fillRect(0, topH, W, botH);
+          if (state.analyserNode && state.freqData) {
+            state.analyserNode.getByteFrequencyData(state.freqData);
+          }
+          const bars = 24;
+          const barW = (W - 160) / bars;
+          for (let i = 0; i < bars; i++) {
+            const freqVal = state.freqData ? state.freqData[i % state.freqData.length] / 255 : Math.abs(Math.sin(relTime * 8 + i));
+            const bh = 30 + freqVal * (botH * 0.55);
+            const grad = c.createLinearGradient(0, topH + botH / 2 - bh / 2, 0, topH + botH / 2 + bh / 2);
+            grad.addColorStop(0, '#FF5A36');
+            grad.addColorStop(1, '#F5D08A');
+            c.fillStyle = grad;
+            c.beginPath();
+            c.roundRect(80 + i * barW + 4, topH + (botH - bh) / 2, barW - 8, bh, 8);
+            c.fill();
+          }
+        }
+        c.fillStyle = '#FF5A36';
+        c.fillRect(0, topH - 3, W, 6);
+      }
+
+      const vig = c.createRadialGradient(W / 2, H / 2, W * 0.3, W / 2, H / 2, H * 0.72);
+      vig.addColorStop(0, 'transparent');
+      vig.addColorStop(1, 'rgba(0,0,0,0.45)');
+      c.fillStyle = vig;
+      c.fillRect(0, 0, W, H);
+
+      if (clip.hookEnabled && clip.hookHeadline.trim()) {
+        drawHookBanner(c, W, H, clip);
+      }
+
+      drawKineticCaptions(c, W, H, clip, mainVideo.currentTime);
+
+      if (clip.progressBar) {
+        const pct = Math.min(1, relTime / clipDur);
+        c.fillStyle = 'rgba(255,255,255,0.18)';
+        c.fillRect(0, H - 14, W, 14);
+        const pGrad = c.createLinearGradient(0, 0, W, 0);
+        pGrad.addColorStop(0, '#FF5A36');
+        pGrad.addColorStop(1, '#FACC15');
+        c.fillStyle = pGrad;
+        c.fillRect(0, H - 14, W * pct, 14);
+      }
+
+      if (state.showSafeZone && !state.isRendering) {
+        c.strokeStyle = 'rgba(255, 90, 54, 0.75)';
+        c.lineWidth = 4;
+        c.setLineDash([16, 12]);
+        c.strokeRect(56, 210, W - 210, H - 540);
+        c.setLineDash([]);
+      }
+
+      c.restore();
+    }
+
+    function drawVideoCover(c, vid, dx, dy, dw, dh, zoom, panX, panY, filter) {
+      c.save();
+      c.beginPath();
+      c.rect(dx, dy, dw, dh);
+      c.clip();
+      c.filter = filter;
+
+      const vw = vid.videoWidth || 1280;
+      const vh = vid.videoHeight || 720;
+      const baseScale = Math.max(dw / vw, dh / vh) * zoom;
+      const sw = vw * baseScale;
+      const sh = vh * baseScale;
+      const ox = dx + (dw - sw) / 2 + (panX / 100) * dw;
+      const oy = dy + (dh - sh) / 2 + (panY / 100) * dh;
+
+      c.drawImage(vid, ox, oy, sw, sh);
+      c.restore();
+    }
+
+    function drawHookBanner(c, W, H, clip) {
+      const style = HOOK_STYLES.find(s => s.id === clip.hookStyle) || HOOK_STYLES[0];
+      const scale = clip.hookScale / 100;
+      const centerY = (clip.hookY / 100) * H;
+
+      c.save();
+      c.translate(W / 2, centerY);
+      c.scale(scale, scale);
+
+      if (clip.hookKicker.trim()) {
+        c.font = '800 28px "Plus Jakarta Sans", sans-serif';
+        const kw = c.measureText(clip.hookKicker).width + 44;
+        c.fillStyle = style.badge;
+        c.beginPath();
+        c.roundRect(-kw / 2, -96, kw, 44, 99);
+        c.fill();
+
+        c.fillStyle = style.badge === '#FACC15' ? '#09090B' : '#FFFFFF';
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.fillText(clip.hookKicker.toUpperCase(), 0, -74);
+      }
+
+      const tokens = clip.hookHeadline.split(/(\[[^\]]+\])/g).filter(Boolean);
+      c.font = '900 46px Montserrat, sans-serif';
+
+      let totalW = 0;
+      const measured = tokens.map(tok => {
+        const isHighlight = tok.startsWith('[') && tok.endsWith(']');
+        const clean = isHighlight ? tok.slice(1, -1) : tok;
+        const w = c.measureText(clean).width + (isHighlight ? 28 : 0);
+        totalW += w;
+        return { clean, isHighlight, w };
+      });
+
+      const boxW = Math.min(W - 80, Math.max(520, totalW + 64));
+      const boxH = 92;
+
+      c.shadowColor = 'rgba(0,0,0,0.55)';
+      c.shadowBlur = 28;
+      c.shadowOffsetY = 12;
+      c.fillStyle = style.bg;
+      c.beginPath();
+      c.roundRect(-boxW / 2, -40, boxW, boxH, 22);
+      c.fill();
+      c.shadowBlur = 0;
+      c.shadowOffsetY = 0;
+
+      let curX = -totalW / 2;
+      c.textAlign = 'left';
+      c.textBaseline = 'middle';
+
+      measured.forEach(item => {
+        if (item.isHighlight) {
+          c.fillStyle = style.pillBg;
+          c.beginPath();
+          c.roundRect(curX, -24, item.w, 60, 12);
+          c.fill();
+          c.fillStyle = style.pillText;
+          c.fillText(item.clean, curX + 14, 7);
+        } else {
+          c.fillStyle = style.text;
+          c.fillText(item.clean, curX, 7);
+        }
+        curX += item.w;
+      });
+
+      c.restore();
+    }
+
+    function drawKineticCaptions(c, W, H, clip, curTime) {
+      const activeCap = clip.captions.find(cap => curTime >= cap.start && curTime <= cap.end);
+      if (!activeCap) return;
+
+      const style = CAPTION_STYLES.find(s => s.id === clip.capStyle) || CAPTION_STYLES[0];
+      const words = activeCap.text.trim().split(/\s+/);
+      const progress = (curTime - activeCap.start) / Math.max(0.05, activeCap.end - activeCap.start);
+      const activeWordIdx = Math.min(words.length - 1, Math.floor(progress * words.length));
+
+      const activeWordClean = words[activeWordIdx].toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (EMOJI_MAP[activeWordClean] && !mainVideo.paused) {
+        triggerMicroSfx('pop', `${activeCap.start}_${activeWordIdx}`);
+      }
+
+      const yPos = (clip.capY / 100) * H;
+      c.save();
+      c.font = `${clip.capSize}px ${style.font}, sans-serif`;
+      c.textBaseline = 'middle';
+
+      const popAge = (curTime - activeCap.start) * 14;
+      const spring = popAge < 1 ? 0.85 + Math.sin(popAge * Math.PI * 0.7) * 0.2 : 1.0;
+      c.translate(W / 2, yPos);
+      c.scale(spring, spring);
+
+      if (clip.autoEmoji && EMOJI_MAP[activeWordClean]) {
+        c.font = '76px sans-serif';
+        c.textAlign = 'center';
+        c.fillText(EMOJI_MAP[activeWordClean], 0, -clip.capSize * 1.25);
+        c.font = `${clip.capSize}px ${style.font}, sans-serif`;
+      }
+
+      const spaceW = c.measureText(' ').width;
+      const widths = words.map(w => c.measureText(w.toUpperCase()).width);
+      const totalW = widths.reduce((a, b) => a + b, 0) + spaceW * (words.length - 1);
+
+      if (style.pill) {
+        c.fillStyle = style.pill;
+        c.beginPath();
+        c.roundRect(-totalW / 2 - 28, -clip.capSize * 0.72, totalW + 56, clip.capSize * 1.44, 18);
+        c.fill();
+      }
+
+      let curX = -totalW / 2;
+      c.textAlign = 'left';
+
+      words.forEach((word, i) => {
+        const up = word.toUpperCase();
+        const isCurrent = i === activeWordIdx;
+        if (style.stroke) {
+          c.lineJoin = 'round';
+          c.lineWidth = Math.max(8, clip.capSize * 0.16);
+          c.strokeStyle = style.stroke;
+          c.strokeText(up, curX, 0);
+        }
+        c.fillStyle = isCurrent ? style.active : style.base;
+        c.fillText(up, curX, 0);
+        curX += widths[i] + spaceW;
+      });
+
+      c.restore();
+    }
+
+    // =========================================================================
+    // 60FPS HD SINGLE & BATCH EXPORT
+    // =========================================================================
+    async function exportCurrentClip() {
+      const clip = getActiveClip();
+      if (!clip || state.isRendering) return;
+      await renderClipToDownload(clip);
+    }
+
+    async function batchExportTopClips() {
+      if (state.isRendering || !state.clips.length) return;
+      const top3 = [...state.clips].sort((a, b) => b.score - a.score).slice(0, 3);
+      for (let i = 0; i < top3.length; i++) {
+        if (state.cancelRequested) break;
+        const idx = state.clips.findIndex(c => c.id === top3[i].id);
+        selectClip(idx);
+        document.getElementById('renderStatusTitle').textContent = `Batch Exporting ${i + 1}/${top3.length}: ${top3[i].title}`;
+        await renderClipToDownload(top3[i]);
+      }
+      state.cancelRequested = false;
+      showToast('Batch export complete!');
+    }
+
+    function renderClipToDownload(clip) {
+      return new Promise(resolve => {
+        state.isRendering = true;
+        state.cancelRequested = false;
+        ensureAudioGraph();
+
+        const resHeight = +document.getElementById('exportResSelect').value;
+        const aspect = previewCanvas.width / previewCanvas.height;
+        const expCanvas = document.createElement('canvas');
+        expCanvas.height = resHeight === 1440 ? 2560 : resHeight === 1080 ? 1920 : 1280;
+        expCanvas.width = Math.round(expCanvas.height * aspect);
+        const ectx = expCanvas.getContext('2d');
+
+        const overlay = document.getElementById('renderOverlay');
+        const progText = document.getElementById('renderProgressText');
+        const progBar = document.getElementById('renderProgressBar');
+        overlay.classList.remove('hidden');
+
+        const stream = expCanvas.captureStream(60);
+        let audioDest = null;
+        if (state.audioCtx && state.mediaSourceNode) {
+          audioDest = state.audioCtx.createMediaStreamDestination();
+          state.mediaSourceNode.connect(audioDest);
+          audioDest.stream.getAudioTracks().forEach(t => stream.addTrack(t));
+        }
+
+        const mime = ['video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm', 'video/mp4']
+          .find(m => MediaRecorder.isTypeSupported(m)) || '';
+        const recorder = new MediaRecorder(stream, {
+          mimeType: mime,
+          videoBitsPerSecond: resHeight === 1440 ? 16_000_000 : resHeight === 1080 ? 10_000_000 : 6_000_000
+        });
+
+        const chunks = [];
+        recorder.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+
+        mainVideo.currentTime = clip.start;
+        state.lastSfxKey = '';
+        recorder.start();
+        mainVideo.play();
+        if (state.brollUrl) brollVideo.play().catch(() => {});
+
+        const step = () => {
+          if (state.cancelRequested) {
+            recorder.stop();
+            return;
+          }
+          const pct = Math.min(100, Math.round(((mainVideo.currentTime - clip.start) / Math.max(0.1, clip.end - clip.start)) * 100));
+          progText.textContent = pct + '%';
+          progBar.style.width = pct + '%';
+
+          drawCompositeFrame(ectx, expCanvas.width, expCanvas.height, clip);
+
+          if (mainVideo.currentTime >= clip.end || mainVideo.ended) {
+            recorder.stop();
+          } else {
+            requestAnimationFrame(step);
+          }
+        };
+
+        recorder.onstop = () => {
+          if (audioDest && state.mediaSourceNode) { try { state.mediaSourceNode.disconnect(audioDest); } catch (e) {} }
+          mainVideo.pause();
+          brollVideo.pause();
+          overlay.classList.add('hidden');
+          state.isRendering = false;
+
+          if (!state.cancelRequested && chunks.length) {
+            const blob = new Blob(chunks, { type: mime || 'video/webm' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `ClipIT_${clip.title.replace(/\s+/g, '_')}_${resHeight}p60.webm`;
+            a.click();
+            showToast(`Exported ${clip.title} (${resHeight}p 60FPS)`);
+          }
+          resolve();
+        };
+
+        requestAnimationFrame(step);
+      });
+    }
+
+    function cancelRender() {
+      state.cancelRequested = true;
+      showToast('Render cancelled');
+    }
+
+    function exportCoverPng() {
+      const clip = getActiveClip();
+      if (!clip) return;
+      drawCompositeFrame(ctx, previewCanvas.width, previewCanvas.height, clip);
+      const a = document.createElement('a');
+      a.href = previewCanvas.toDataURL('image/png');
+      a.download = `ClipIT_Cover_${clip.title.replace(/\s+/g, '_')}.png`;
+      a.click();
+      showToast('Saved 1080×1920 High-CTR Cover PNG!');
+    }
+
+    // =========================================================================
+    // STT, SRT, PROJECTS, ACCOUNT & SHORTCUTS
+    // =========================================================================
+    function startSpeechToText() {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) return showToast('Speech recognition not supported in this browser');
+      const rec = new SR();
+      rec.lang = 'en-US';
+      rec.interimResults = false;
+      showToast('Listening... speak your caption line');
+      rec.onresult = e => {
+        const text = e.results[0][0].transcript;
+        const clip = getActiveClip();
+        if (clip) {
+          clip.captions.push({ start: +mainVideo.currentTime.toFixed(1), end: +(mainVideo.currentTime + 2).toFixed(1), text });
+          renderCaptionBlocks();
+          showToast('Added voice caption!');
+        }
+      };
+      rec.start();
+    }
+
+    function openSrtModal() {
+      document.getElementById('srtModal').classList.remove('hidden');
+    }
+
+    function applyPastedScript() {
+      const raw = document.getElementById('srtRawInput').value.trim();
+      const clip = getActiveClip();
+      if (!raw || !clip) return;
+      const lines = raw.split(/\r?\n+/).map(l => l.trim()).filter(l => l && !/^\d+$/.test(l) && !l.includes('-->'));
+      const step = (clip.end - clip.start) / Math.max(1, lines.length);
+      clip.captions = lines.map((text, i) => ({
+        start: +(clip.start + i * step).toFixed(2),
+        end: +(clip.start + (i + 1) * step).toFixed(2),
+        text
+      }));
+      renderCaptionBlocks();
+      closeModal('srtModal');
+      showToast(`Synced ${lines.length} caption lines!`);
+    }
+
+    function saveCurrentProject() {
+      if (!state.clips.length) return showToast('Nothing to save yet');
+      const name = prompt('Project Name:', `Viral_Session_${new Date().toLocaleDateString()}`);
+      if (!name) return;
+      state.savedProjects.unshift({
+        id: Date.now(),
+        name,
+        date: new Date().toLocaleString(),
+        clips: state.clips
+      });
+      localStorage.setItem('clipit_projects', JSON.stringify(state.savedProjects));
+      updateSavedBadge();
+      showToast(`Saved "${name}" to Studio Vault`);
+    }
+
+    function updateSavedBadge() {
+      document.getElementById('savedCountBadge').textContent = state.savedProjects.length;
+    }
+
+    function openProjectsModal() {
+      const list = document.getElementById('savedProjectsList');
+      list.innerHTML = state.savedProjects.length
+        ? state.savedProjects.map((p, i) => `
+            <div class="p-3 rounded-xl bg-obsidian-950 border border-white/10 flex items-center justify-between">
+              <div>
+                <div class="text-xs font-bold text-white">${p.name}</div>
+                <div class="text-[10px] text-zinc-500">${p.date} • ${p.clips.length} Clips</div>
+              </div>
+              <button onclick="loadSavedProject(${i})" class="px-3 py-1 rounded-lg bg-coral-500 text-xs font-bold text-white">Load</button>
+            </div>
+          `).join('')
+        : '<p class="text-xs text-zinc-500 text-center py-6">No saved projects yet. Click Save inside the Studio anytime.</p>';
+      document.getElementById('projectsModal').classList.remove('hidden');
+    }
+
+    function loadSavedProject(idx) {
+      const proj = state.savedProjects[idx];
+      if (!proj) return;
+      switchAppView('workspace');
+      state.clips = JSON.parse(JSON.stringify(proj.clips));
+      selectClip(0);
+      closeModal('projectsModal');
+      showToast(`Loaded "${proj.name}"`);
+    }
+
+    function syncAccountUI() {
+      const user = JSON.parse(localStorage.getItem('clipit_user') || 'null');
+      const label = document.getElementById('accountBtnLabel');
+      const loggedOut = document.getElementById('accountLoggedOutView');
+      const loggedIn = document.getElementById('accountLoggedInView');
+      if (user) {
+        label.textContent = user.name.split(' ')[0];
+        loggedOut.classList.add('hidden');
+        loggedIn.classList.remove('hidden');
+        document.getElementById('accProfileName').textContent = user.name;
+        document.getElementById('accProfileEmail').textContent = user.email;
+      } else {
+        label.textContent = 'Sign In';
+        loggedOut.classList.remove('hidden');
+        loggedIn.classList.add('hidden');
+      }
+    }
+
+    function openAccountModal() {
+      syncAccountUI();
+      document.getElementById('accountModal').classList.remove('hidden');
+    }
+
+    function signInCreatorAccount() {
+      const name = document.getElementById('accNameInput').value.trim() || 'Creator Pro';
+      const email = document.getElementById('accEmailInput').value.trim() || 'creator@clipit.studio';
+      localStorage.setItem('clipit_user', JSON.stringify({ name, email }));
+      syncAccountUI();
+      closeModal('accountModal');
+      showToast(`Signed in as ${name} • Data synced!`);
+    }
+
+    function signOutCreatorAccount() {
+      localStorage.removeItem('clipit_user');
+      syncAccountUI();
+      closeModal('accountModal');
+      showToast('Signed out of Creator Account');
+    }
+
+    function copySocialPack() {
+      navigator.clipboard.writeText(document.getElementById('socialCaptionBox').value);
+      showToast('Copied viral caption & hashtags!');
+    }
+
+    function copyViralScorecard() {
+      const clip = getActiveClip();
+      if (!clip) return;
+      const card = `🔥 CLIPIT VIRAL AUDIT SCORECARD\nHook: ${clip.hookHeadline}\nViral Score: ${clip.score}/100 | Est. Reach: ${clip.views}\nEdited in ClipIT Studio Pro`;
+      navigator.clipboard.writeText(card);
+      showToast('Copied Viral Scorecard to clipboard!');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    document.addEventListener('keydown', e => {
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+      if (e.code === 'Space' && state.currentView === 'workspace') { e.preventDefault(); togglePlay(); }
+      if (e.code === 'ArrowLeft' && state.currentView === 'workspace') mainVideo.currentTime = Math.max(0, mainVideo.currentTime - 1);
+      if (e.code === 'ArrowRight' && state.currentView === 'workspace') mainVideo.currentTime = Math.min(state.duration, mainVideo.currentTime + 1);
+      if (e.code === 'Escape' && state.isRendering) cancelRender();
+    });
+
+    init();
+  </script>
+</body>
+</html>

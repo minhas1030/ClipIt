@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://delicate-moon-6a3c.awaisminhas865.workers.dev/sitemap.xml

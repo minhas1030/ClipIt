@@ -2,7 +2,6 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // Handle CORS preflight
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         headers: {
@@ -13,58 +12,109 @@ export default {
       });
     }
 
-    // 1. API Endpoint: Resolve YouTube / TikTok / Instagram URLs into CORS-enabled MP4 stream
+    // 1. Multi-Engine Video Link Resolver (/api/resolve?url=...)
     if (url.pathname === '/api/resolve') {
       const targetUrl = url.searchParams.get('url');
-      if (!targetUrl) {
-        return jsonResponse({ error: 'Missing url parameter' }, 400);
-      }
+      if (!targetUrl) return jsonResponse({ error: 'Missing url parameter' }, 400);
 
       try {
-        // Query open Cobalt-compatible extraction nodes
-        const cobaltNodes = [
-          'https://api.cobalt.tools/',
-          'https://cobalt-api.kwiatekmiki.com/',
-          'https://cobalt.api.timelessnesses.me/'
-        ];
-
         let resolvedStream = null;
         let resolvedTitle = 'Viral_Web_Video';
 
-        for (const node of cobaltNodes) {
-          try {
-            const resp = await fetch(node, {
-              method: 'POST',
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'User-Agent': 'ClipIT-Studio/2.0'
-              },
-              body: JSON.stringify({
-                url: targetUrl,
-                videoQuality: '720',
-                filenameStyle: 'basic'
-              })
-            });
-            if (!resp.ok) continue;
-            const data = await resp.json();
-            if (data && data.url) {
-              resolvedStream = data.url;
-              if (data.filename) resolvedTitle = data.filename.replace(/\.[^/.]+$/, '');
-              break;
+        // Extract YouTube Video ID if YouTube URL
+        const ytMatch = targetUrl.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+        if (ytMatch) {
+          const videoId = ytMatch[1];
+
+          // Engine A: Open Piped API instances (returns direct muxed MP4 streams)
+          const pipedInstances = [
+            'https://pipedapi.kavin.rocks',
+            'https://pipedapi.tokhmi.xyz',
+            'https://pipedapi.moomoo.me',
+            'https://api.piped.yt'
+          ];
+
+          for (const base of pipedInstances) {
+            try {
+              const r = await fetch(`${base}/streams/${videoId}`, {
+                headers: { 'User-Agent': 'ClipIT-Studio/3.0' }
+              });
+              if (!r.ok) continue;
+              const info = await r.json();
+              if (info && Array.isArray(info.videoStreams)) {
+                const muxed = info.videoStreams.find(s => !s.videoOnly && s.mimeType && s.mimeType.includes('mp4'))
+                  || info.videoStreams.find(s => s.mimeType && s.mimeType.includes('mp4'));
+                if (muxed && muxed.url) {
+                  resolvedStream = muxed.url;
+                  resolvedTitle = (info.title || 'YouTube_Clip').slice(0, 48);
+                  break;
+                }
+              }
+            } catch (e) {}
+          }
+
+          // Engine B: Open Invidious API instances
+          if (!resolvedStream) {
+            const invInstances = [
+              'https://inv.nadeko.net',
+              'https://invidious.nerdvpn.de',
+              'https://iv.ggtyler.dev'
+            ];
+            for (const base of invInstances) {
+              try {
+                const r = await fetch(`${base}/api/v1/videos/${videoId}`, {
+                  headers: { 'User-Agent': 'ClipIT-Studio/3.0' }
+                });
+                if (!r.ok) continue;
+                const info = await r.json();
+                if (info && Array.isArray(info.formatStreams)) {
+                  const mp4 = info.formatStreams.find(f => f.container === 'mp4') || info.formatStreams[0];
+                  if (mp4 && mp4.url) {
+                    resolvedStream = mp4.url;
+                    resolvedTitle = (info.title || 'YouTube_Clip').slice(0, 48);
+                    break;
+                  }
+                }
+              } catch (e) {}
             }
-          } catch (e) {
-            continue;
+          }
+        }
+
+        // Engine C: Cobalt API Fallback (TikTok, Instagram, X, or YouTube)
+        if (!resolvedStream) {
+          const cobaltNodes = [
+            'https://api.cobalt.tools/',
+            'https://cobalt-api.kwiatekmiki.com/',
+            'https://cobalt.api.timelessnesses.me/'
+          ];
+          for (const node of cobaltNodes) {
+            try {
+              const resp = await fetch(node, {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'User-Agent': 'ClipIT-Studio/3.0'
+                },
+                body: JSON.stringify({ url: targetUrl, videoQuality: '720', filenameStyle: 'basic' })
+              });
+              if (!resp.ok) continue;
+              const data = await resp.json();
+              if (data && data.url) {
+                resolvedStream = data.url;
+                if (data.filename) resolvedTitle = data.filename.replace(/\.[^/.]+$/, '');
+                break;
+              }
+            } catch (e) {}
           }
         }
 
         if (!resolvedStream) {
           return jsonResponse({
-            error: 'Upstream extractor busy. Please upload the MP4 file directly or retry in a moment.'
+            error: 'YouTube/Social node rate-limited this link. Upload the MP4 file directly for instant 60FPS slicing!'
           }, 502);
         }
 
-        // Route the resolved stream through /api/proxy so Canvas 2D & Web Audio have full CORS access
         const proxiedUrl = `${url.origin}/api/proxy?url=${encodeURIComponent(resolvedStream)}`;
         return jsonResponse({ streamUrl: proxiedUrl, title: resolvedTitle });
       } catch (err) {
@@ -72,7 +122,7 @@ export default {
       }
     }
 
-    // 2. API Endpoint: Stream Video Chunks with CORS Headers (Supports Range Scrubbing)
+    // 2. CORS Range Video Stream Proxy (/api/proxy?url=...)
     if (url.pathname === '/api/proxy') {
       const mediaUrl = url.searchParams.get('url');
       if (!mediaUrl) return new Response('Missing url', { status: 400 });
@@ -95,7 +145,7 @@ export default {
       });
     }
 
-    // 3. Serve Static Website Assets (index.html, robots.txt, sitemap.xml)
+    // 3. Static Pages Assets
     if (env && env.ASSETS) {
       return env.ASSETS.fetch(request);
     }

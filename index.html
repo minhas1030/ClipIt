@@ -1287,8 +1287,9 @@
           barEl.style.width = '50%';
 
           const res = await fetch('/api/resolve?url=' + encodeURIComponent(url));
-          if (!res.ok) throw new Error('Resolver HTTP ' + res.status);
-          const data = await res.json();
+          if (res.status === 404) throw new Error('_worker.js missing in GitHub root (404). Upload _worker.js to repo root.');
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.error || ('Resolver HTTP ' + res.status));
           if (!data.streamUrl) throw new Error(data.error || 'No playable stream returned');
 
           playableUrl = data.streamUrl;
@@ -1298,8 +1299,9 @@
         } catch (err) {
           overlay.classList.add('hidden');
           barEl.style.width = '0%';
-          document.getElementById('statusIndicator').textContent = 'Cloud Extractor needs Worker setup • Upload MP4 or Try Sample';
-          showToast('Enable the /api/resolve Worker in Cloudflare to stream YouTube links directly!');
+          const msg = err.message || 'Extractor unavailable';
+          document.getElementById('statusIndicator').textContent = msg;
+          showToast(msg);
           return;
         }
       }

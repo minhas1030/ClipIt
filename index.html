@@ -158,12 +158,12 @@
   </header>
 
   <!-- ======================================================================= -->
-  <!-- STAGE 1: EXACT OPUS.PRO HOME & INTERACTIVE SHOWCASE CAROUSEL            -->
+  <!-- STAGE 1: OPUS.PRO LIVE-VIDEO SHOWCASE CAROUSEL & FULL EXPERIENCE        -->
   <!-- ======================================================================= -->
-  <div id="stage-dashboard" class="flex-1 bg-black pb-16">
-    <div class="max-w-[1380px] mx-auto px-4 pt-5 space-y-6">
+  <div id="stage-dashboard" class="flex-1 bg-black pb-24">
+    <div class="max-w-[1380px] mx-auto px-4 pt-5 space-y-8">
 
-      <!-- TOP OPUS.PRO PILL INPUT BAR ("Drop a video link or upload a file [Get free clips] or [Auto-edit]") -->
+      <!-- TOP OPUS.PRO PILL INPUT BAR -->
       <div id="heroDropZone" class="flex flex-wrap items-center justify-center gap-2.5">
         <div class="opus-pill-bar rounded-full pl-4 pr-1.5 py-1.5 flex items-center gap-2.5 w-full max-w-md">
           <i data-lucide="link-2" class="w-4 h-4 text-zinc-400 shrink-0"></i>
@@ -179,11 +179,10 @@
 
         <span class="text-xs text-zinc-500 hidden sm:inline">or</span>
 
-        <button onclick="startScreenTabCapture()" class="px-5 py-2.5 rounded-full bg-[#161619] hover:bg-[#202025] border border-white/10 text-xs font-semibold text-white transition">
+        <button onclick="startScreenTabCapture()" class="px-5 py-2.5 rounded-full bg-[#161619] hover:bg-[#222227] border border-white/10 text-xs font-semibold text-white transition">
           Record Tab / Screen
         </button>
 
-        <!-- Compact Vibe & Length Pills -->
         <div class="flex items-center gap-1.5">
           <select id="dashNicheSelect" onchange="syncNicheSelectors(this.value)" class="bg-[#121215] border border-white/10 rounded-full px-3 py-2 text-xs text-zinc-300 outline-none">
             <option value="auto">Auto Vibe</option>
@@ -201,41 +200,40 @@
         </div>
       </div>
 
-      <!-- OPUS.PRO CENTERPIECE CAROUSEL STAGE WITH SIDE PEEK CARDS & < > ARROWS -->
-      <div class="relative flex items-center justify-center gap-5 pt-2">
+      <!-- OPUS.PRO CENTERPIECE LIVE-PLAYING VIDEO SHOWCASE CAROUSEL -->
+      <div class="relative flex items-center justify-center gap-5 pt-1">
 
-        <!-- Left Side Peek Card (Desktop) -->
-        <div onclick="stepOpusCarousel(-1)" class="hidden xl:flex w-44 h-[440px] rounded-3xl bg-[#0D0E10] border border-white/[0.06] opacity-40 hover:opacity-70 cursor-pointer transition overflow-hidden flex-col justify-between p-4 shrink-0 select-none">
-          <div class="text-[10px] font-mono text-zinc-500">PREVIOUS TOOL</div>
-          <div class="space-y-2">
-            <div class="h-24 rounded-xl bg-white/[0.04]"></div>
-            <div class="h-3 w-2/3 rounded bg-white/[0.06]"></div>
+        <!-- Left Side Peek Card (Live Mini Preview) -->
+        <div onclick="stepOpusCarousel(-1)" class="hidden xl:flex w-44 h-[450px] rounded-3xl bg-[#0D0E10] border border-white/[0.07] opacity-55 hover:opacity-85 cursor-pointer transition overflow-hidden flex-col justify-between p-3.5 shrink-0 select-none relative">
+          <canvas id="peekLeftCanvas" width="240" height="420" class="w-full h-full object-cover rounded-2xl"></canvas>
+          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between bg-black/75 backdrop-blur px-2.5 py-1.5 rounded-xl border border-white/10">
+            <span class="text-[10px] font-semibold text-zinc-300">← Prev Tool</span>
+            <span class="text-[10px] font-mono text-emerald-400">60FPS</span>
           </div>
-          <div class="text-xs font-semibold text-zinc-400">← Switch</div>
         </div>
 
         <!-- Left Floating Circle Arrow -->
-        <button onclick="stepOpusCarousel(-1)" aria-label="Previous feature" class="hidden sm:flex w-9 h-9 rounded-full bg-[#18181B] hover:bg-[#27272A] border border-white/10 items-center justify-center text-zinc-300 hover:text-white transition shrink-0 z-20">
+        <button onclick="stepOpusCarousel(-1)" aria-label="Previous feature" class="hidden sm:flex w-9 h-9 rounded-full bg-[#18181B] hover:bg-[#27272A] border border-white/15 items-center justify-center text-zinc-300 hover:text-white transition shrink-0 z-20 shadow-lg">
           <i data-lucide="arrow-left" class="w-4 h-4"></i>
         </button>
 
-        <!-- MAIN CENTERPIECE OPUS SHOWCASE STAGE (Matches image_8b13c3.jpg) -->
-        <div class="opus-stage-card w-full max-w-[780px] min-h-[440px] rounded-3xl relative overflow-hidden flex flex-col items-center justify-between p-5 sm:p-7">
+        <!-- MAIN CENTERPIECE OPUS SHOWCASE STAGE -->
+        <div class="opus-stage-card w-full max-w-[790px] min-h-[450px] rounded-3xl relative overflow-hidden flex flex-col items-center justify-between p-5 sm:p-6">
 
-          <!-- SLIDE 0: AI CLIPPING (Exact visual recreation of image_8b13c3.jpg) -->
+          <!-- SLIDE 0: AI CLIPPING (LIVE PLAYING SOURCE VIDEO -> 5 LIVE PLAYING 9:16 VIRAL SHORTS) -->
           <div id="opusSlide-0" class="opus-slide w-full flex-1 flex flex-col items-center justify-between opus-fade-in">
-            <!-- Top 16:9 Source Video Preview Card -->
-            <div class="relative w-64 sm:w-72 h-24 rounded-2xl overflow-hidden border border-white/15 bg-gradient-to-r from-[#1A252B] via-[#263238] to-[#1A2026] shadow-xl flex items-end justify-between p-2.5">
-              <div class="absolute inset-0 opacity-35 bg-[radial-gradient(circle_at_30%_30%,#38BDF8,transparent_60%),radial-gradient(circle_at_75%_40%,#F59E0B,transparent_55%)]"></div>
-              <div class="relative z-10 flex items-center gap-1.5 bg-black/65 backdrop-blur px-2 py-0.5 rounded-md text-[10px] font-semibold text-white">
-                <span class="w-2 h-2 rounded-full bg-teal-400"></span>
-                <span>Podcast Master</span>
+            <!-- Top 16:9 Live Playing Podcast / Gaming Master Video -->
+            <div class="relative w-64 sm:w-76 h-28 rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl">
+              <canvas id="showcaseMasterCanvas" width="480" height="220" class="w-full h-full object-cover block"></canvas>
+              <div class="absolute bottom-2 left-2.5 flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-semibold text-white border border-white/10">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Impact Podcast</span>
               </div>
-              <span class="relative z-10 bg-black/75 px-2 py-0.5 rounded text-[10px] font-mono text-zinc-200">2:01:44</span>
+              <span class="absolute bottom-2 right-2.5 bg-black/80 px-2 py-0.5 rounded text-[10px] font-mono text-zinc-200 border border-white/10">2:01:44</span>
             </div>
 
-            <!-- Middle Floating Action Pill + Pointer Hand (Exact Opus.pro Signature) -->
-            <div class="relative my-3 z-20">
+            <!-- Middle Floating Action Pill + Animated Pointer Hand -->
+            <div class="relative my-2.5 z-20">
               <div class="bg-[#1C1D21]/95 backdrop-blur-xl border border-white/15 rounded-full pl-4 pr-1.5 py-1.5 flex items-center gap-3 shadow-2xl">
                 <div class="flex items-center gap-2 text-xs text-zinc-300">
                   <i data-lucide="link-2" class="w-3.5 h-3.5 text-zinc-400"></i>
@@ -245,146 +243,107 @@
                   Get clips
                 </button>
               </div>
-              <!-- Animated Pointer Hand Icon -->
               <div class="cursor-bob absolute -bottom-3 right-6 pointer-events-none text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)]">
                 <i data-lucide="pointer" class="w-5 h-5 fill-white text-black"></i>
               </div>
             </div>
 
-            <!-- Bottom Fanned-Out 9:16 Viral Short Cards with Platform Icons & Virality Scores (97, 99, 95, 98, 93) -->
-            <div class="w-full max-w-[640px] grid grid-cols-5 gap-2 sm:gap-2.5 pt-2 items-end">
+            <!-- Bottom 5 Live-Playing 9:16 Viral Short Cards (97, 99, 95, 98, 93) -->
+            <div class="w-full max-w-[660px] grid grid-cols-5 gap-2 sm:gap-2.5 pt-2 items-end">
               <!-- Card 1 (97 - YouTube) -->
-              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-36 sm:h-40 rounded-xl bg-gradient-to-b from-sky-900/50 via-emerald-950/70 to-black border border-white/15 p-2 flex flex-col justify-between hover:-translate-y-1.5 transition" style="animation-delay:0.05s">
-                <div class="w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center mx-auto -mt-4 shadow-md text-[9px] font-black">▶</div>
-                <div class="text-center my-auto">
-                  <span class="px-1.5 py-0.5 rounded bg-yellow-400 text-black font-montserrat font-black text-[8px] uppercase">CLUTCH</span>
-                </div>
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-black text-emerald-400 font-mono">97</span>
-                  <span class="text-[8px] text-zinc-400">0:15</span>
-                </div>
+              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-black shadow-xl hover:-translate-y-1.5 transition" style="animation-delay:0.04s">
+                <div class="w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">▶</div>
+                <canvas id="fanCanvas0" width="180" height="280" class="w-full h-full object-cover rounded-xl block"></canvas>
               </div>
 
               <!-- Card 2 (99 - Instagram) -->
-              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-40 sm:h-44 rounded-xl bg-gradient-to-b from-fuchsia-900/45 via-zinc-900/80 to-black border border-white/20 p-2 flex flex-col justify-between hover:-translate-y-1.5 transition" style="animation-delay:0.12s">
-                <div class="w-5 h-5 rounded-full bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 text-white flex items-center justify-center mx-auto -mt-4 shadow-md text-[9px] font-bold">◎</div>
-                <div class="text-center my-auto">
-                  <span class="px-1.5 py-0.5 rounded bg-white text-black font-montserrat font-black text-[8px] uppercase">VIRAL HOOK</span>
-                </div>
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-black text-emerald-400 font-mono">99</span>
-                  <span class="text-[8px] text-zinc-400">0:28</span>
-                </div>
+              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-40 sm:h-46 rounded-xl overflow-visible border border-white/25 bg-black shadow-2xl hover:-translate-y-1.5 transition" style="animation-delay:0.10s">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-bold">◎</div>
+                <canvas id="fanCanvas1" width="180" height="300" class="w-full h-full object-cover rounded-xl block"></canvas>
               </div>
 
               <!-- Card 3 (95 - LinkedIn) -->
-              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-36 sm:h-40 rounded-xl bg-gradient-to-b from-blue-900/45 via-zinc-900/80 to-black border border-white/15 p-2 flex flex-col justify-between hover:-translate-y-1.5 transition" style="animation-delay:0.18s">
-                <div class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto -mt-4 shadow-md text-[9px] font-black">in</div>
-                <div class="text-center my-auto">
-                  <span class="px-1.5 py-0.5 rounded bg-emerald-400 text-black font-montserrat font-black text-[8px] uppercase">KEY RULE</span>
-                </div>
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-black text-emerald-400 font-mono">95</span>
-                  <span class="text-[8px] text-zinc-400">0:45</span>
-                </div>
+              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-black shadow-xl hover:-translate-y-1.5 transition" style="animation-delay:0.16s">
+                <div class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">in</div>
+                <canvas id="fanCanvas2" width="180" height="280" class="w-full h-full object-cover rounded-xl block"></canvas>
               </div>
 
               <!-- Card 4 (98 - TikTok) -->
-              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-40 sm:h-44 rounded-xl bg-gradient-to-b from-amber-800/45 via-zinc-900/80 to-black border border-white/20 p-2 flex flex-col justify-between hover:-translate-y-1.5 transition" style="animation-delay:0.24s">
-                <div class="w-5 h-5 rounded-full bg-black border border-white/30 text-white flex items-center justify-center mx-auto -mt-4 shadow-md text-[9px] font-black">♪</div>
-                <div class="text-center my-auto">
-                  <span class="px-1.5 py-0.5 rounded bg-yellow-400 text-black font-montserrat font-black text-[8px] uppercase">60S+ $$$</span>
-                </div>
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-black text-emerald-400 font-mono">98</span>
-                  <span class="text-[8px] text-zinc-400">1:02</span>
-                </div>
+              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-40 sm:h-46 rounded-xl overflow-visible border border-white/25 bg-black shadow-2xl hover:-translate-y-1.5 transition" style="animation-delay:0.22s">
+                <div class="w-5 h-5 rounded-full bg-black border border-white/30 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">♪</div>
+                <canvas id="fanCanvas3" width="180" height="300" class="w-full h-full object-cover rounded-xl block"></canvas>
               </div>
 
-              <!-- Card 5 (93 - X / Facebook) -->
-              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-36 sm:h-40 rounded-xl bg-gradient-to-b from-zinc-700/45 via-zinc-900/80 to-black border border-white/15 p-2 flex flex-col justify-between hover:-translate-y-1.5 transition" style="animation-delay:0.30s">
-                <div class="w-5 h-5 rounded-full bg-zinc-900 border border-white/25 text-white flex items-center justify-center mx-auto -mt-4 shadow-md text-[9px] font-black">𝕏</div>
-                <div class="text-center my-auto">
-                  <span class="px-1.5 py-0.5 rounded bg-violet-500 text-white font-montserrat font-black text-[8px] uppercase">REACTION</span>
-                </div>
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-black text-emerald-400 font-mono">93</span>
-                  <span class="text-[8px] text-zinc-400">0:19</span>
-                </div>
+              <!-- Card 5 (93 - X) -->
+              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-black shadow-xl hover:-translate-y-1.5 transition" style="animation-delay:0.28s">
+                <div class="w-5 h-5 rounded-full bg-zinc-900 border border-white/25 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">𝕏</div>
+                <canvas id="fanCanvas4" width="180" height="280" class="w-full h-full object-cover rounded-xl block"></canvas>
               </div>
             </div>
           </div>
 
-          <!-- SLIDE 1: AI CAPTIONING (CapCut Word-by-Word Live Demo) -->
-          <div id="opusSlide-1" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center text-center space-y-5 opus-fade-in">
-            <span class="px-3 py-1 rounded-full bg-white/10 text-[11px] font-semibold text-zinc-200">CapCut-Style Auto Captions • 99% Speech Accuracy</span>
-            <div class="w-60 h-64 rounded-2xl bg-black/80 border border-white/15 p-4 flex flex-col justify-between shadow-2xl">
-              <div class="flex justify-between text-[10px] font-mono text-zinc-400">
-                <span>AUTO CAPTIONS: ON</span>
-                <span class="text-emerald-400">EN / UR / HI</span>
-              </div>
-              <div id="carouselCaptionPreview" class="my-auto font-montserrat font-black text-lg text-white leading-snug">
-                WATCH <span class="text-yellow-300 scale-110 inline-block">EVERY WORD</span> POP 🔥
-              </div>
-              <div class="text-[10px] text-zinc-500">Auto-Emoji + Keyword Highlighting</div>
+          <!-- SLIDE 1: AI CAPTIONING (LIVE 60FPS CAPCUT WORD-BY-WORD VIDEO CANVAS) -->
+          <div id="opusSlide-1" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3 opus-fade-in">
+            <div class="flex items-center gap-2 text-xs text-zinc-300">
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-semibold">CapCut Auto Captions</span>
+              <span>Word-by-word spring pop + auto-emojis</span>
+            </div>
+            <div class="w-56 h-80 rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl">
+              <canvas id="slideCaptionsCanvas" width="360" height="540" class="w-full h-full object-cover block"></canvas>
             </div>
           </div>
 
-          <!-- SLIDE 2: AI REFRAME (Full Scene No-Crop 16:9 -> 9:16) -->
-          <div id="opusSlide-2" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center text-center space-y-5 opus-fade-in">
-            <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-[11px] font-semibold text-emerald-300">Full Scene (No Crop) • Zero Cut-Off Characters</span>
-            <div class="flex items-center gap-4">
-              <div class="w-44 h-28 rounded-xl bg-[#181B20] border border-white/15 flex flex-col items-center justify-center p-3">
-                <span class="text-xs font-bold text-white">16:9 Original</span>
-                <span class="text-[10px] text-zinc-400 mt-1">All characters on left & right</span>
-              </div>
-              <i data-lucide="arrow-right" class="w-5 h-5 text-zinc-400"></i>
-              <div class="w-36 h-60 rounded-2xl bg-gradient-to-b from-zinc-800/40 via-black to-zinc-800/40 border border-emerald-400/40 flex flex-col items-center justify-center p-2 shadow-xl">
-                <div class="w-full h-20 rounded-lg bg-[#1E242B] border border-white/20 flex items-center justify-center text-[10px] font-bold text-emerald-300">
-                  100% Uncropped Frame
-                </div>
-                <span class="text-[9px] text-zinc-400 mt-2">Blurred Cinema Backdrop</span>
-              </div>
+          <!-- SLIDE 2: AI REFRAME (LIVE 60FPS SPEAKER TRACKING & FULL-SCENE NO-CROP) -->
+          <div id="opusSlide-2" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3 opus-fade-in">
+            <div class="flex items-center gap-2 text-xs text-zinc-300">
+              <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white font-semibold">Full-Scene No-Crop Reframe</span>
+              <span>100% characters visible in 9:16</span>
+            </div>
+            <div class="w-full max-w-lg h-76 rounded-2xl overflow-hidden border border-white/15 bg-black shadow-2xl">
+              <canvas id="slideReframeCanvas" width="680" height="380" class="w-full h-full object-cover block"></canvas>
             </div>
           </div>
 
-          <!-- SLIDE 3: AI B-ROLL & SPLIT SCREEN -->
-          <div id="opusSlide-3" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center text-center space-y-4 opus-fade-in">
-            <span class="px-3 py-1 rounded-full bg-white/10 text-[11px] font-semibold text-zinc-200">Split-Screen Gameplay & Audio Waveform</span>
-            <div class="w-44 h-64 rounded-2xl overflow-hidden border border-white/15 flex flex-col shadow-2xl">
-              <div class="h-1/2 bg-[#1A1F26] flex items-center justify-center text-xs font-bold text-white border-b border-white/10">Top: Speaker / Clip</div>
-              <div class="h-1/2 bg-[#0F171A] flex items-center justify-center text-xs font-bold text-emerald-400">Bottom: B-Roll / Wave</div>
+          <!-- SLIDE 3: AI B-ROLL & SPLIT-SCREEN GAMEPLAY -->
+          <div id="opusSlide-3" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3 opus-fade-in">
+            <div class="flex items-center gap-2 text-xs text-zinc-300">
+              <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white font-semibold">Split-Screen Retention Mode</span>
+              <span>Top Speaker + Bottom Gameplay / Waveform</span>
+            </div>
+            <div class="w-56 h-80 rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl">
+              <canvas id="slideBrollCanvas" width="360" height="540" class="w-full h-full object-cover block"></canvas>
             </div>
           </div>
 
-          <!-- SLIDE 4: 60FPS ZERO-WATERMARK MONETIZATION -->
-          <div id="opusSlide-4" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center text-center space-y-4 opus-fade-in">
-            <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-[11px] font-semibold">TikTok Creativity Program 60s+ & Batch Export</span>
-            <div class="max-w-sm w-full bg-black/70 border border-white/10 rounded-2xl p-5 space-y-3">
-              <div class="flex justify-between text-xs"><span class="text-zinc-400">Export Resolution</span><span class="font-mono font-bold text-white">1080p / 2K 60FPS</span></div>
-              <div class="flex justify-between text-xs"><span class="text-zinc-400">Watermark</span><span class="font-mono font-bold text-emerald-400">0% (Your @Handle Only)</span></div>
-              <div class="flex justify-between text-xs"><span class="text-zinc-400">Batch Mode</span><span class="font-mono font-bold text-white">1-Click All Clips</span></div>
+          <!-- SLIDE 4: AI AUDIO ENHANCE & 60FPS EXPORT -->
+          <div id="opusSlide-4" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3 opus-fade-in">
+            <div class="flex items-center gap-2 text-xs text-zinc-300">
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 font-semibold">AI Audio Peak Slicer & 60FPS Export</span>
+              <span>Zero watermarks • 1080p / 2K Master</span>
+            </div>
+            <div class="w-full max-w-lg h-76 rounded-2xl overflow-hidden border border-white/15 bg-black shadow-2xl">
+              <canvas id="slideAudioCanvas" width="680" height="380" class="w-full h-full object-cover block"></canvas>
             </div>
           </div>
 
         </div>
 
         <!-- Right Floating Circle Arrow -->
-        <button onclick="stepOpusCarousel(1)" aria-label="Next feature" class="hidden sm:flex w-9 h-9 rounded-full bg-[#18181B] hover:bg-[#27272A] border border-white/10 items-center justify-center text-zinc-300 hover:text-white transition shrink-0 z-20">
+        <button onclick="stepOpusCarousel(1)" aria-label="Next feature" class="hidden sm:flex w-9 h-9 rounded-full bg-[#18181B] hover:bg-[#27272A] border border-white/15 items-center justify-center text-zinc-300 hover:text-white transition shrink-0 z-20 shadow-lg">
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </button>
 
-        <!-- Right Side Peek Card (Desktop - Matches image_8b13c3.jpg) -->
-        <div onclick="stepOpusCarousel(1)" class="hidden xl:flex w-44 h-[440px] rounded-3xl bg-[#0D0E10] border border-white/[0.06] opacity-45 hover:opacity-75 cursor-pointer transition overflow-hidden flex-col justify-between p-4 shrink-0 select-none">
-          <div class="text-[10px] font-mono text-zinc-500">NEXT FEATURE</div>
-          <div class="h-36 rounded-2xl bg-gradient-to-br from-amber-900/30 to-zinc-900 border border-white/10 flex items-end p-2.5">
-            <span class="text-[10px] font-black uppercase text-amber-200/80">TO BREAK THROUGH</span>
+        <!-- Right Side Peek Card (Live Playing Vertical Clip Preview - Matches image_8b13c3.jpg) -->
+        <div onclick="stepOpusCarousel(1)" class="hidden xl:flex w-44 h-[450px] rounded-3xl bg-[#0D0E10] border border-white/[0.07] opacity-65 hover:opacity-95 cursor-pointer transition overflow-hidden flex-col justify-between p-3.5 shrink-0 select-none relative">
+          <canvas id="peekRightCanvas" width="240" height="420" class="w-full h-full object-cover rounded-2xl"></canvas>
+          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between bg-black/75 backdrop-blur px-2.5 py-1.5 rounded-xl border border-white/10">
+            <span class="text-[10px] font-semibold text-white">Next Tool →</span>
+            <span class="text-[10px] font-mono text-emerald-400">98</span>
           </div>
-          <div class="text-xs font-semibold text-zinc-400">Explore →</div>
         </div>
       </div>
 
-      <!-- OPUS.PRO BOTTOM FEATURE TABS BAR (Exact match to image_8b13c3.jpg bottom bar) -->
+      <!-- OPUS.PRO BOTTOM FEATURE TABS BAR -->
       <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
         <button onclick="setOpusSlide(0)" id="opusTab-0" class="px-3.5 py-2 rounded-xl bg-[#18181B] border border-white/15 text-xs font-semibold text-white flex items-center gap-2 transition">
           <i data-lucide="scissors" class="w-3.5 h-3.5 text-zinc-300"></i>
@@ -404,8 +363,45 @@
         </button>
         <button onclick="setOpusSlide(4)" id="opusTab-4" class="px-3.5 py-2 rounded-xl bg-transparent hover:bg-[#141417] border border-transparent text-xs font-medium text-zinc-400 hover:text-white flex items-center gap-2 transition">
           <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-          <span>60FPS Batch Export</span>
+          <span>AI audio enhance</span>
         </button>
+      </div>
+
+      <!-- OPUS.PRO CREATOR TRUST & CAPABILITIES STRIP BELOW FOLD -->
+      <div class="pt-14 border-t border-white/[0.07] max-w-5xl mx-auto space-y-10">
+        <div class="text-center space-y-2">
+          <p class="text-[11px] font-mono uppercase tracking-widest text-zinc-500">BUILT FOR MONETIZED SHORT-FORM CREATORS</p>
+          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white">Everything you need to turn raw footage into viral shorts</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="opus-card rounded-2xl p-5 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-400">99 SCORE</span>
+              <i data-lucide="trending-up" class="w-4 h-4 text-zinc-500"></i>
+            </div>
+            <h3 class="text-sm font-bold text-white">AI Virality Ranking</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">Automatically detects high-energy hooks, funny reactions, and 60s+ TikTok Creativity Program moments.</p>
+          </div>
+
+          <div class="opus-card rounded-2xl p-5 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-white/10 text-white">NO CROP</span>
+              <i data-lucide="maximize-2" class="w-4 h-4 text-zinc-500"></i>
+            </div>
+            <h3 class="text-sm font-bold text-white">Full-Scene 9:16 Reframe</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">Keeps every character on screen with cinema-blurred vertical framing so nothing gets awkwardly cut off.</p>
+          </div>
+
+          <div class="opus-card rounded-2xl p-5 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-white/10 text-white">60FPS HD</span>
+              <i data-lucide="captions" class="w-4 h-4 text-zinc-500"></i>
+            </div>
+            <h3 class="text-sm font-bold text-white">CapCut Auto Captions</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">Turn on Auto Captions in 1 click to generate word-highlighted kinetic subtitles with zero watermarks.</p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1785,7 +1781,8 @@
       c.restore();
     }
 
-    function renderLoop() {
+    function renderLoop(nowMs = performance.now()) {
+      renderLiveShowcaseCanvases(nowMs);
       const clip = getActiveClip();
       if (clip && !state.isRendering && !mainVideo.paused) {
         if (mainVideo.currentTime >= clip.end) mainVideo.currentTime = clip.start;
@@ -1802,7 +1799,7 @@
   
 
     // =========================================================================
-    // OPUS.PRO CENTERPIECE CAROUSEL & SMOOTH CAPTION PREVIEW CONTROLLER
+    // OPUS.PRO LIVE-PLAYING 60FPS VIDEO CANVAS SHOWCASE ENGINE
     // =========================================================================
     let currentOpusSlide = 0;
     const totalOpusSlides = 5;
@@ -1826,18 +1823,250 @@
       setOpusSlide(currentOpusSlide + delta);
     }
 
-    const demoCaptionLines = [
-      'WATCH <span class="text-yellow-300">EVERY WORD</span> POP 🔥',
-      '100% <span class="text-emerald-400">AUTO SYNCED</span> CAPTIONS 🎯',
-      'ZERO <span class="text-violet-400">WATERMARK</span> 60FPS 🚀'
-    ];
-    let demoCapIdx = 0;
-    setInterval(() => {
-      if (state.stage !== 'dashboard' || currentOpusSlide !== 1) return;
-      demoCapIdx = (demoCapIdx + 1) % demoCaptionLines.length;
-      const el = document.getElementById('carouselCaptionPreview');
-      if (el) el.innerHTML = demoCaptionLines[demoCapIdx];
-    }, 1600);
+    function drawStudioScene(c, w, h, t, variant = 0) {
+      // Rich studio backdrop
+      const bg = c.createLinearGradient(0, 0, w, h);
+      if (variant === 0) { bg.addColorStop(0, '#132229'); bg.addColorStop(1, '#090D10'); }
+      else if (variant === 1) { bg.addColorStop(0, '#27172E'); bg.addColorStop(1, '#0B0910'); }
+      else if (variant === 2) { bg.addColorStop(0, '#132620'); bg.addColorStop(1, '#080C0B'); }
+      else if (variant === 3) { bg.addColorStop(0, '#2B1F14'); bg.addColorStop(1, '#0D0A08'); }
+      else { bg.addColorStop(0, '#1A1D29'); bg.addColorStop(1, '#090A0F'); }
+      c.fillStyle = bg;
+      c.fillRect(0, 0, w, h);
+
+      // Soft studio rim light
+      c.fillStyle = variant % 2 === 0 ? 'rgba(56,189,248,0.16)' : 'rgba(245,158,11,0.16)';
+      c.beginPath();
+      c.arc(w * 0.5, h * 0.38, w * 0.42, 0, Math.PI * 2);
+      c.fill();
+
+      // Acoustic wall panels
+      c.fillStyle = 'rgba(255,255,255,0.03)';
+      for (let x = 14; x < w - 14; x += 26) {
+        c.fillRect(x, 16, 14, h * 0.65);
+      }
+
+      // Animated speaker silhouette & head movement
+      const nod = Math.sin(t * 4.2 + variant) * 4;
+      const mouthOpen = Math.abs(Math.sin(t * 11 + variant * 2)) * 5;
+      const cx = w * 0.5;
+      const cy = h * 0.42 + nod;
+
+      // Shoulders
+      c.fillStyle = variant === 1 ? '#312E81' : variant === 2 ? '#065F46' : '#27272A';
+      c.beginPath();
+      c.roundRect(cx - w * 0.24, cy + h * 0.11, w * 0.48, h * 0.38, 28);
+      c.fill();
+
+      // Head
+      c.fillStyle = '#E5B896';
+      c.beginPath();
+      c.arc(cx, cy, Math.min(w, h) * 0.13, 0, Math.PI * 2);
+      c.fill();
+
+      // Hair
+      c.fillStyle = '#18181B';
+      c.beginPath();
+      c.arc(cx, cy - 4, Math.min(w, h) * 0.132, Math.PI, Math.PI * 2);
+      c.fill();
+
+      // Animated speaking mouth
+      c.fillStyle = '#7F1D1D';
+      c.beginPath();
+      c.ellipse(cx, cy + Math.min(w, h) * 0.05, 5, 1.5 + mouthOpen * 0.5, 0, 0, Math.PI * 2);
+      c.fill();
+
+      // Podcast broadcast mic arm
+      c.strokeStyle = '#52525B';
+      c.lineWidth = 3;
+      c.beginPath();
+      c.moveTo(w * 0.12, h * 0.85);
+      c.lineTo(cx - 16, cy + 16);
+      c.stroke();
+      c.fillStyle = '#18181B';
+      c.beginPath();
+      c.roundRect(cx - 24, cy + 6, 16, 22, 6);
+      c.fill();
+    }
+
+    function renderLiveShowcaseCanvases(nowMs) {
+      if (state.stage !== 'dashboard') return;
+      const t = nowMs / 1000;
+
+      // 1. Master 16:9 Dual-Host Podcast Preview
+      const mCan = document.getElementById('showcaseMasterCanvas');
+      if (mCan && currentOpusSlide === 0) {
+        const mc = mCan.getContext('2d');
+        const W = mCan.width, H = mCan.height;
+        drawStudioScene(mc, W / 2, H, t, 0);
+        mc.save();
+        mc.translate(W / 2, 0);
+        drawStudioScene(mc, W / 2, H, t + 1.3, 2);
+        mc.restore();
+        mc.fillStyle = 'rgba(255,255,255,0.12)';
+        mc.fillRect(W / 2 - 1, 0, 2, H);
+      }
+
+      // 2. Five Fanned-Out 9:16 Viral Short Cards (97, 99, 95, 98, 93)
+      const fanMeta = [
+        { score: '97', dur: '0:15', hook: 'CLUTCH', words: ['NO WAY', 'HE HIT', 'THAT SHOT'] },
+        { score: '99', dur: '0:28', hook: 'VIRAL HOOK', words: ['THE REAL', 'SECRET TO', '1M VIEWS'] },
+        { score: '95', dur: '0:45', hook: 'KEY RULE', words: ['NEVER', 'IGNORE', 'THIS SIGN'] },
+        { score: '98', dur: '1:02', hook: '60S+ $$$', words: ['HOW TOP', 'CREATORS', 'SCALE FAST'] },
+        { score: '93', dur: '0:19', hook: 'REACTION', words: ['WAIT FOR', 'HIS FACE', 'AT THE END'] }
+      ];
+
+      if (currentOpusSlide === 0) {
+        fanMeta.forEach((fm, idx) => {
+          const fc = document.getElementById('fanCanvas' + idx);
+          if (!fc) return;
+          const c = fc.getContext('2d');
+          const W = fc.width, H = fc.height;
+          drawStudioScene(c, W, H, t + idx * 0.7, idx);
+
+          // Top Hook Pill
+          c.fillStyle = idx === 1 ? '#FFFFFF' : idx === 3 ? '#FACC15' : '#10B981';
+          c.beginPath();
+          c.roundRect(W * 0.16, 22, W * 0.68, 22, 6);
+          c.fill();
+          c.fillStyle = '#09090B';
+          c.font = '900 10px Montserrat, sans-serif';
+          c.textAlign = 'center';
+          c.fillText(fm.hook, W / 2, 36);
+
+          // Kinetic Popping Word
+          const wIdx = Math.floor((t * 2.4 + idx) % fm.words.length);
+          c.font = '900 15px Montserrat, sans-serif';
+          c.lineWidth = 4;
+          c.strokeStyle = '#000000';
+          c.fillStyle = idx % 2 === 0 ? '#FACC15' : '#34D399';
+          c.strokeText(fm.words[wIdx], W / 2, H * 0.68);
+          c.fillText(fm.words[wIdx], W / 2, H * 0.68);
+
+          // Bottom gradient & Virality Score
+          const grad = c.createLinearGradient(0, H * 0.72, 0, H);
+          grad.addColorStop(0, 'transparent');
+          grad.addColorStop(1, 'rgba(0,0,0,0.92)');
+          c.fillStyle = grad;
+          c.fillRect(0, H * 0.72, W, H * 0.28);
+
+          c.fillStyle = '#34D399';
+          c.font = '800 16px "JetBrains Mono", monospace';
+          c.textAlign = 'left';
+          c.fillText(fm.score, 12, H - 12);
+
+          c.fillStyle = '#A1A1AA';
+          c.font = '600 11px "JetBrains Mono", monospace';
+          c.textAlign = 'right';
+          c.fillText(fm.dur, W - 12, H - 12);
+        });
+      }
+
+      // 3. Slide 1: CapCut Auto Captions Live Demo
+      const capCan = document.getElementById('slideCaptionsCanvas');
+      if (capCan && currentOpusSlide === 1) {
+        const c = capCan.getContext('2d');
+        const W = capCan.width, H = capCan.height;
+        drawStudioScene(c, W, H, t, 1);
+        const phrases = [
+          ['TURN', 'AUTO CAPTIONS', 'ON IN 1 CLICK'],
+          ['WORD BY WORD', 'CAPCUT STYLE', 'ANIMATIONS 🔥'],
+          ['ZERO WATERMARK', '1080P 60FPS', 'EXPORT 🚀']
+        ];
+        const p = phrases[Math.floor(t * 0.8) % phrases.length];
+        const activeW = Math.floor((t * 2.4) % p.length);
+        p.forEach((line, li) => {
+          const y = H * 0.62 + li * 34;
+          c.font = '900 24px Montserrat, sans-serif';
+          c.textAlign = 'center';
+          c.lineWidth = 6;
+          c.strokeStyle = '#09090B';
+          c.fillStyle = li === activeW ? '#FACC15' : '#FFFFFF';
+          c.strokeText(line, W / 2, y);
+          c.fillText(line, W / 2, y);
+        });
+      }
+
+      // 4. Slide 2: AI Reframe Full-Scene No-Crop Demo
+      const refCan = document.getElementById('slideReframeCanvas');
+      if (refCan && currentOpusSlide === 2) {
+        const c = refCan.getContext('2d');
+        const W = refCan.width, H = refCan.height;
+        // Left 16:9 Source
+        drawStudioScene(c, W * 0.54, H, t, 0);
+        c.strokeStyle = '#34D399';
+        c.lineWidth = 2;
+        c.strokeRect(16, 40, W * 0.54 - 32, H - 80);
+        c.fillStyle = '#34D399';
+        c.font = '700 12px "JetBrains Mono", monospace';
+        c.textAlign = 'left';
+        c.fillText('16:9 FULL SCENE LOCKED', 24, 30);
+
+        // Right 9:16 No-Crop Output
+        const rx = W * 0.62, rw = W * 0.32;
+        c.fillStyle = '#12181B';
+        c.fillRect(rx, 16, rw, H - 32);
+        drawStudioScene(c, rw, H * 0.44, t, 0);
+        c.save();
+        c.translate(rx, H * 0.28);
+        drawStudioScene(c, rw, H * 0.44, t, 0);
+        c.restore();
+        c.strokeStyle = 'rgba(255,255,255,0.25)';
+        c.strokeRect(rx, 16, rw, H - 32);
+      }
+
+      // 5. Slide 3: Split-Screen Gameplay / B-Roll
+      const brCan = document.getElementById('slideBrollCanvas');
+      if (brCan && currentOpusSlide === 3) {
+        const c = brCan.getContext('2d');
+        const W = brCan.width, H = brCan.height;
+        drawStudioScene(c, W, H * 0.54, t, 2);
+        c.fillStyle = '#0D1318';
+        c.fillRect(0, H * 0.54, W, H * 0.46);
+        // Animated retro runner / gameplay grid on bottom half
+        c.strokeStyle = 'rgba(16,185,129,0.25)';
+        for (let gx = 0; gx < W; gx += 36) {
+          c.beginPath(); c.moveTo(gx, H * 0.54); c.lineTo(gx, H); c.stroke();
+        }
+        const bx = ((t * 140) % (W - 60)) + 20;
+        c.fillStyle = '#10B981';
+        c.beginPath();
+        c.roundRect(bx, H * 0.72, 44, 44, 10);
+        c.fill();
+      }
+
+      // 6. Slide 4: Audio Peak Waveform
+      const auCan = document.getElementById('slideAudioCanvas');
+      if (auCan && currentOpusSlide === 4) {
+        const c = auCan.getContext('2d');
+        const W = auCan.width, H = auCan.height;
+        c.fillStyle = '#0B0E11';
+        c.fillRect(0, 0, W, H);
+        const bars = 44;
+        const bw = (W - 80) / bars;
+        for (let i = 0; i < bars; i++) {
+          const amp = (Math.abs(Math.sin(t * 5 + i * 0.35)) * 0.75 + 0.2) * (H * 0.55);
+          c.fillStyle = (i > 10 && i < 18) || (i > 28 && i < 36) ? '#34D399' : '#3F3F46';
+          c.beginPath();
+          c.roundRect(40 + i * bw, H / 2 - amp / 2, bw * 0.62, amp, 6);
+          c.fill();
+        }
+      }
+
+      // 7. Left & Right Peek Side Cards
+      const pl = document.getElementById('peekLeftCanvas');
+      if (pl) drawStudioScene(pl.getContext('2d'), pl.width, pl.height, t + 2, 4);
+      const pr = document.getElementById('peekRightCanvas');
+      if (pr) {
+        const pc = pr.getContext('2d');
+        drawStudioScene(pc, pr.width, pr.height, t + 0.8, 3);
+        pc.fillStyle = '#FACC15';
+        pc.font = '900 16px Montserrat, sans-serif';
+        pc.textAlign = 'center';
+        pc.fillText('TO BREAK', pr.width / 2, pr.height * 0.62);
+        pc.fillText('THROUGH', pr.width / 2, pr.height * 0.68);
+      }
+    }
 
     requestAnimationFrame(renderLoop);
     }

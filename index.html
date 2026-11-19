@@ -158,10 +158,10 @@
   </header>
 
   <!-- ======================================================================= -->
-  <!-- STAGE 1: CLEAN OPUS.PRO HOME WITH REAL PLAYING MP4 VIDEOS               -->
+  <!-- STAGE 1: OPUS.PRO LIVELY SHOWCASE WITH REAL PLAYING VIDEOS & POSTERS    -->
   <!-- ======================================================================= -->
   <div id="stage-dashboard" class="flex-1 bg-black pb-24">
-    <div class="max-w-[1380px] mx-auto px-4 pt-6 space-y-7">
+    <div class="max-w-[1400px] mx-auto px-4 pt-6 space-y-7">
 
       <!-- TOP OPUS.PRO PILL INPUT BAR -->
       <div id="heroDropZone" class="flex flex-wrap items-center justify-center gap-2.5">
@@ -201,47 +201,42 @@
         </div>
       </div>
 
-      <!-- OPUS.PRO CENTERPIECE CAROUSEL WITH REAL HD VIDEOS -->
+      <!-- OPUS.PRO CENTERPIECE SHOWCASE CAROUSEL (VIBRANT REAL VIDEOS + STUDIO POSTERS) -->
       <div class="relative flex items-center justify-center gap-5 pt-1">
 
         <!-- Left Side Peek Card -->
-        <div onclick="stepOpusCarousel(-1)" class="hidden xl:flex w-44 h-[450px] rounded-3xl bg-[#0D0E10] border border-white/[0.08] opacity-55 hover:opacity-85 cursor-pointer transition overflow-hidden flex-col justify-between p-2.5 shrink-0 select-none relative">
-          <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover rounded-2xl bg-zinc-900">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-man-working-on-his-laptop-308-large.mp4" type="video/mp4" />
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4" />
-          </video>
-          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between bg-black/75 backdrop-blur px-2.5 py-1.5 rounded-xl border border-white/10">
+        <div onclick="stepOpusCarousel(-1)" class="hidden xl:flex w-44 h-[450px] rounded-3xl bg-[#111518] border border-white/[0.09] opacity-65 hover:opacity-95 cursor-pointer transition overflow-hidden flex-col justify-between p-2.5 shrink-0 select-none relative">
+          <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover rounded-2xl" data-theme="0" src="https://media.w3.org/2010/05/bunny/trailer.mp4"></video>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none"></div>
+          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between bg-black/75 backdrop-blur px-2.5 py-1.5 rounded-xl border border-white/10 z-10">
             <span class="text-[10px] font-semibold text-zinc-200">Prev Tool</span>
             <span class="text-[10px] font-mono text-emerald-400">60FPS</span>
           </div>
         </div>
 
         <!-- Left Circle Arrow -->
-        <button onclick="stepOpusCarousel(-1)" aria-label="Previous feature" class="hidden sm:flex w-9 h-9 rounded-full bg-[#18181B] hover:bg-[#27272A] border border-white/15 items-center justify-center text-zinc-300 hover:text-white transition shrink-0 z-20">
+        <button onclick="stepOpusCarousel(-1)" aria-label="Previous feature" class="hidden sm:flex w-9 h-9 rounded-full bg-[#18181B] hover:bg-[#27272A] border border-white/15 items-center justify-center text-zinc-300 hover:text-white transition shrink-0 z-20 shadow-lg">
           <i data-lucide="arrow-left" class="w-4 h-4"></i>
         </button>
 
         <!-- MAIN CENTERPIECE OPUS SHOWCASE STAGE -->
-        <div class="opus-stage-card w-full max-w-[800px] min-h-[450px] rounded-3xl relative overflow-hidden flex flex-col items-center justify-between p-5 sm:p-6">
+        <div class="opus-stage-card w-full max-w-[820px] min-h-[450px] rounded-3xl relative overflow-hidden flex flex-col items-center justify-between p-5 sm:p-6">
 
-          <!-- SLIDE 0: AI CLIPPING (REAL 16:9 VIDEO -> 5 REAL 9:16 VIDEOS) -->
-          <div id="opusSlide-0" class="opus-slide w-full flex-1 flex flex-col items-center justify-between">
-            <!-- Top 16:9 Real Video -->
-            <div class="relative w-64 sm:w-80 h-28 rounded-2xl overflow-hidden border border-white/20 bg-zinc-900 shadow-2xl">
-              <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-people-pouring-a-warm-drink-around-a-campfire-513-large.mp4" type="video/mp4" />
-                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4" />
-              </video>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/15"></div>
-              <div class="absolute bottom-2 left-2.5 flex items-center gap-1.5 bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-semibold text-white border border-white/10">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                <span>Studio Master</span>
+          <!-- SLIDE 0: AI CLIPPING (EXACT OPUS.PRO 16:9 MASTER -> 6 FANNED VIRAL SHORTS) -->
+          <div id="opusSlide-0" class="opus-slide w-full flex-1 flex flex-col items-center justify-between opus-fade-in">
+            <!-- Top 16:9 Studio Master Video -->
+            <div class="relative w-64 sm:w-80 h-28 rounded-2xl overflow-hidden border border-white/20 bg-gradient-to-r from-[#162C33] via-[#1E3B42] to-[#132229] shadow-2xl">
+              <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover" data-theme="3" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"></video>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/10 pointer-events-none"></div>
+              <div class="absolute bottom-2 left-2.5 flex items-center gap-1.5 bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-semibold text-white border border-white/10 z-10">
+                <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+                <span>Impact Theory</span>
               </div>
-              <span class="absolute bottom-2 right-2.5 bg-black/80 px-2 py-0.5 rounded text-[10px] font-mono text-zinc-200 border border-white/10">2:01:44</span>
+              <span class="absolute bottom-2 right-2.5 bg-black/80 px-2 py-0.5 rounded text-[10px] font-mono text-zinc-200 border border-white/10 z-10">2:01:44</span>
             </div>
 
-            <!-- Middle Floating Action Pill (Clean, No Bouncing Icons) -->
-            <div class="my-2.5 z-20">
+            <!-- Middle Floating Action Pill + Crisp Pointer -->
+            <div class="relative my-2.5 z-20">
               <div class="bg-[#1C1D21]/95 backdrop-blur-xl border border-white/15 rounded-full pl-4 pr-1.5 py-1.5 flex items-center gap-3 shadow-2xl">
                 <div class="flex items-center gap-2 text-xs text-zinc-300">
                   <i data-lucide="link-2" class="w-3.5 h-3.5 text-zinc-400"></i>
@@ -251,99 +246,69 @@
                   Get clips
                 </button>
               </div>
+              <div class="absolute -bottom-3 right-6 pointer-events-none text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.95)]">
+                <i data-lucide="pointer" class="w-5 h-5 fill-white text-black"></i>
+              </div>
             </div>
 
-            <!-- Bottom 5 Real Playing 9:16 Short Videos (97, 99, 95, 98, 93) -->
-            <div class="w-full max-w-[670px] grid grid-cols-5 gap-2 sm:gap-2.5 pt-2 items-end">
-              <!-- Card 1 (97 - YouTube) -->
-              <div onclick="loadDemoCloudSample('gaming')" class="cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-zinc-900 shadow-xl hover:-translate-y-1 transition">
+            <!-- Bottom 6-Card Asymmetric Viral Strip (Matches Opus.pro Pic 2) -->
+            <div class="w-full max-w-[710px] grid grid-cols-12 gap-2 pt-2 items-end">
+              <!-- Wide Card 1 (97 - YouTube Gaming + Facecam Inset) -->
+              <div onclick="loadDemoCloudSample('gaming')" class="col-span-4 cursor-pointer group relative h-36 sm:h-40 rounded-xl overflow-visible border border-white/20 bg-gradient-to-br from-sky-900 to-emerald-950 shadow-xl hover:-translate-y-1 transition">
                 <div class="w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">▶</div>
-                <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover rounded-xl">
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-gamer-playing-video-games-in-a-dark-room-43527-large.mp4" type="video/mp4" />
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
-                </video>
-                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/85 via-transparent to-black/15 pointer-events-none"></div>
-                <span class="absolute top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-yellow-400 text-black font-montserrat font-black text-[8px] uppercase whitespace-nowrap">CLUTCH PLAY</span>
-                <div class="absolute bottom-1.5 inset-x-2 flex items-center justify-between">
-                  <span class="text-xs font-black text-emerald-400 font-mono">97</span>
-                  <span class="text-[8px] text-zinc-300 font-mono">0:15</span>
+                <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover rounded-xl" data-theme="0" src="https://media.w3.org/2010/05/video/movie_300.mp4"></video>
+                <!-- Streamer Facecam PiP -->
+                <div class="absolute top-2 left-2 w-10 h-8 rounded-md overflow-hidden border border-white/30 bg-zinc-900 shadow-md z-10">
+                  <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover" data-theme="3" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
                 </div>
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                <span class="absolute bottom-1.5 left-2 text-xs font-black text-emerald-400 font-mono z-10">97</span>
+                <span class="absolute bottom-1.5 right-2 text-[9px] text-zinc-300 font-mono z-10">0:15</span>
               </div>
 
-              <!-- Card 2 (99 - Instagram) -->
-              <div onclick="loadDemoCloudSample('podcast')" class="cursor-pointer group relative h-40 sm:h-46 rounded-xl overflow-visible border border-white/25 bg-zinc-900 shadow-2xl hover:-translate-y-1 transition">
+              <!-- Vertical Card 2 (99 - Instagram) -->
+              <div onclick="loadDemoCloudSample('podcast')" class="col-span-2 cursor-pointer group relative h-40 sm:h-44 rounded-xl overflow-visible border border-white/25 bg-gradient-to-b from-fuchsia-950 to-zinc-950 shadow-2xl hover:-translate-y-1 transition">
                 <div class="w-5 h-5 rounded-full bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-bold">◎</div>
-                <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover rounded-xl">
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-talking-on-a-podcast-42651-large.mp4" type="video/mp4" />
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4" />
-                </video>
-                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/85 via-transparent to-black/15 pointer-events-none"></div>
-                <span class="absolute top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-white text-black font-montserrat font-black text-[8px] uppercase whitespace-nowrap">VIRAL HOOK</span>
-                <div class="absolute bottom-1.5 inset-x-2 flex items-center justify-between">
-                  <span class="text-xs font-black text-emerald-400 font-mono">99</span>
-                  <span class="text-[8px] text-zinc-300 font-mono">0:28</span>
-                </div>
+                <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover rounded-xl" data-theme="1" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                <span class="absolute bottom-1.5 left-2 text-xs font-black text-emerald-400 font-mono z-10">99</span>
               </div>
 
-              <!-- Card 3 (95 - LinkedIn) -->
-              <div onclick="loadDemoCloudSample('finance')" class="cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-zinc-900 shadow-xl hover:-translate-y-1 transition">
+              <!-- Vertical Card 3 (95 - LinkedIn) -->
+              <div onclick="loadDemoCloudSample('finance')" class="col-span-2 cursor-pointer group relative h-36 sm:h-40 rounded-xl overflow-visible border border-white/20 bg-gradient-to-b from-cyan-950 to-zinc-950 shadow-xl hover:-translate-y-1 transition">
                 <div class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">in</div>
-                <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover rounded-xl">
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-businessman-talking-on-a-video-call-42646-large.mp4" type="video/mp4" />
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4" />
-                </video>
-                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/85 via-transparent to-black/15 pointer-events-none"></div>
-                <span class="absolute top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-emerald-400 text-black font-montserrat font-black text-[8px] uppercase whitespace-nowrap">KEY RULE</span>
-                <div class="absolute bottom-1.5 inset-x-2 flex items-center justify-between">
-                  <span class="text-xs font-black text-emerald-400 font-mono">95</span>
-                  <span class="text-[8px] text-zinc-300 font-mono">0:45</span>
-                </div>
+                <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover rounded-xl" data-theme="2" src="https://media.w3.org/2010/05/bunny/trailer.mp4"></video>
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                <span class="absolute bottom-1.5 left-2 text-xs font-black text-emerald-400 font-mono z-10">95</span>
               </div>
 
-              <!-- Card 4 (98 - TikTok) -->
-              <div onclick="loadDemoCloudSample('funny')" class="cursor-pointer group relative h-40 sm:h-46 rounded-xl overflow-visible border border-white/25 bg-zinc-900 shadow-2xl hover:-translate-y-1 transition">
+              <!-- Vertical Card 4 (98 - TikTok) -->
+              <div onclick="loadDemoCloudSample('funny')" class="col-span-2 cursor-pointer group relative h-40 sm:h-44 rounded-xl overflow-visible border border-white/25 bg-gradient-to-b from-amber-950 to-zinc-950 shadow-2xl hover:-translate-y-1 transition">
                 <div class="w-5 h-5 rounded-full bg-black border border-white/30 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">♪</div>
-                <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover rounded-xl">
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-friends-laughing-and-having-fun-together-42638-large.mp4" type="video/mp4" />
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoy.mp4" type="video/mp4" />
-                </video>
-                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/85 via-transparent to-black/15 pointer-events-none"></div>
-                <span class="absolute top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-yellow-400 text-black font-montserrat font-black text-[8px] uppercase whitespace-nowrap">TOP MOMENT</span>
-                <div class="absolute bottom-1.5 inset-x-2 flex items-center justify-between">
-                  <span class="text-xs font-black text-emerald-400 font-mono">98</span>
-                  <span class="text-[8px] text-zinc-300 font-mono">1:02</span>
-                </div>
+                <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover rounded-xl" data-theme="3" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"></video>
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                <span class="absolute bottom-1.5 left-2 text-xs font-black text-emerald-400 font-mono z-10">98</span>
               </div>
 
-              <!-- Card 5 (93 - X) -->
-              <div onclick="loadDemoCloudSample('gaming')" class="cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-zinc-900 shadow-xl hover:-translate-y-1 transition">
+              <!-- Vertical Card 5 (93 / 97 - X) -->
+              <div onclick="loadDemoCloudSample('gaming')" class="col-span-2 cursor-pointer group relative h-36 sm:h-40 rounded-xl overflow-visible border border-white/20 bg-gradient-to-b from-indigo-950 to-zinc-950 shadow-xl hover:-translate-y-1 transition">
                 <div class="w-5 h-5 rounded-full bg-zinc-900 border border-white/25 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">𝕏</div>
-                <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover rounded-xl">
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-sports-car-driving-on-a-highway-at-night-42662-large.mp4" type="video/mp4" />
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" type="video/mp4" />
-                </video>
-                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/85 via-transparent to-black/15 pointer-events-none"></div>
-                <span class="absolute top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-white text-black font-montserrat font-black text-[8px] uppercase whitespace-nowrap">HIGHLIGHT</span>
-                <div class="absolute bottom-1.5 inset-x-2 flex items-center justify-between">
-                  <span class="text-xs font-black text-emerald-400 font-mono">93</span>
-                  <span class="text-[8px] text-zinc-300 font-mono">0:19</span>
-                </div>
+                <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover rounded-xl" data-theme="4" src="https://media.w3.org/2010/05/video/movie_300.mp4"></video>
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                <span class="absolute bottom-1.5 left-2 text-xs font-black text-emerald-400 font-mono z-10">93</span>
               </div>
             </div>
           </div>
 
           <!-- SLIDE 1: AI CAPTIONING -->
-          <div id="opusSlide-1" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3">
+          <div id="opusSlide-1" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3 opus-fade-in">
             <div class="flex items-center gap-2 text-xs text-zinc-300">
               <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-semibold">Auto Captions</span>
               <span>1-Click Speech Sync with Word Highlight</span>
             </div>
             <div class="relative w-56 h-80 rounded-2xl overflow-hidden border border-white/20 bg-zinc-900 shadow-2xl">
-              <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-talking-on-a-podcast-42651-large.mp4" type="video/mp4" />
-                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4" />
-              </video>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/15"></div>
+              <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover" data-theme="1" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/15 pointer-events-none"></div>
               <div id="slide1LiveCap" class="absolute bottom-12 inset-x-3 text-center font-montserrat font-black text-base text-yellow-300 drop-shadow-[0_3px_6px_rgba(0,0,0,1)]">
                 AUTO CAPTIONS ON
               </div>
@@ -351,58 +316,43 @@
           </div>
 
           <!-- SLIDE 2: AI REFRAME -->
-          <div id="opusSlide-2" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3">
+          <div id="opusSlide-2" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3 opus-fade-in">
             <div class="flex items-center gap-2 text-xs text-zinc-300">
               <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white font-semibold">Full-Scene No-Crop Reframe</span>
               <span>100% characters visible on left & right</span>
             </div>
             <div class="flex flex-wrap items-center justify-center gap-5">
               <div class="relative w-64 h-36 rounded-2xl overflow-hidden border border-emerald-400/50 bg-zinc-900 shadow-xl">
-                <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover">
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-friends-laughing-and-having-fun-together-42638-large.mp4" type="video/mp4" />
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4" />
-                </video>
-                <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 text-[10px] font-mono text-emerald-300">16:9 FULL SCENE</span>
+                <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover" data-theme="3" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"></video>
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 text-[10px] font-mono text-emerald-300 z-10">16:9 FULL SCENE</span>
               </div>
               <i data-lucide="arrow-right" class="w-5 h-5 text-zinc-400"></i>
               <div class="relative w-44 h-76 rounded-2xl overflow-hidden border border-white/25 bg-zinc-900 shadow-2xl flex items-center justify-center">
-                <video autoplay loop muted playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover blur-xl opacity-45 scale-125">
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-friends-laughing-and-having-fun-together-42638-large.mp4" type="video/mp4" />
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4" />
-                </video>
-                <video autoplay loop muted playsinline preload="auto" class="relative z-10 w-full aspect-video object-cover shadow-2xl border-y border-white/15">
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-friends-laughing-and-having-fun-together-42638-large.mp4" type="video/mp4" />
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4" />
-                </video>
+                <video autoplay loop muted playsinline class="showcase-vid absolute inset-0 w-full h-full object-cover blur-xl opacity-45 scale-125" data-theme="3" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"></video>
+                <video autoplay loop muted playsinline class="showcase-vid relative z-10 w-full aspect-video object-cover shadow-2xl border-y border-white/15" data-theme="3" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"></video>
                 <span class="absolute bottom-2.5 z-20 px-2 py-0.5 rounded bg-black/75 text-[9px] font-mono text-white">9:16 NO-CROP</span>
               </div>
             </div>
           </div>
 
           <!-- SLIDE 3: AI B-ROLL -->
-          <div id="opusSlide-3" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3">
+          <div id="opusSlide-3" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3 opus-fade-in">
             <div class="flex items-center gap-2 text-xs text-zinc-300">
               <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white font-semibold">Split-Screen Retention Mode</span>
               <span>Top Speaker + Bottom Action / Gameplay</span>
             </div>
             <div class="w-52 h-80 rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl flex flex-col">
               <div class="h-1/2 relative border-b border-white/15">
-                <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover">
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-talking-on-a-podcast-42651-large.mp4" type="video/mp4" />
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoy.mp4" type="video/mp4" />
-                </video>
+                <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover" data-theme="2" src="https://media.w3.org/2010/05/bunny/trailer.mp4"></video>
               </div>
               <div class="h-1/2 relative">
-                <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover">
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-gamer-playing-video-games-in-a-dark-room-43527-large.mp4" type="video/mp4" />
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
-                </video>
+                <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover" data-theme="0" src="https://media.w3.org/2010/05/video/movie_300.mp4"></video>
               </div>
             </div>
           </div>
 
           <!-- SLIDE 4: AI AUDIO ENHANCE -->
-          <div id="opusSlide-4" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-4">
+          <div id="opusSlide-4" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-4 opus-fade-in">
             <div class="flex items-center gap-2 text-xs text-zinc-300">
               <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 font-semibold">Vocal Energy Peak Slicer</span>
               <span>60FPS 1080p / 2K Export • Zero Watermark</span>
@@ -420,20 +370,19 @@
         </div>
 
         <!-- Right Circle Arrow -->
-        <button onclick="stepOpusCarousel(1)" aria-label="Next feature" class="hidden sm:flex w-9 h-9 rounded-full bg-[#18181B] hover:bg-[#27272A] border border-white/15 items-center justify-center text-zinc-300 hover:text-white transition shrink-0 z-20">
+        <button onclick="stepOpusCarousel(1)" aria-label="Next feature" class="hidden sm:flex w-9 h-9 rounded-full bg-[#18181B] hover:bg-[#27272A] border border-white/15 items-center justify-center text-zinc-300 hover:text-white transition shrink-0 z-20 shadow-lg">
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </button>
 
-        <!-- Right Side Peek Card -->
-        <div onclick="stepOpusCarousel(1)" class="hidden xl:flex w-44 h-[450px] rounded-3xl bg-[#0D0E10] border border-white/[0.08] opacity-65 hover:opacity-95 cursor-pointer transition overflow-hidden flex-col justify-between p-2.5 shrink-0 select-none relative">
-          <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover rounded-2xl bg-zinc-900">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-talking-on-a-podcast-42651-large.mp4" type="video/mp4" />
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoy.mp4" type="video/mp4" />
-          </video>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between bg-black/75 backdrop-blur px-2.5 py-1.5 rounded-xl border border-white/10">
-            <span class="text-[10px] font-semibold text-white">Next Tool</span>
-            <span class="text-[10px] font-mono text-emerald-400">98</span>
+        <!-- Right Side Peek Card (Matches Opus.pro Pic 2 Right Podcast Card with Caption Overlay) -->
+        <div onclick="stepOpusCarousel(1)" class="hidden xl:flex w-44 h-[450px] rounded-3xl bg-[#181412] border border-white/[0.09] opacity-75 hover:opacity-95 cursor-pointer transition overflow-hidden flex-col justify-between p-2.5 shrink-0 select-none relative">
+          <video autoplay loop muted playsinline class="showcase-vid w-full h-full object-cover rounded-2xl" data-theme="3" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"></video>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/15 pointer-events-none"></div>
+          <div class="absolute inset-x-4 bottom-12 text-center font-montserrat font-black text-sm tracking-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,1)]">
+            EVER <span class="text-emerald-400">FELT</span>
+          </div>
+          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between bg-black/75 backdrop-blur px-2.5 py-1 rounded-lg border border-white/10">
+            <span class="text-[9px] font-semibold text-zinc-300 truncate">YOUNG AND PROFITING</span>
           </div>
         </div>
       </div>
@@ -1025,10 +974,63 @@
       if (stage === 'editor' && state.clips.length) selectClip(state.activeClipIndex);
       lucide.createIcons();
 
-    document.querySelectorAll('video[autoplay]').forEach(v => {
+
+    function attachCinematicFallbackStream(vid, theme = 0) {
+      if (vid.dataset.fallbackAttached) return;
+      vid.dataset.fallbackAttached = '1';
+      const c = document.createElement('canvas');
+      c.width = 360;
+      c.height = 540;
+      const g = c.getContext('2d');
+      const grads = [
+        ['#0F2936', '#164E63', '#0284C7'],
+        ['#2E1042', '#581C87', '#9333EA'],
+        ['#0B2E26', '#065F46', '#10B981'],
+        ['#361B0E', '#7C2D12', '#EA580C'],
+        ['#181B2C', '#312E81', '#4F46E5']
+      ];
+      const pal = grads[theme % grads.length];
+      let f = 0;
+      setInterval(() => {
+        const t = f * 0.03;
+        const lg = g.createLinearGradient(0, 0, c.width, c.height);
+        lg.addColorStop(0, pal[0]);
+        lg.addColorStop(0.5, pal[1]);
+        lg.addColorStop(1, '#09090B');
+        g.fillStyle = lg;
+        g.fillRect(0, 0, c.width, c.height);
+
+        g.save();
+        g.globalAlpha = 0.35;
+        g.fillStyle = pal[2];
+        g.beginPath();
+        g.arc(c.width * (0.5 + Math.sin(t) * 0.25), c.height * (0.4 + Math.cos(t * 0.8) * 0.15), 140, 0, Math.PI * 2);
+        g.fill();
+        g.restore();
+
+        // Subtle studio light sweep
+        const sweepX = ((f * 3) % (c.width + 200)) - 100;
+        const sg = g.createLinearGradient(sweepX - 60, 0, sweepX + 60, c.height);
+        sg.addColorStop(0, 'transparent');
+        sg.addColorStop(0.5, 'rgba(255,255,255,0.08)');
+        sg.addColorStop(1, 'transparent');
+        g.fillStyle = sg;
+        g.fillRect(0, 0, c.width, c.height);
+        f++;
+      }, 33);
+      vid.srcObject = c.captureStream(30);
+      vid.play().catch(() => {});
+    }
+
+    document.querySelectorAll('video.showcase-vid').forEach(v => {
       v.muted = true;
+      v.addEventListener('error', () => attachCinematicFallbackStream(v, +(v.dataset.theme || 0)));
       v.play().catch(() => {});
+      setTimeout(() => {
+        if (v.readyState < 2) attachCinematicFallbackStream(v, +(v.dataset.theme || 0));
+      }, 1800);
     });
+
 
     }
 
@@ -1124,17 +1126,17 @@
     }
 
     const REAL_SAMPLE_STREAMS = {
-      funny: 'https://assets.mixkit.co/videos/preview/mixkit-friends-laughing-and-having-fun-together-42638-large.mp4',
-      podcast: 'https://assets.mixkit.co/videos/preview/mixkit-young-woman-talking-on-a-podcast-42651-large.mp4',
-      finance: 'https://assets.mixkit.co/videos/preview/mixkit-businessman-talking-on-a-video-call-42646-large.mp4',
-      gaming: 'https://assets.mixkit.co/videos/preview/mixkit-gamer-playing-video-games-in-a-dark-room-43527-large.mp4'
+      funny: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+      podcast: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
+      finance: 'https://media.w3.org/2010/05/bunny/trailer.mp4',
+      gaming: 'https://media.w3.org/2010/05/video/movie_300.mp4'
     };
 
     const FALLBACK_SAMPLE_STREAMS = {
-      funny: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-      podcast: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
-      finance: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-      gaming: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
+      funny: 'https://media.w3.org/2010/05/bunny/trailer.mp4',
+      podcast: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+      finance: 'https://media.w3.org/2010/05/video/movie_300.mp4',
+      gaming: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
     };
 
     function loadDemoCloudSample(niche = 'podcast') {
@@ -1362,10 +1364,63 @@
 
       lucide.createIcons();
 
-    document.querySelectorAll('video[autoplay]').forEach(v => {
+
+    function attachCinematicFallbackStream(vid, theme = 0) {
+      if (vid.dataset.fallbackAttached) return;
+      vid.dataset.fallbackAttached = '1';
+      const c = document.createElement('canvas');
+      c.width = 360;
+      c.height = 540;
+      const g = c.getContext('2d');
+      const grads = [
+        ['#0F2936', '#164E63', '#0284C7'],
+        ['#2E1042', '#581C87', '#9333EA'],
+        ['#0B2E26', '#065F46', '#10B981'],
+        ['#361B0E', '#7C2D12', '#EA580C'],
+        ['#181B2C', '#312E81', '#4F46E5']
+      ];
+      const pal = grads[theme % grads.length];
+      let f = 0;
+      setInterval(() => {
+        const t = f * 0.03;
+        const lg = g.createLinearGradient(0, 0, c.width, c.height);
+        lg.addColorStop(0, pal[0]);
+        lg.addColorStop(0.5, pal[1]);
+        lg.addColorStop(1, '#09090B');
+        g.fillStyle = lg;
+        g.fillRect(0, 0, c.width, c.height);
+
+        g.save();
+        g.globalAlpha = 0.35;
+        g.fillStyle = pal[2];
+        g.beginPath();
+        g.arc(c.width * (0.5 + Math.sin(t) * 0.25), c.height * (0.4 + Math.cos(t * 0.8) * 0.15), 140, 0, Math.PI * 2);
+        g.fill();
+        g.restore();
+
+        // Subtle studio light sweep
+        const sweepX = ((f * 3) % (c.width + 200)) - 100;
+        const sg = g.createLinearGradient(sweepX - 60, 0, sweepX + 60, c.height);
+        sg.addColorStop(0, 'transparent');
+        sg.addColorStop(0.5, 'rgba(255,255,255,0.08)');
+        sg.addColorStop(1, 'transparent');
+        g.fillStyle = sg;
+        g.fillRect(0, 0, c.width, c.height);
+        f++;
+      }, 33);
+      vid.srcObject = c.captureStream(30);
+      vid.play().catch(() => {});
+    }
+
+    document.querySelectorAll('video.showcase-vid').forEach(v => {
       v.muted = true;
+      v.addEventListener('error', () => attachCinematicFallbackStream(v, +(v.dataset.theme || 0)));
       v.play().catch(() => {});
+      setTimeout(() => {
+        if (v.readyState < 2) attachCinematicFallbackStream(v, +(v.dataset.theme || 0));
+      }, 1800);
     });
+
 
       requestAnimationFrame(() => {
         document.querySelectorAll('.score-ring-circle').forEach(el => {
@@ -1913,10 +1968,63 @@
       }
       lucide.createIcons();
 
-    document.querySelectorAll('video[autoplay]').forEach(v => {
+
+    function attachCinematicFallbackStream(vid, theme = 0) {
+      if (vid.dataset.fallbackAttached) return;
+      vid.dataset.fallbackAttached = '1';
+      const c = document.createElement('canvas');
+      c.width = 360;
+      c.height = 540;
+      const g = c.getContext('2d');
+      const grads = [
+        ['#0F2936', '#164E63', '#0284C7'],
+        ['#2E1042', '#581C87', '#9333EA'],
+        ['#0B2E26', '#065F46', '#10B981'],
+        ['#361B0E', '#7C2D12', '#EA580C'],
+        ['#181B2C', '#312E81', '#4F46E5']
+      ];
+      const pal = grads[theme % grads.length];
+      let f = 0;
+      setInterval(() => {
+        const t = f * 0.03;
+        const lg = g.createLinearGradient(0, 0, c.width, c.height);
+        lg.addColorStop(0, pal[0]);
+        lg.addColorStop(0.5, pal[1]);
+        lg.addColorStop(1, '#09090B');
+        g.fillStyle = lg;
+        g.fillRect(0, 0, c.width, c.height);
+
+        g.save();
+        g.globalAlpha = 0.35;
+        g.fillStyle = pal[2];
+        g.beginPath();
+        g.arc(c.width * (0.5 + Math.sin(t) * 0.25), c.height * (0.4 + Math.cos(t * 0.8) * 0.15), 140, 0, Math.PI * 2);
+        g.fill();
+        g.restore();
+
+        // Subtle studio light sweep
+        const sweepX = ((f * 3) % (c.width + 200)) - 100;
+        const sg = g.createLinearGradient(sweepX - 60, 0, sweepX + 60, c.height);
+        sg.addColorStop(0, 'transparent');
+        sg.addColorStop(0.5, 'rgba(255,255,255,0.08)');
+        sg.addColorStop(1, 'transparent');
+        g.fillStyle = sg;
+        g.fillRect(0, 0, c.width, c.height);
+        f++;
+      }, 33);
+      vid.srcObject = c.captureStream(30);
+      vid.play().catch(() => {});
+    }
+
+    document.querySelectorAll('video.showcase-vid').forEach(v => {
       v.muted = true;
+      v.addEventListener('error', () => attachCinematicFallbackStream(v, +(v.dataset.theme || 0)));
       v.play().catch(() => {});
+      setTimeout(() => {
+        if (v.readyState < 2) attachCinematicFallbackStream(v, +(v.dataset.theme || 0));
+      }, 1800);
     });
+
 
     }
 
@@ -1963,10 +2071,63 @@
         : '<i data-lucide="pause" class="w-4 h-4 fill-current"></i>';
       lucide.createIcons();
 
-    document.querySelectorAll('video[autoplay]').forEach(v => {
+
+    function attachCinematicFallbackStream(vid, theme = 0) {
+      if (vid.dataset.fallbackAttached) return;
+      vid.dataset.fallbackAttached = '1';
+      const c = document.createElement('canvas');
+      c.width = 360;
+      c.height = 540;
+      const g = c.getContext('2d');
+      const grads = [
+        ['#0F2936', '#164E63', '#0284C7'],
+        ['#2E1042', '#581C87', '#9333EA'],
+        ['#0B2E26', '#065F46', '#10B981'],
+        ['#361B0E', '#7C2D12', '#EA580C'],
+        ['#181B2C', '#312E81', '#4F46E5']
+      ];
+      const pal = grads[theme % grads.length];
+      let f = 0;
+      setInterval(() => {
+        const t = f * 0.03;
+        const lg = g.createLinearGradient(0, 0, c.width, c.height);
+        lg.addColorStop(0, pal[0]);
+        lg.addColorStop(0.5, pal[1]);
+        lg.addColorStop(1, '#09090B');
+        g.fillStyle = lg;
+        g.fillRect(0, 0, c.width, c.height);
+
+        g.save();
+        g.globalAlpha = 0.35;
+        g.fillStyle = pal[2];
+        g.beginPath();
+        g.arc(c.width * (0.5 + Math.sin(t) * 0.25), c.height * (0.4 + Math.cos(t * 0.8) * 0.15), 140, 0, Math.PI * 2);
+        g.fill();
+        g.restore();
+
+        // Subtle studio light sweep
+        const sweepX = ((f * 3) % (c.width + 200)) - 100;
+        const sg = g.createLinearGradient(sweepX - 60, 0, sweepX + 60, c.height);
+        sg.addColorStop(0, 'transparent');
+        sg.addColorStop(0.5, 'rgba(255,255,255,0.08)');
+        sg.addColorStop(1, 'transparent');
+        g.fillStyle = sg;
+        g.fillRect(0, 0, c.width, c.height);
+        f++;
+      }, 33);
+      vid.srcObject = c.captureStream(30);
+      vid.play().catch(() => {});
+    }
+
+    document.querySelectorAll('video.showcase-vid').forEach(v => {
       v.muted = true;
+      v.addEventListener('error', () => attachCinematicFallbackStream(v, +(v.dataset.theme || 0)));
       v.play().catch(() => {});
+      setTimeout(() => {
+        if (v.readyState < 2) attachCinematicFallbackStream(v, +(v.dataset.theme || 0));
+      }, 1800);
     });
+
 
     }
 
@@ -2284,10 +2445,63 @@
     document.getElementById('savedCountBadge').textContent = `(${state.savedProjects.length})`;
     lucide.createIcons();
 
-    document.querySelectorAll('video[autoplay]').forEach(v => {
+
+    function attachCinematicFallbackStream(vid, theme = 0) {
+      if (vid.dataset.fallbackAttached) return;
+      vid.dataset.fallbackAttached = '1';
+      const c = document.createElement('canvas');
+      c.width = 360;
+      c.height = 540;
+      const g = c.getContext('2d');
+      const grads = [
+        ['#0F2936', '#164E63', '#0284C7'],
+        ['#2E1042', '#581C87', '#9333EA'],
+        ['#0B2E26', '#065F46', '#10B981'],
+        ['#361B0E', '#7C2D12', '#EA580C'],
+        ['#181B2C', '#312E81', '#4F46E5']
+      ];
+      const pal = grads[theme % grads.length];
+      let f = 0;
+      setInterval(() => {
+        const t = f * 0.03;
+        const lg = g.createLinearGradient(0, 0, c.width, c.height);
+        lg.addColorStop(0, pal[0]);
+        lg.addColorStop(0.5, pal[1]);
+        lg.addColorStop(1, '#09090B');
+        g.fillStyle = lg;
+        g.fillRect(0, 0, c.width, c.height);
+
+        g.save();
+        g.globalAlpha = 0.35;
+        g.fillStyle = pal[2];
+        g.beginPath();
+        g.arc(c.width * (0.5 + Math.sin(t) * 0.25), c.height * (0.4 + Math.cos(t * 0.8) * 0.15), 140, 0, Math.PI * 2);
+        g.fill();
+        g.restore();
+
+        // Subtle studio light sweep
+        const sweepX = ((f * 3) % (c.width + 200)) - 100;
+        const sg = g.createLinearGradient(sweepX - 60, 0, sweepX + 60, c.height);
+        sg.addColorStop(0, 'transparent');
+        sg.addColorStop(0.5, 'rgba(255,255,255,0.08)');
+        sg.addColorStop(1, 'transparent');
+        g.fillStyle = sg;
+        g.fillRect(0, 0, c.width, c.height);
+        f++;
+      }, 33);
+      vid.srcObject = c.captureStream(30);
+      vid.play().catch(() => {});
+    }
+
+    document.querySelectorAll('video.showcase-vid').forEach(v => {
       v.muted = true;
+      v.addEventListener('error', () => attachCinematicFallbackStream(v, +(v.dataset.theme || 0)));
       v.play().catch(() => {});
+      setTimeout(() => {
+        if (v.readyState < 2) attachCinematicFallbackStream(v, +(v.dataset.theme || 0));
+      }, 1800);
     });
+
 
     requestAnimationFrame(renderLoop);
   </script>

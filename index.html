@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ClipIT — AI Video Clipping & Auto-Captions Studio</title>
-  <meta name="description" content="Drop a video link or upload a file to get viral 9:16 clips in 1 click. AI clipping, CapCut auto captioning, Full-Scene No-Crop reframe, and 60FPS HD export." />
+  <title>ClipIT — #1 AI Video Clipping & Auto-Captions Studio (OpusClip 4.0 Edition)</title>
+  <meta name="description" content="Turn 1 long video into 10 viral clips in 1 click. ClipAnything AI, Virality Score, CapCut Auto Captions, Full-Scene No-Crop reframe, and 60FPS HD export." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,20 +55,20 @@
       border: 2px solid #09090B;
     }
 
-    /* EXACT OPUS.PRO CENTERPIECE SHOWCASE GRADIENT & SMOOTH TRANSITIONS */
+    /* OPUS.PRO EXACT SHOWCASE STAGE GRADIENT & PILL BARS */
     .opus-stage-card {
-      background: radial-gradient(120% 100% at 50% 0%, #1E2D30 0%, #12181A 55%, #0D1012 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+      background: radial-gradient(125% 100% at 50% 0%, #1F3033 0%, #111719 52%, #0B0D0F 100%);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.92);
     }
     .opus-pill-bar {
       background: #141416;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
     }
     .opus-pill-bar:focus-within, .opus-pill-bar.drag-over {
-      border-color: rgba(255, 255, 255, 0.35);
-      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06), 0 16px 40px rgba(0, 0, 0, 0.85);
+      border-color: rgba(255, 255, 255, 0.38);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.07), 0 16px 40px rgba(0, 0, 0, 0.85);
     }
 
     @keyframes smoothFadeSlide {
@@ -80,19 +80,25 @@
       50% { transform: translate(-5px, -4px); }
     }
     @keyframes fanCardRise {
-      from { opacity: 0; transform: translateY(16px) scale(0.96); }
+      from { opacity: 0; transform: translateY(18px) scale(0.96); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
+    @keyframes popCaption {
+      0% { transform: scale(0.88); }
+      60% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
     .opus-fade-in { animation: smoothFadeSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
-    .cursor-bob { animation: floatCursor 2.8s ease-in-out infinite; }
+    .cursor-bob { animation: floatCursor 2.6s ease-in-out infinite; }
     .fan-card { animation: fanCardRise 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .cap-pop { display: inline-block; animation: popCaption 0.3s ease-out both; }
     .opus-card {
       background: #111114;
       border: 1px solid rgba(255, 255, 255, 0.08);
       transition: border-color 0.2s ease, transform 0.2s ease;
     }
     .opus-card:hover {
-      border-color: rgba(255, 255, 255, 0.20);
+      border-color: rgba(255, 255, 255, 0.22);
       transform: translateY(-2px);
     }
     .metric-bar-fill { transition: width 0.85s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -101,18 +107,17 @@
 </head>
 <body class="min-h-screen flex flex-col bg-black text-white antialiased selection:bg-white selection:text-black">
 
-  <!-- OPUS.PRO SLIM TOP ANNOUNCEMENT BAR -->
+  <!-- OPUS.PRO TOP ANNOUNCEMENT BANNER -->
   <div class="border-b border-white/[0.08] bg-[#0A0A0C] py-2 px-4 text-center text-[11px] sm:text-xs text-zinc-300">
-    <button onclick="switchStage('editor')" class="inline-flex items-center gap-1.5 hover:text-white transition">
-      <span class="font-medium">ClipIT Studio 4.0 is here. Turn 1 video into 10 viral shorts — 60FPS Zero Watermark</span>
+    <button onclick="switchStage('dashboard')" class="inline-flex items-center gap-1.5 hover:text-white transition">
+      <span class="font-medium">ClipIT 4.0 is here. ClipAnything™ AI + CapCut Auto Captions + 60FPS Zero Watermark</span>
       <span class="text-zinc-400">→</span>
     </button>
   </div>
 
-  <!-- OPUS.PRO MINIMAL MONOCHROME HEADER -->
+  <!-- OPUS.PRO MONOCHROME HEADER -->
   <header class="h-16 bg-black/95 backdrop-blur-xl px-5 lg:px-10 flex items-center justify-between sticky top-0 z-40">
     <div class="flex items-center gap-8">
-      <!-- Opus-style Swirl + Bold Wordmark -->
       <button onclick="switchStage('dashboard')" class="flex items-center gap-2.5 group text-left">
         <div class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center group-hover:scale-105 transition">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
@@ -122,7 +127,6 @@
         <span class="font-display font-extrabold tracking-tight text-xl text-white">ClipIT</span>
       </button>
 
-      <!-- Clean Center Nav Links -->
       <nav class="hidden md:flex items-center gap-6 text-[13px] font-medium text-zinc-300">
         <button onclick="switchStage('dashboard')" id="navStage-dashboard" class="text-white font-semibold transition">Home</button>
         <button onclick="switchStage('results')" id="navStage-results" class="text-zinc-400 hover:text-white transition flex items-center gap-1.5">
@@ -130,6 +134,7 @@
           <span id="headerClipCount" class="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-white/10 text-zinc-200">0</span>
         </button>
         <button onclick="switchStage('editor')" id="navStage-editor" class="text-zinc-400 hover:text-white transition">Studio Editor</button>
+        <a href="#opus-features" onclick="switchStage('dashboard')" class="text-zinc-400 hover:text-white transition">Features</a>
         <button onclick="openProjectsModal()" class="text-zinc-400 hover:text-white transition flex items-center gap-1">
           <span>Projects</span>
           <span id="savedCountBadge" class="text-[10px] font-mono text-zinc-500">(0)</span>
@@ -137,7 +142,6 @@
       </nav>
     </div>
 
-    <!-- Right Opus Pill Buttons -->
     <div class="flex items-center gap-3">
       <select id="globalChannelSelect" onchange="switchChannelPreset(this.value)" class="hidden sm:block bg-[#121215] border border-white/10 hover:border-white/25 rounded-full px-3.5 py-1.5 text-xs font-medium text-zinc-300 outline-none">
         <option value="@ClipIT.Studio|mrbeast|hormozi|viral">@ClipIT.Studio</option>
@@ -158,10 +162,10 @@
   </header>
 
   <!-- ======================================================================= -->
-  <!-- STAGE 1: OPUS.PRO LIVE-VIDEO SHOWCASE CAROUSEL & FULL EXPERIENCE        -->
+  <!-- STAGE 1: OPUS.PRO HOME WITH LIVE-PLAYING MULTI-SCENE SHOWCASE           -->
   <!-- ======================================================================= -->
   <div id="stage-dashboard" class="flex-1 bg-black pb-24">
-    <div class="max-w-[1380px] mx-auto px-4 pt-5 space-y-8">
+    <div class="max-w-[1380px] mx-auto px-4 pt-5 space-y-7">
 
       <!-- TOP OPUS.PRO PILL INPUT BAR -->
       <div id="heroDropZone" class="flex flex-wrap items-center justify-center gap-2.5">
@@ -183,7 +187,8 @@
           Record Tab / Screen
         </button>
 
-        <div class="flex items-center gap-1.5">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <input type="text" id="clipAnythingPrompt" placeholder="ClipAnything: e.g. funny moments..." class="bg-[#121215] border border-white/10 rounded-full px-3.5 py-2 text-xs text-white placeholder-zinc-500 outline-none w-48 focus:border-white/30" />
           <select id="dashNicheSelect" onchange="syncNicheSelectors(this.value)" class="bg-[#121215] border border-white/10 rounded-full px-3 py-2 text-xs text-zinc-300 outline-none">
             <option value="auto">Auto Vibe</option>
             <option value="funny">😂 Funny</option>
@@ -200,14 +205,15 @@
         </div>
       </div>
 
-      <!-- OPUS.PRO CENTERPIECE LIVE-PLAYING VIDEO SHOWCASE CAROUSEL -->
+      <!-- OPUS.PRO CENTERPIECE SHOWCASE CAROUSEL (100% ZERO-BLACK-SCREEN LIVE 60FPS SCENES + MP4 OVERLAYS) -->
       <div class="relative flex items-center justify-center gap-5 pt-1">
 
-        <!-- Left Side Peek Card (Live Mini Preview) -->
-        <div onclick="stepOpusCarousel(-1)" class="hidden xl:flex w-44 h-[450px] rounded-3xl bg-[#0D0E10] border border-white/[0.07] opacity-55 hover:opacity-85 cursor-pointer transition overflow-hidden flex-col justify-between p-3.5 shrink-0 select-none relative">
-          <canvas id="peekLeftCanvas" width="240" height="420" class="w-full h-full object-cover rounded-2xl"></canvas>
-          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between bg-black/75 backdrop-blur px-2.5 py-1.5 rounded-xl border border-white/10">
-            <span class="text-[10px] font-semibold text-zinc-300">← Prev Tool</span>
+        <!-- Left Side Peek Card -->
+        <div onclick="stepOpusCarousel(-1)" class="hidden xl:flex w-44 h-[455px] rounded-3xl bg-[#0D0E10] border border-white/[0.08] opacity-65 hover:opacity-95 cursor-pointer transition overflow-hidden flex-col justify-between p-2.5 shrink-0 select-none relative">
+          <canvas id="peekLeftCanvas" width="240" height="420" class="w-full h-full object-cover rounded-2xl block"></canvas>
+          <video autoplay loop muted playsinline onerror="this.style.display='none'" class="absolute inset-2.5 w-[calc(100%-20px)] h-[calc(100%-20px)] object-cover rounded-2xl opacity-75" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
+          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between bg-black/80 backdrop-blur px-2.5 py-1.5 rounded-xl border border-white/10 z-10">
+            <span class="text-[10px] font-semibold text-zinc-200">← Prev Tool</span>
             <span class="text-[10px] font-mono text-emerald-400">60FPS</span>
           </div>
         </div>
@@ -218,28 +224,30 @@
         </button>
 
         <!-- MAIN CENTERPIECE OPUS SHOWCASE STAGE -->
-        <div class="opus-stage-card w-full max-w-[790px] min-h-[450px] rounded-3xl relative overflow-hidden flex flex-col items-center justify-between p-5 sm:p-6">
+        <div class="opus-stage-card w-full max-w-[800px] min-h-[455px] rounded-3xl relative overflow-hidden flex flex-col items-center justify-between p-5 sm:p-6">
 
-          <!-- SLIDE 0: AI CLIPPING (LIVE PLAYING SOURCE VIDEO -> 5 LIVE PLAYING 9:16 VIRAL SHORTS) -->
+          <!-- SLIDE 0: AI CLIPPING -->
           <div id="opusSlide-0" class="opus-slide w-full flex-1 flex flex-col items-center justify-between opus-fade-in">
-            <!-- Top 16:9 Live Playing Podcast / Gaming Master Video -->
-            <div class="relative w-64 sm:w-76 h-28 rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl">
+            <!-- Top 16:9 Live Playing Master Video -->
+            <div class="relative w-64 sm:w-80 h-28 rounded-2xl overflow-hidden border border-white/20 bg-[#141D21] shadow-2xl">
               <canvas id="showcaseMasterCanvas" width="480" height="220" class="w-full h-full object-cover block"></canvas>
-              <div class="absolute bottom-2 left-2.5 flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-semibold text-white border border-white/10">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Impact Podcast</span>
+              <video autoplay loop muted playsinline onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover opacity-65" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"></video>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/15"></div>
+              <div class="absolute bottom-2 left-2.5 flex items-center gap-1.5 bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-semibold text-white border border-white/10 z-10">
+                <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                <span>Impact Studio</span>
               </div>
-              <span class="absolute bottom-2 right-2.5 bg-black/80 px-2 py-0.5 rounded text-[10px] font-mono text-zinc-200 border border-white/10">2:01:44</span>
+              <span class="absolute bottom-2 right-2.5 bg-black/80 px-2 py-0.5 rounded text-[10px] font-mono text-zinc-200 border border-white/10 z-10">2:01:44</span>
             </div>
 
-            <!-- Middle Floating Action Pill + Animated Pointer Hand -->
+            <!-- Middle Floating Action Pill + Pointer Hand -->
             <div class="relative my-2.5 z-20">
               <div class="bg-[#1C1D21]/95 backdrop-blur-xl border border-white/15 rounded-full pl-4 pr-1.5 py-1.5 flex items-center gap-3 shadow-2xl">
                 <div class="flex items-center gap-2 text-xs text-zinc-300">
                   <i data-lucide="link-2" class="w-3.5 h-3.5 text-zinc-400"></i>
                   <span>Drop a long video and ...</span>
                 </div>
-                <button onclick="generateSamplePodcast()" class="px-4 py-1.5 rounded-full bg-black hover:bg-zinc-900 text-white text-xs font-bold border border-white/15 transition">
+                <button onclick="loadDemoCloudSample('funny')" class="px-4 py-1.5 rounded-full bg-black hover:bg-zinc-900 text-white text-xs font-bold border border-white/15 transition">
                   Get clips
                 </button>
               </div>
@@ -248,59 +256,105 @@
               </div>
             </div>
 
-            <!-- Bottom 5 Live-Playing 9:16 Viral Short Cards (97, 99, 95, 98, 93) -->
-            <div class="w-full max-w-[660px] grid grid-cols-5 gap-2 sm:gap-2.5 pt-2 items-end">
+            <!-- Bottom 5 Fanned-Out Live-Playing 9:16 Viral Short Cards (97, 99, 95, 98, 93) -->
+            <div class="w-full max-w-[670px] grid grid-cols-5 gap-2 sm:gap-2.5 pt-2 items-end">
               <!-- Card 1 (97 - YouTube) -->
-              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-black shadow-xl hover:-translate-y-1.5 transition" style="animation-delay:0.04s">
+              <div onclick="loadDemoCloudSample('gaming')" class="fan-card cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-[#11191E] shadow-xl hover:-translate-y-1.5 transition" style="animation-delay:0.04s">
                 <div class="w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">▶</div>
-                <canvas id="fanCanvas0" width="180" height="280" class="w-full h-full object-cover rounded-xl block"></canvas>
+                <canvas id="fanCanvas0" width="200" height="320" class="w-full h-full object-cover rounded-xl block"></canvas>
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/85 via-transparent to-black/15 pointer-events-none"></div>
+                <span class="absolute top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-yellow-400 text-black font-montserrat font-black text-[8px] uppercase whitespace-nowrap z-10">INSANE CLUTCH</span>
+                <span id="fanCap0" class="cap-pop absolute bottom-7 inset-x-1 text-center font-montserrat font-black text-[10px] text-yellow-300 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-10">NO WAY 🔥</span>
+                <div class="absolute bottom-1.5 inset-x-2 flex items-center justify-between z-10">
+                  <span class="text-xs font-black text-emerald-400 font-mono">97</span>
+                  <span class="text-[8px] text-zinc-300 font-mono">0:15</span>
+                </div>
               </div>
 
               <!-- Card 2 (99 - Instagram) -->
-              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-40 sm:h-46 rounded-xl overflow-visible border border-white/25 bg-black shadow-2xl hover:-translate-y-1.5 transition" style="animation-delay:0.10s">
+              <div onclick="loadDemoCloudSample('funny')" class="fan-card cursor-pointer group relative h-40 sm:h-46 rounded-xl overflow-visible border border-white/25 bg-[#1B1224] shadow-2xl hover:-translate-y-1.5 transition" style="animation-delay:0.10s">
                 <div class="w-5 h-5 rounded-full bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-bold">◎</div>
-                <canvas id="fanCanvas1" width="180" height="300" class="w-full h-full object-cover rounded-xl block"></canvas>
+                <canvas id="fanCanvas1" width="200" height="340" class="w-full h-full object-cover rounded-xl block"></canvas>
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/85 via-transparent to-black/15 pointer-events-none"></div>
+                <span class="absolute top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-white text-black font-montserrat font-black text-[8px] uppercase whitespace-nowrap z-10">WAIT FOR IT 😂</span>
+                <span id="fanCap1" class="cap-pop absolute bottom-7 inset-x-1 text-center font-montserrat font-black text-[10px] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-10">BRO WHAT 💀</span>
+                <div class="absolute bottom-1.5 inset-x-2 flex items-center justify-between z-10">
+                  <span class="text-xs font-black text-emerald-400 font-mono">99</span>
+                  <span class="text-[8px] text-zinc-300 font-mono">0:28</span>
+                </div>
               </div>
 
               <!-- Card 3 (95 - LinkedIn) -->
-              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-black shadow-xl hover:-translate-y-1.5 transition" style="animation-delay:0.16s">
+              <div onclick="loadDemoCloudSample('finance')" class="fan-card cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-[#101C1A] shadow-xl hover:-translate-y-1.5 transition" style="animation-delay:0.16s">
                 <div class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">in</div>
-                <canvas id="fanCanvas2" width="180" height="280" class="w-full h-full object-cover rounded-xl block"></canvas>
+                <canvas id="fanCanvas2" width="200" height="320" class="w-full h-full object-cover rounded-xl block"></canvas>
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/85 via-transparent to-black/15 pointer-events-none"></div>
+                <span class="absolute top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-emerald-400 text-black font-montserrat font-black text-[8px] uppercase whitespace-nowrap z-10">KEY RULE</span>
+                <span id="fanCap2" class="cap-pop absolute bottom-7 inset-x-1 text-center font-montserrat font-black text-[10px] text-emerald-300 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-10">TOP 1% 💡</span>
+                <div class="absolute bottom-1.5 inset-x-2 flex items-center justify-between z-10">
+                  <span class="text-xs font-black text-emerald-400 font-mono">95</span>
+                  <span class="text-[8px] text-zinc-300 font-mono">0:45</span>
+                </div>
               </div>
 
               <!-- Card 4 (98 - TikTok) -->
-              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-40 sm:h-46 rounded-xl overflow-visible border border-white/25 bg-black shadow-2xl hover:-translate-y-1.5 transition" style="animation-delay:0.22s">
+              <div onclick="loadDemoCloudSample('podcast')" class="fan-card cursor-pointer group relative h-40 sm:h-46 rounded-xl overflow-visible border border-white/25 bg-[#1F1711] shadow-2xl hover:-translate-y-1.5 transition" style="animation-delay:0.22s">
                 <div class="w-5 h-5 rounded-full bg-black border border-white/30 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">♪</div>
-                <canvas id="fanCanvas3" width="180" height="300" class="w-full h-full object-cover rounded-xl block"></canvas>
+                <canvas id="fanCanvas3" width="200" height="340" class="w-full h-full object-cover rounded-xl block"></canvas>
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/85 via-transparent to-black/15 pointer-events-none"></div>
+                <span class="absolute top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-yellow-400 text-black font-montserrat font-black text-[8px] uppercase whitespace-nowrap z-10">60S+ $$$</span>
+                <span id="fanCap3" class="cap-pop absolute bottom-7 inset-x-1 text-center font-montserrat font-black text-[10px] text-yellow-300 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-10">REAL TRUTH 👀</span>
+                <div class="absolute bottom-1.5 inset-x-2 flex items-center justify-between z-10">
+                  <span class="text-xs font-black text-emerald-400 font-mono">98</span>
+                  <span class="text-[8px] text-zinc-300 font-mono">1:02</span>
+                </div>
               </div>
 
               <!-- Card 5 (93 - X) -->
-              <div onclick="generateSamplePodcast()" class="fan-card cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-black shadow-xl hover:-translate-y-1.5 transition" style="animation-delay:0.28s">
+              <div onclick="loadDemoCloudSample('gaming')" class="fan-card cursor-pointer group relative h-36 sm:h-42 rounded-xl overflow-visible border border-white/20 bg-[#14161D] shadow-xl hover:-translate-y-1.5 transition" style="animation-delay:0.28s">
                 <div class="w-5 h-5 rounded-full bg-zinc-900 border border-white/25 text-white flex items-center justify-center absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 shadow-md text-[9px] font-black">𝕏</div>
-                <canvas id="fanCanvas4" width="180" height="280" class="w-full h-full object-cover rounded-xl block"></canvas>
+                <canvas id="fanCanvas4" width="200" height="320" class="w-full h-full object-cover rounded-xl block"></canvas>
+                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-black/85 via-transparent to-black/15 pointer-events-none"></div>
+                <span class="absolute top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-white text-black font-montserrat font-black text-[8px] uppercase whitespace-nowrap z-10">VIRAL CLIP</span>
+                <span id="fanCap4" class="cap-pop absolute bottom-7 inset-x-1 text-center font-montserrat font-black text-[10px] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-10">WATCH END ⚡</span>
+                <div class="absolute bottom-1.5 inset-x-2 flex items-center justify-between z-10">
+                  <span class="text-xs font-black text-emerald-400 font-mono">93</span>
+                  <span class="text-[8px] text-zinc-300 font-mono">0:19</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- SLIDE 1: AI CAPTIONING (LIVE 60FPS CAPCUT WORD-BY-WORD VIDEO CANVAS) -->
+          <!-- SLIDE 1: AI CAPTIONING -->
           <div id="opusSlide-1" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3 opus-fade-in">
             <div class="flex items-center gap-2 text-xs text-zinc-300">
               <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-semibold">CapCut Auto Captions</span>
-              <span>Word-by-word spring pop + auto-emojis</span>
+              <span>1-Click Speech Sync • Word-by-Word Highlight</span>
             </div>
-            <div class="w-56 h-80 rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl">
-              <canvas id="slideCaptionsCanvas" width="360" height="540" class="w-full h-full object-cover block"></canvas>
+            <div class="relative w-56 h-80 rounded-2xl overflow-hidden border border-white/20 bg-[#141820] shadow-2xl">
+              <canvas id="slide1Canvas" width="320" height="480" class="w-full h-full object-cover block"></canvas>
+              <div id="slide1LiveCap" class="absolute bottom-12 inset-x-3 text-center font-montserrat font-black text-base text-yellow-300 drop-shadow-[0_3px_6px_rgba(0,0,0,1)] z-10">
+                TURN CAPTIONS ON 🔥
+              </div>
             </div>
           </div>
 
-          <!-- SLIDE 2: AI REFRAME (LIVE 60FPS SPEAKER TRACKING & FULL-SCENE NO-CROP) -->
+          <!-- SLIDE 2: AI REFRAME -->
           <div id="opusSlide-2" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3 opus-fade-in">
             <div class="flex items-center gap-2 text-xs text-zinc-300">
               <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white font-semibold">Full-Scene No-Crop Reframe</span>
-              <span>100% characters visible in 9:16</span>
+              <span>100% characters visible on left & right</span>
             </div>
-            <div class="w-full max-w-lg h-76 rounded-2xl overflow-hidden border border-white/15 bg-black shadow-2xl">
-              <canvas id="slideReframeCanvas" width="680" height="380" class="w-full h-full object-cover block"></canvas>
+            <div class="flex flex-wrap items-center justify-center gap-5">
+              <div class="relative w-64 h-36 rounded-2xl overflow-hidden border border-emerald-400/50 bg-[#141820] shadow-xl">
+                <canvas id="slide2WideCanvas" width="440" height="250" class="w-full h-full object-cover block"></canvas>
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 text-[10px] font-mono text-emerald-300 z-10">16:9 FULL SCENE</span>
+              </div>
+              <i data-lucide="arrow-right" class="w-5 h-5 text-zinc-400"></i>
+              <div class="relative w-44 h-76 rounded-2xl overflow-hidden border border-white/25 bg-[#11151B] shadow-2xl flex items-center justify-center">
+                <canvas id="slide2TallCanvas" width="280" height="480" class="w-full h-full object-cover block"></canvas>
+                <span class="absolute bottom-2.5 z-20 px-2 py-0.5 rounded bg-black/75 text-[9px] font-mono text-white">9:16 NO-CROP</span>
+              </div>
             </div>
           </div>
 
@@ -308,21 +362,26 @@
           <div id="opusSlide-3" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3 opus-fade-in">
             <div class="flex items-center gap-2 text-xs text-zinc-300">
               <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white font-semibold">Split-Screen Retention Mode</span>
-              <span>Top Speaker + Bottom Gameplay / Waveform</span>
+              <span>Top Speaker + Bottom Action / Gameplay</span>
             </div>
-            <div class="w-56 h-80 rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl">
-              <canvas id="slideBrollCanvas" width="360" height="540" class="w-full h-full object-cover block"></canvas>
+            <div class="w-52 h-80 rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl">
+              <canvas id="slide3SplitCanvas" width="320" height="480" class="w-full h-full object-cover block"></canvas>
             </div>
           </div>
 
           <!-- SLIDE 4: AI AUDIO ENHANCE & 60FPS EXPORT -->
-          <div id="opusSlide-4" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-3 opus-fade-in">
+          <div id="opusSlide-4" class="opus-slide hidden w-full flex-1 flex flex-col items-center justify-center space-y-4 opus-fade-in">
             <div class="flex items-center gap-2 text-xs text-zinc-300">
-              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 font-semibold">AI Audio Peak Slicer & 60FPS Export</span>
-              <span>Zero watermarks • 1080p / 2K Master</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 font-semibold">Vocal Energy Peak Slicer</span>
+              <span>60FPS 1080p / 2K Export • Zero Watermark</span>
             </div>
-            <div class="w-full max-w-lg h-76 rounded-2xl overflow-hidden border border-white/15 bg-black shadow-2xl">
-              <canvas id="slideAudioCanvas" width="680" height="380" class="w-full h-full object-cover block"></canvas>
+            <div class="w-full max-w-md bg-black/75 border border-white/10 rounded-2xl p-5 space-y-3">
+              <div class="flex justify-between text-xs"><span class="text-zinc-400">Vocal Peak Detection</span><span class="font-mono font-bold text-emerald-400">ACTIVE (Web Audio API)</span></div>
+              <div class="flex justify-between text-xs"><span class="text-zinc-400">TikTok Creativity Mode</span><span class="font-mono font-bold text-white">60s+ RPM Optimized</span></div>
+              <div class="flex justify-between text-xs"><span class="text-zinc-400">Export Bitrate</span><span class="font-mono font-bold text-white">22–35 Mbps 60FPS</span></div>
+              <button onclick="loadDemoCloudSample('funny')" class="w-full py-2.5 rounded-full bg-white text-black text-xs font-extrabold hover:bg-zinc-200 transition">
+                Test Instant Demo Clip Now →
+              </button>
             </div>
           </div>
 
@@ -333,10 +392,10 @@
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </button>
 
-        <!-- Right Side Peek Card (Live Playing Vertical Clip Preview - Matches image_8b13c3.jpg) -->
-        <div onclick="stepOpusCarousel(1)" class="hidden xl:flex w-44 h-[450px] rounded-3xl bg-[#0D0E10] border border-white/[0.07] opacity-65 hover:opacity-95 cursor-pointer transition overflow-hidden flex-col justify-between p-3.5 shrink-0 select-none relative">
-          <canvas id="peekRightCanvas" width="240" height="420" class="w-full h-full object-cover rounded-2xl"></canvas>
-          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between bg-black/75 backdrop-blur px-2.5 py-1.5 rounded-xl border border-white/10">
+        <!-- Right Side Peek Card -->
+        <div onclick="stepOpusCarousel(1)" class="hidden xl:flex w-44 h-[455px] rounded-3xl bg-[#0D0E10] border border-white/[0.08] opacity-70 hover:opacity-95 cursor-pointer transition overflow-hidden flex-col justify-between p-2.5 shrink-0 select-none relative">
+          <canvas id="peekRightCanvas" width="240" height="420" class="w-full h-full object-cover rounded-2xl block"></canvas>
+          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between bg-black/80 backdrop-blur px-2.5 py-1.5 rounded-xl border border-white/10 z-10">
             <span class="text-[10px] font-semibold text-white">Next Tool →</span>
             <span class="text-[10px] font-mono text-emerald-400">98</span>
           </div>
@@ -367,39 +426,40 @@
         </button>
       </div>
 
-      <!-- OPUS.PRO CREATOR TRUST & CAPABILITIES STRIP BELOW FOLD -->
-      <div class="pt-14 border-t border-white/[0.07] max-w-5xl mx-auto space-y-10">
-        <div class="text-center space-y-2">
-          <p class="text-[11px] font-mono uppercase tracking-widest text-zinc-500">BUILT FOR MONETIZED SHORT-FORM CREATORS</p>
-          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white">Everything you need to turn raw footage into viral shorts</h2>
+      <!-- OPUS.PRO FULL PLATFORM FEATURE SUITE BELOW FOLD -->
+      <div id="opus-features" class="pt-16 border-t border-white/[0.08] max-w-5xl mx-auto space-y-12">
+        <div class="text-center space-y-2.5 max-w-2xl mx-auto">
+          <p class="text-[11px] font-mono uppercase tracking-widest text-zinc-500">CLIPIT 4.0 ENGINE • EVERYTHING IN ONE STUDIO</p>
+          <h2 class="text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight">Built to turn long videos into viral shorts</h2>
+          <p class="text-xs sm:text-sm text-zinc-400">Click any preset below to launch an instant interactive demo clip, or upload your own video above.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="opus-card rounded-2xl p-5 space-y-2.5">
+          <div onclick="loadDemoCloudSample('funny')" class="opus-card cursor-pointer rounded-2xl p-5 space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-400">99 SCORE</span>
-              <i data-lucide="trending-up" class="w-4 h-4 text-zinc-500"></i>
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-400">99 VIRALITY</span>
+              <span class="text-xs text-zinc-400">Try Demo →</span>
             </div>
-            <h3 class="text-sm font-bold text-white">AI Virality Ranking</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">Automatically detects high-energy hooks, funny reactions, and 60s+ TikTok Creativity Program moments.</p>
+            <h3 class="text-base font-bold text-white">ClipAnything™ Niche AI</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">Automatically adapts hooks & scoring for Funny/Comedy, Podcasts, Finance, and Gaming — never puts generic text on comedy clips.</p>
           </div>
 
-          <div class="opus-card rounded-2xl p-5 space-y-2.5">
+          <div onclick="loadDemoCloudSample('podcast')" class="opus-card cursor-pointer rounded-2xl p-5 space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-white/10 text-white">NO CROP</span>
-              <i data-lucide="maximize-2" class="w-4 h-4 text-zinc-500"></i>
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-white/10 text-white">NO-CROP 9:16</span>
+              <span class="text-xs text-zinc-400">Try Demo →</span>
             </div>
-            <h3 class="text-sm font-bold text-white">Full-Scene 9:16 Reframe</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">Keeps every character on screen with cinema-blurred vertical framing so nothing gets awkwardly cut off.</p>
+            <h3 class="text-base font-bold text-white">Full-Scene AI Reframe</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">Preserves 100% of characters across wide 16:9 frames with blurred cinema backgrounds, or switches to 9:16 Fill in 1 click.</p>
           </div>
 
-          <div class="opus-card rounded-2xl p-5 space-y-2.5">
+          <div onclick="loadDemoCloudSample('finance')" class="opus-card cursor-pointer rounded-2xl p-5 space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-white/10 text-white">60FPS HD</span>
-              <i data-lucide="captions" class="w-4 h-4 text-zinc-500"></i>
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-white/10 text-white">AUTO CAPTIONS</span>
+              <span class="text-xs text-zinc-400">Try Demo →</span>
             </div>
-            <h3 class="text-sm font-bold text-white">CapCut Auto Captions</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">Turn on Auto Captions in 1 click to generate word-highlighted kinetic subtitles with zero watermarks.</p>
+            <h3 class="text-base font-bold text-white">CapCut Auto Captions + Social Kit</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">1-click speech-to-caption sync plus auto-generated viral TikTok/Reels/Shorts titles, descriptions & hashtags for every clip.</p>
           </div>
         </div>
       </div>
@@ -408,21 +468,20 @@
   </div>
 
   <!-- ======================================================================= -->
-  <!-- STAGE 2: OPUSCLIP-STYLE RANKED CLIPS & VIRALITY SCOREBOARD              -->
+  <!-- STAGE 2: OPUSCLIP RANKED CLIPS + VIRAL SOCIAL TITLE & HASHTAG PACK      -->
   <!-- ======================================================================= -->
   <div id="stage-results" class="hidden flex-1 max-w-6xl w-full mx-auto px-4 py-8 space-y-6">
-    <!-- Results Top Action Bar -->
     <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-white/[0.08]">
       <div>
         <div class="flex items-center gap-2.5">
           <h2 class="text-xl font-display font-extrabold text-white" id="resultsProjectTitle">Generated Viral Clips</h2>
           <span id="resultsCountPill" class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25 text-xs font-mono font-bold">0 Clips</span>
         </div>
-        <p class="text-xs text-zinc-400 mt-0.5">Ranked by AI Virality Score • Click any clip to customize captions & framing, or download immediately.</p>
+        <p class="text-xs text-zinc-400 mt-0.5">Ranked by AI Virality Score • Includes ready-to-post TikTok/Reels/Shorts captions & hashtags.</p>
       </div>
 
       <div class="flex flex-wrap items-center gap-2">
-        <select id="resultsNicheSelect" onchange="syncNicheSelectors(this.value)" class="bg-[#14141A] border border-white/10 rounded-lg px-3 py-2 text-xs font-semibold text-zinc-200 outline-none">
+        <select id="resultsNicheSelect" onchange="syncNicheSelectors(this.value)" class="bg-[#14141A] border border-white/10 rounded-full px-3.5 py-2 text-xs font-semibold text-zinc-200 outline-none">
           <option value="auto">Vibe: Auto-Detect</option>
           <option value="funny">😂 Funny / Comedy</option>
           <option value="podcast">🎙️ Podcast / Talk</option>
@@ -431,24 +490,21 @@
           <option value="clean">✨ Clean (No Hook Banner)</option>
         </select>
 
-        <button onclick="batchExportTopClips()" class="px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-[#09090B] text-xs font-extrabold flex items-center gap-1.5 shadow-sm transition">
+        <button onclick="batchExportTopClips()" class="px-4 py-2 rounded-full bg-white hover:bg-zinc-200 text-black text-xs font-extrabold flex items-center gap-1.5 shadow-sm transition">
           <i data-lucide="download" class="w-3.5 h-3.5 stroke-[2.5]"></i>
           <span>Download All Clips (60FPS)</span>
         </button>
       </div>
     </div>
 
-    <!-- OpusClip Ranked Clip Cards Stack -->
     <div id="opusResultsGrid" class="space-y-4"></div>
   </div>
 
   <!-- ======================================================================= -->
-  <!-- STAGE 3: OPUSCLIP-STYLE 3-PANE PRECISION STUDIO EDITOR                  -->
+  <!-- STAGE 3: OPUSCLIP 3-PANE PRECISION STUDIO EDITOR                        -->
   <!-- ======================================================================= -->
   <div id="stage-editor" class="hidden flex-1 flex flex-col">
-
-    <!-- Editor Compact Sub-Bar -->
-    <div class="h-11 border-b border-white/[0.08] bg-[#0D0D11] px-4 flex items-center justify-between gap-2 text-xs">
+    <div class="h-11 border-b border-white/[0.08] bg-[#0A0A0D] px-4 flex items-center justify-between gap-2 text-xs">
       <div class="flex items-center gap-3">
         <button onclick="switchStage('results')" class="text-zinc-400 hover:text-white flex items-center gap-1 font-medium transition">
           <i data-lucide="chevron-left" class="w-4 h-4"></i>
@@ -460,67 +516,63 @@
       </div>
 
       <div class="flex items-center gap-2">
-        <button onclick="startScreenTabCapture()" id="recordScreenBtn" class="px-2.5 py-1 rounded-md bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 font-semibold border border-emerald-500/25 flex items-center gap-1.5 transition">
+        <button onclick="startScreenTabCapture()" id="recordScreenBtn" class="px-3 py-1 rounded-full bg-white/[0.07] hover:bg-white/[0.14] text-emerald-300 font-semibold border border-white/10 flex items-center gap-1.5 transition">
           <i data-lucide="radio" class="w-3 h-3"></i>
           <span id="recordScreenLabel">Record Tab</span>
         </button>
-        <button onclick="saveCurrentProject()" class="px-2.5 py-1 rounded-md bg-white/[0.06] hover:bg-white/[0.12] text-zinc-200 font-semibold border border-white/10 transition">
+        <button onclick="saveCurrentProject()" class="px-3 py-1 rounded-full bg-white/[0.07] hover:bg-white/[0.14] text-zinc-200 font-semibold border border-white/10 transition">
           Save Project
         </button>
       </div>
     </div>
 
-    <!-- 3-Pane Studio Grid -->
     <main class="flex-1 grid grid-cols-1 lg:grid-cols-12">
-
-      <!-- LEFT RAIL: CLIP LIST & BRAND KITS -->
-      <aside class="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-white/[0.08] bg-[#0E0E12] flex flex-col lg:max-h-[calc(100vh-6.25rem)]">
+      <!-- LEFT RAIL -->
+      <aside class="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-white/[0.08] bg-[#0B0B0E] flex flex-col lg:max-h-[calc(100vh-6.25rem)]">
         <div class="p-3 border-b border-white/[0.08] flex items-center justify-between">
           <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Ranked Clips</span>
           <div class="flex gap-1">
-            <button onclick="setTargetClipLen(15)" id="len-15" class="px-2 py-0.5 rounded bg-white text-[#09090B] text-[10px] font-bold">15s</button>
-            <button onclick="setTargetClipLen(30)" id="len-30" class="px-2 py-0.5 rounded bg-[#18181F] text-zinc-400 text-[10px] font-semibold">30s</button>
-            <button onclick="setTargetClipLen(61)" id="len-61" class="px-2 py-0.5 rounded bg-[#18181F] text-zinc-400 text-[10px] font-semibold">60s+</button>
+            <button onclick="setTargetClipLen(15)" id="len-15" class="px-2 py-0.5 rounded-full bg-white text-black text-[10px] font-bold">15s</button>
+            <button onclick="setTargetClipLen(30)" id="len-30" class="px-2 py-0.5 rounded-full bg-[#18181F] text-zinc-400 text-[10px] font-semibold">30s</button>
+            <button onclick="setTargetClipLen(61)" id="len-61" class="px-2 py-0.5 rounded-full bg-[#18181F] text-zinc-400 text-[10px] font-semibold">60s+</button>
           </div>
         </div>
 
         <div id="editorClipList" class="flex-1 overflow-y-auto p-2.5 space-y-2 max-h-56 lg:max-h-none"></div>
 
-        <div class="p-3 border-t border-white/[0.08] bg-[#0B0B0E]">
-          <button onclick="batchExportTopClips()" id="batchExportBtn" class="w-full py-2 rounded-lg bg-white/[0.07] hover:bg-white/[0.13] text-xs font-bold text-white border border-white/10 flex items-center justify-center gap-1.5 transition">
+        <div class="p-3 border-t border-white/[0.08] bg-[#09090B]">
+          <button onclick="batchExportTopClips()" id="batchExportBtn" class="w-full py-2 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-xs font-bold text-white border border-white/10 flex items-center justify-center gap-1.5 transition">
             <i data-lucide="layers" class="w-3.5 h-3.5 text-emerald-400"></i>
             <span>Batch Export All Clips</span>
           </button>
         </div>
       </aside>
 
-      <!-- CENTER STAGE: 9:16 CANVAS MONITOR & TRANSPORT -->
-      <section class="lg:col-span-5 bg-[#09090B] flex flex-col items-center justify-between p-4 lg:max-h-[calc(100vh-6.25rem)] overflow-y-auto">
-        <!-- Framing & Aspect Controls -->
+      <!-- CENTER MONITOR -->
+      <section class="lg:col-span-5 bg-black flex flex-col items-center justify-between p-4 lg:max-h-[calc(100vh-6.25rem)] overflow-y-auto">
         <div class="w-full max-w-md flex flex-wrap items-center justify-between gap-2 mb-2">
           <div class="flex items-center gap-1.5">
-            <div class="flex items-center bg-[#14141A] border border-white/10 rounded-lg p-0.5 text-[11px] font-semibold">
-              <button onclick="setAspectRatio('9:16')" id="ar-9-16" class="px-2.5 py-1 rounded-md bg-white text-[#09090B] font-bold">9:16</button>
-              <button onclick="setAspectRatio('4:5')" id="ar-4-5" class="px-2.5 py-1 rounded-md text-zinc-400 hover:text-white">4:5</button>
-              <button onclick="setAspectRatio('1:1')" id="ar-1-1" class="px-2.5 py-1 rounded-md text-zinc-400 hover:text-white">1:1</button>
+            <div class="flex items-center bg-[#14141A] border border-white/10 rounded-full p-0.5 text-[11px] font-semibold">
+              <button onclick="setAspectRatio('9:16')" id="ar-9-16" class="px-2.5 py-1 rounded-full bg-white text-black font-bold">9:16</button>
+              <button onclick="setAspectRatio('4:5')" id="ar-4-5" class="px-2.5 py-1 rounded-full text-zinc-400 hover:text-white">4:5</button>
+              <button onclick="setAspectRatio('1:1')" id="ar-1-1" class="px-2.5 py-1 rounded-full text-zinc-400 hover:text-white">1:1</button>
             </div>
-            <div class="flex items-center bg-[#14141A] border border-white/10 rounded-lg p-0.5 text-[11px] font-semibold">
-              <button onclick="setFramingMode('fit-blur')" id="fit-blur-btn" class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 font-bold">Fit (No Crop)</button>
-              <button onclick="setFramingMode('fill')" id="fit-fill-btn" class="px-2.5 py-1 rounded-md text-zinc-400 hover:text-white">Fill</button>
+            <div class="flex items-center bg-[#14141A] border border-white/10 rounded-full p-0.5 text-[11px] font-semibold">
+              <button onclick="setFramingMode('fit-blur')" id="fit-blur-btn" class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">Fit (No Crop)</button>
+              <button onclick="setFramingMode('fill')" id="fit-fill-btn" class="px-2.5 py-1 rounded-full text-zinc-400 hover:text-white">Fill</button>
             </div>
           </div>
 
           <div class="flex items-center gap-1.5">
-            <button onclick="toggleSafeZone()" id="safeZoneBtn" class="px-2 py-1 rounded-lg bg-[#14141A] border border-white/10 text-[11px] text-zinc-400 hover:text-white">
+            <button onclick="toggleSafeZone()" id="safeZoneBtn" class="px-2.5 py-1 rounded-full bg-[#14141A] border border-white/10 text-[11px] text-zinc-400 hover:text-white">
               Safe Zone
             </button>
-            <button onpointerdown="setCompareRaw(true)" onpointerup="setCompareRaw(false)" onpointerleave="setCompareRaw(false)" class="px-2 py-1 rounded-lg bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-300 hover:text-white">
+            <button onpointerdown="setCompareRaw(true)" onpointerup="setCompareRaw(false)" onpointerleave="setCompareRaw(false)" class="px-2.5 py-1 rounded-full bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-300 hover:text-white">
               Hold Raw
             </button>
           </div>
         </div>
 
-        <!-- Preview Monitor -->
         <div class="relative flex items-center justify-center my-auto">
           <div id="canvasWrapper" class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black border border-white/15 bg-black" style="width: 276px; height: 490px;">
             <canvas id="previewCanvas" width="1080" height="1920" class="w-full h-full object-contain block"></canvas>
@@ -532,15 +584,14 @@
               <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden mt-3">
                 <div id="renderProgressBar" class="bg-emerald-400 h-full w-0 transition-all duration-150"></div>
               </div>
-              <button onclick="cancelRender()" class="mt-4 px-3 py-1 rounded-lg bg-white/10 text-xs text-zinc-300 hover:text-white">Cancel</button>
+              <button onclick="cancelRender()" class="mt-4 px-3 py-1 rounded-full bg-white/10 text-xs text-zinc-300 hover:text-white">Cancel</button>
             </div>
           </div>
         </div>
 
-        <!-- Transport & Export Bar -->
-        <div class="w-full max-w-md mt-3 bg-[#131318] border border-white/10 rounded-xl p-3 space-y-2.5">
+        <div class="w-full max-w-md mt-3 bg-[#111115] border border-white/10 rounded-2xl p-3 space-y-2.5">
           <div class="flex items-center gap-2.5">
-            <button onclick="togglePlay()" id="playPauseBtn" class="w-8 h-8 rounded-lg bg-white text-[#09090B] flex items-center justify-center hover:bg-zinc-200 transition shrink-0">
+            <button onclick="togglePlay()" id="playPauseBtn" class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center hover:bg-zinc-200 transition shrink-0">
               <i data-lucide="play" class="w-4 h-4 fill-current"></i>
             </button>
             <span id="timecodeDisplay" class="text-[11px] font-mono text-zinc-300 w-24 shrink-0">00:00.0 / 00:00.0</span>
@@ -558,16 +609,16 @@
             </div>
 
             <div class="flex items-center gap-1.5">
-              <button onclick="quickAutoCaptionsClick()" class="px-2.5 py-1.5 rounded-lg bg-violet-500/15 hover:bg-violet-500/25 border border-violet-500/30 text-[11px] font-bold text-violet-300 flex items-center gap-1 transition">
+              <button onclick="quickAutoCaptionsClick()" class="px-2.5 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.15] border border-white/10 text-[11px] font-bold text-emerald-300 flex items-center gap-1 transition">
                 <i data-lucide="captions" class="w-3.5 h-3.5"></i>
                 <span>Auto Captions</span>
               </button>
-              <select id="exportResSelect" class="bg-[#0B0B0E] border border-white/10 rounded-lg px-2 py-1.5 text-[11px] font-mono text-zinc-300 outline-none">
+              <select id="exportResSelect" class="bg-[#0B0B0E] border border-white/10 rounded-full px-2.5 py-1.5 text-[11px] font-mono text-zinc-300 outline-none">
                 <option value="1080" selected>1080p 60fps</option>
                 <option value="1440">2K 60fps</option>
                 <option value="720">720p 60fps</option>
               </select>
-              <button onclick="exportCurrentClip()" class="px-3.5 py-1.5 rounded-lg bg-white hover:bg-zinc-200 text-[#09090B] text-xs font-extrabold flex items-center gap-1 transition">
+              <button onclick="exportCurrentClip()" class="px-3.5 py-1.5 rounded-full bg-white hover:bg-zinc-200 text-black text-xs font-extrabold flex items-center gap-1 transition">
                 <i data-lucide="download" class="w-3.5 h-3.5 stroke-[2.5]"></i>
                 <span>Export</span>
               </button>
@@ -576,23 +627,22 @@
         </div>
       </section>
 
-      <!-- RIGHT INSPECTOR: CAPTIONS, LAYOUT, HOOKS & BRAND KIT -->
-      <aside class="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-white/[0.08] bg-[#0E0E12] flex flex-col lg:max-h-[calc(100vh-6.25rem)]">
-        <div class="p-2 border-b border-white/[0.08] grid grid-cols-4 gap-1 bg-[#0B0B0E]">
-          <button onclick="switchInspectorTab('captions')" id="tab-captions" class="py-1.5 rounded-md text-xs font-bold bg-white/10 text-white transition">Captions</button>
-          <button onclick="switchInspectorTab('layout')" id="tab-layout" class="py-1.5 rounded-md text-xs font-medium text-zinc-400 hover:text-white transition">Layout</button>
-          <button onclick="switchInspectorTab('hook')" id="tab-hook" class="py-1.5 rounded-md text-xs font-medium text-zinc-400 hover:text-white transition">Hook</button>
-          <button onclick="switchInspectorTab('brand')" id="tab-brand" class="py-1.5 rounded-md text-xs font-medium text-zinc-400 hover:text-white transition">Brand Kit</button>
+      <!-- RIGHT INSPECTOR -->
+      <aside class="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-white/[0.08] bg-[#0B0B0E] flex flex-col lg:max-h-[calc(100vh-6.25rem)]">
+        <div class="p-2 border-b border-white/[0.08] grid grid-cols-4 gap-1 bg-[#09090B]">
+          <button onclick="switchInspectorTab('captions')" id="tab-captions" class="py-1.5 rounded-full text-xs font-bold bg-white text-black transition">Captions</button>
+          <button onclick="switchInspectorTab('layout')" id="tab-layout" class="py-1.5 rounded-full text-xs font-medium text-zinc-400 hover:text-white transition">Layout</button>
+          <button onclick="switchInspectorTab('hook')" id="tab-hook" class="py-1.5 rounded-full text-xs font-medium text-zinc-400 hover:text-white transition">Hook</button>
+          <button onclick="switchInspectorTab('brand')" id="tab-brand" class="py-1.5 rounded-full text-xs font-medium text-zinc-400 hover:text-white transition">Social & Kit</button>
         </div>
 
         <div class="flex-1 overflow-y-auto p-4 space-y-5">
-
           <!-- TAB 1: CAPCUT AUTO CAPTIONS -->
           <div id="panel-captions" class="space-y-4">
-            <div class="p-3.5 rounded-xl bg-[#14141A] border border-violet-500/30 space-y-3">
+            <div class="p-3.5 rounded-2xl bg-[#131317] border border-white/10 space-y-3">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <i data-lucide="captions" class="w-4 h-4 text-violet-400"></i>
+                  <i data-lucide="captions" class="w-4 h-4 text-emerald-400"></i>
                   <span class="text-xs font-bold text-white">CapCut Auto Captions</span>
                 </div>
                 <label class="flex items-center gap-1.5 text-xs font-semibold text-emerald-400 cursor-pointer">
@@ -602,13 +652,13 @@
               </div>
 
               <div class="grid grid-cols-2 gap-2">
-                <select id="autoCapLangSelect" class="bg-[#0B0B0E] border border-white/10 rounded-lg px-2.5 py-2 text-xs text-zinc-200 outline-none">
+                <select id="autoCapLangSelect" class="bg-[#0B0B0E] border border-white/10 rounded-full px-3 py-2 text-xs text-zinc-200 outline-none">
                   <option value="en-US">English</option>
                   <option value="ur-PK">Urdu / Hindi</option>
                   <option value="ar-SA">Arabic</option>
                   <option value="es-ES">Spanish</option>
                 </select>
-                <button onclick="runCapCutAutoCaptions()" class="py-2 px-3 rounded-lg bg-white hover:bg-zinc-200 text-[#09090B] text-xs font-extrabold flex items-center justify-center gap-1.5 transition">
+                <button onclick="runCapCutAutoCaptions()" class="py-2 px-3 rounded-full bg-white hover:bg-zinc-200 text-black text-xs font-extrabold flex items-center justify-center gap-1.5 transition">
                   <i data-lucide="wand-2" class="w-3.5 h-3.5"></i>
                   <span id="autoCapBtnLabel">Generate Auto</span>
                 </button>
@@ -619,7 +669,7 @@
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold text-zinc-200">Caption Templates</span>
               <label class="flex items-center gap-1.5 text-xs text-zinc-300 cursor-pointer">
-                <input type="checkbox" id="autoEmojiToggle" checked onchange="updateActiveClipSettings()" class="accent-violet-500" />
+                <input type="checkbox" id="autoEmojiToggle" checked onchange="updateActiveClipSettings()" class="accent-emerald-400" />
                 <span>Auto-Emoji</span>
               </label>
             </div>
@@ -640,7 +690,7 @@
             <div class="pt-3 border-t border-white/[0.07] space-y-2">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-zinc-200">Caption Timeline</span>
-                <button onclick="openSrtModal()" class="px-2.5 py-1 rounded-md bg-white/[0.06] hover:bg-white/[0.12] text-[11px] font-semibold text-zinc-200">
+                <button onclick="openSrtModal()" class="px-2.5 py-1 rounded-full bg-white/[0.07] hover:bg-white/[0.14] text-[11px] font-semibold text-zinc-200">
                   Paste Script / SRT
                 </button>
               </div>
@@ -653,13 +703,13 @@
             <div class="space-y-2">
               <span class="text-xs font-bold text-white">OpusClip Screen Layouts</span>
               <div class="grid grid-cols-3 gap-1.5">
-                <button onclick="setLayoutMode('full')" id="layout-full" class="py-2 px-2 rounded-lg bg-white text-[#09090B] text-[11px] font-bold">Single Full</button>
-                <button onclick="setLayoutMode('split-wave')" id="layout-split-wave" class="py-2 px-2 rounded-lg bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-400">Split + Wave</button>
-                <button onclick="setLayoutMode('split-broll')" id="layout-split-broll" class="py-2 px-2 rounded-lg bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-400">Gameplay Split</button>
+                <button onclick="setLayoutMode('full')" id="layout-full" class="py-2 px-2 rounded-full bg-white text-black text-[11px] font-bold">Single Full</button>
+                <button onclick="setLayoutMode('split-wave')" id="layout-split-wave" class="py-2 px-2 rounded-full bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-400">Split + Wave</button>
+                <button onclick="setLayoutMode('split-broll')" id="layout-split-broll" class="py-2 px-2 rounded-full bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-400">Gameplay Split</button>
               </div>
               <div id="brollUploadBox" class="hidden pt-1">
-                <label class="w-full py-2.5 px-3 rounded-lg bg-[#14141A] hover:bg-[#1C1C24] border border-dashed border-white/20 text-xs text-zinc-300 flex items-center justify-center gap-2 cursor-pointer">
-                  <i data-lucide="video" class="w-4 h-4 text-violet-400"></i>
+                <label class="w-full py-2.5 px-3 rounded-xl bg-[#14141A] hover:bg-[#1C1C24] border border-dashed border-white/20 text-xs text-zinc-300 flex items-center justify-center gap-2 cursor-pointer">
+                  <i data-lucide="video" class="w-4 h-4 text-emerald-400"></i>
                   <span id="brollFileName">Upload Bottom Gameplay / B-Roll</span>
                   <input type="file" accept="video/*" class="hidden" onchange="handleBrollUpload(event)" />
                 </label>
@@ -684,13 +734,13 @@
               </div>
 
               <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
-                <label class="p-2.5 rounded-lg bg-[#14141A] border border-white/[0.07] flex items-center justify-between cursor-pointer">
+                <label class="p-2.5 rounded-xl bg-[#14141A] border border-white/[0.07] flex items-center justify-between cursor-pointer">
                   <span class="text-zinc-300">Dynamic Zoom</span>
-                  <input type="checkbox" id="autoZoomToggle" onchange="updateActiveClipSettings()" class="accent-violet-500" />
+                  <input type="checkbox" id="autoZoomToggle" onchange="updateActiveClipSettings()" class="accent-emerald-400" />
                 </label>
-                <label class="p-2.5 rounded-lg bg-[#14141A] border border-white/[0.07] flex items-center justify-between cursor-pointer">
+                <label class="p-2.5 rounded-xl bg-[#14141A] border border-white/[0.07] flex items-center justify-between cursor-pointer">
                   <span class="text-zinc-300">Progress Bar</span>
-                  <input type="checkbox" id="progressToggle" checked onchange="updateActiveClipSettings()" class="accent-violet-500" />
+                  <input type="checkbox" id="progressToggle" checked onchange="updateActiveClipSettings()" class="accent-emerald-400" />
                 </label>
               </div>
             </div>
@@ -698,10 +748,10 @@
             <div class="space-y-2 pt-3 border-t border-white/[0.07]">
               <span class="text-xs font-bold text-white">Auto Color Grade</span>
               <div class="grid grid-cols-4 gap-1.5 text-[11px]">
-                <button onclick="setColorGrade('clean')" id="grade-clean" class="py-1.5 rounded-lg bg-white text-[#09090B] font-bold">Natural</button>
-                <button onclick="setColorGrade('viral')" id="grade-viral" class="py-1.5 rounded-lg bg-[#14141A] text-zinc-400">Vibrant</button>
-                <button onclick="setColorGrade('cinema')" id="grade-cinema" class="py-1.5 rounded-lg bg-[#14141A] text-zinc-400">Cinema</button>
-                <button onclick="setColorGrade('gold')" id="grade-gold" class="py-1.5 rounded-lg bg-[#14141A] text-zinc-400">Warm</button>
+                <button onclick="setColorGrade('clean')" id="grade-clean" class="py-1.5 rounded-full bg-white text-black font-bold">Natural</button>
+                <button onclick="setColorGrade('viral')" id="grade-viral" class="py-1.5 rounded-full bg-[#14141A] text-zinc-400">Vibrant</button>
+                <button onclick="setColorGrade('cinema')" id="grade-cinema" class="py-1.5 rounded-full bg-[#14141A] text-zinc-400">Cinema</button>
+                <button onclick="setColorGrade('gold')" id="grade-gold" class="py-1.5 rounded-full bg-[#14141A] text-zinc-400">Warm</button>
               </div>
             </div>
           </div>
@@ -710,20 +760,20 @@
           <div id="panel-hook" class="hidden space-y-4">
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold text-white">Top Hook Title Banner</span>
-              <input type="checkbox" id="hookEnabled" checked onchange="updateActiveClipSettings()" class="accent-violet-500" />
+              <input type="checkbox" id="hookEnabled" checked onchange="updateActiveClipSettings()" class="accent-emerald-400" />
             </div>
 
             <div class="space-y-2">
               <div class="flex items-center justify-between">
                 <label class="text-[11px] text-zinc-400">Kicker Pill</label>
-                <button onclick="randomizeViralHook()" class="text-[11px] font-semibold text-violet-400 hover:underline">Remix Hook</button>
+                <button onclick="randomizeViralHook()" class="text-[11px] font-semibold text-emerald-400 hover:underline">Remix Hook</button>
               </div>
-              <input type="text" id="hookKickerInput" value="😂 WAIT FOR IT" oninput="updateActiveClipSettings()" class="w-full bg-[#14141A] border border-white/10 rounded-lg px-3 py-2 text-xs text-white outline-none" />
+              <input type="text" id="hookKickerInput" value="😂 WAIT FOR IT" oninput="updateActiveClipSettings()" class="w-full bg-[#14141A] border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none" />
             </div>
 
             <div class="space-y-2">
               <label class="text-[11px] text-zinc-400">Headline (Use [brackets] for highlight)</label>
-              <textarea id="hookHeadlineInput" rows="2" oninput="updateActiveClipSettings()" class="w-full bg-[#14141A] border border-white/10 rounded-lg px-3 py-2 text-xs font-bold text-white outline-none">BRO DID NOT JUST [DO THAT] 💀</textarea>
+              <textarea id="hookHeadlineInput" rows="2" oninput="updateActiveClipSettings()" class="w-full bg-[#14141A] border border-white/10 rounded-xl px-3 py-2 text-xs font-bold text-white outline-none">BRO DID NOT JUST [DO THAT] 💀</textarea>
             </div>
 
             <div id="hookTemplateGrid" class="grid grid-cols-2 gap-2"></div>
@@ -740,33 +790,42 @@
             </div>
           </div>
 
-          <!-- TAB 4: BRAND KIT & MONETIZATION -->
+          <!-- TAB 4: OPUS SOCIAL POST PACK, BRAND KIT & RPM CALCULATOR -->
           <div id="panel-brand" class="hidden space-y-4">
-            <div class="p-3.5 rounded-xl bg-[#14141A] border border-white/10 space-y-2.5">
+            <!-- OpusClip Auto Social Caption & Hashtags Box -->
+            <div class="p-3.5 rounded-2xl bg-[#14141A] border border-white/10 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-white">AI Social Post & Hashtags</span>
+                <button onclick="copySocialPostText()" class="px-2.5 py-1 rounded-full bg-white text-black text-[10px] font-bold">Copy Post</button>
+              </div>
+              <textarea id="socialPostBox" rows="3" class="w-full bg-[#0B0B0E] border border-white/10 rounded-xl p-2.5 text-[11px] text-zinc-300 outline-none"></textarea>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-[#14141A] border border-white/10 space-y-2.5">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-white">Channel Watermark & Logo</span>
                 <input type="checkbox" id="handleEnabled" checked onchange="updateActiveClipSettings()" class="accent-emerald-400" />
               </div>
-              <input type="text" id="creatorHandleInput" value="@ClipIT.Studio" oninput="updateActiveClipSettings()" class="w-full bg-[#0B0B0E] border border-white/10 rounded-lg px-3 py-1.5 text-xs font-mono text-emerald-300 outline-none" />
+              <input type="text" id="creatorHandleInput" value="@ClipIT.Studio" oninput="updateActiveClipSettings()" class="w-full bg-[#0B0B0E] border border-white/10 rounded-full px-3 py-1.5 text-xs font-mono text-emerald-300 outline-none" />
               <div class="flex items-center gap-2">
-                <label class="flex-1 py-1.5 px-2.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.11] text-xs font-semibold text-zinc-200 flex items-center justify-center gap-1.5 cursor-pointer">
-                  <i data-lucide="image-plus" class="w-3.5 h-3.5 text-violet-400"></i>
+                <label class="flex-1 py-1.5 px-3 rounded-full bg-white/[0.06] hover:bg-white/[0.11] text-xs font-semibold text-zinc-200 flex items-center justify-center gap-1.5 cursor-pointer">
+                  <i data-lucide="image-plus" class="w-3.5 h-3.5 text-emerald-400"></i>
                   <span id="brandLogoLabel">Upload PNG Logo</span>
                   <input type="file" accept="image/*" class="hidden" onchange="handleBrandLogoUpload(event)" />
                 </label>
-                <button onclick="clearBrandLogo()" id="clearLogoBtn" class="hidden px-2.5 py-1.5 rounded-lg bg-red-500/20 text-red-300 text-xs font-bold">Clear</button>
+                <button onclick="clearBrandLogo()" id="clearLogoBtn" class="hidden px-3 py-1.5 rounded-full bg-red-500/20 text-red-300 text-xs font-bold">Clear</button>
               </div>
             </div>
 
-            <div class="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/25 space-y-2.5">
+            <div class="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 space-y-2.5">
               <span class="text-xs font-bold text-emerald-300 block">Creator RPM Payout Estimator</span>
               <div class="grid grid-cols-2 gap-2 text-xs">
-                <select id="rpmViewsSelect" onchange="recalcRpm()" class="bg-[#0B0B0E] border border-white/10 rounded-lg px-2 py-1.5 text-white">
+                <select id="rpmViewsSelect" onchange="recalcRpm()" class="bg-[#0B0B0E] border border-white/10 rounded-full px-2.5 py-1.5 text-white">
                   <option value="100000">100K Views</option>
                   <option value="500000" selected>500K Views</option>
                   <option value="1000000">1M Views</option>
                 </select>
-                <select id="rpmRateSelect" onchange="recalcRpm()" class="bg-[#0B0B0E] border border-white/10 rounded-lg px-2 py-1.5 text-white">
+                <select id="rpmRateSelect" onchange="recalcRpm()" class="bg-[#0B0B0E] border border-white/10 rounded-full px-2.5 py-1.5 text-white">
                   <option value="0.85" selected>TikTok ($0.85 RPM)</option>
                   <option value="0.22">YT Shorts ($0.22 RPM)</option>
                   <option value="1.50">Client Clip ($1.50)</option>
@@ -778,11 +837,10 @@
               </div>
             </div>
 
-            <button onclick="exportCoverPng()" class="w-full py-2 rounded-lg bg-white/[0.06] hover:bg-white/[0.11] border border-white/10 text-xs font-semibold text-white">
+            <button onclick="exportCoverPng()" class="w-full py-2 rounded-full bg-white/[0.06] hover:bg-white/[0.11] border border-white/10 text-xs font-semibold text-white">
               Download 1080×1920 Cover PNG
             </button>
           </div>
-
         </div>
       </aside>
     </main>
@@ -797,8 +855,8 @@
       </div>
       <textarea id="srtRawInput" rows="6" placeholder="Paste your caption lines here (one phrase per line)..." class="w-full bg-[#0B0B0E] border border-white/10 rounded-xl p-3 text-xs text-white outline-none"></textarea>
       <div class="flex justify-end gap-2">
-        <button onclick="closeModal('srtModal')" class="px-3 py-1.5 rounded-lg bg-white/10 text-xs text-zinc-300">Cancel</button>
-        <button onclick="applyPastedScript()" class="px-4 py-1.5 rounded-lg bg-white text-[#09090B] text-xs font-bold">Sync Captions</button>
+        <button onclick="closeModal('srtModal')" class="px-3.5 py-1.5 rounded-full bg-white/10 text-xs text-zinc-300">Cancel</button>
+        <button onclick="applyPastedScript()" class="px-4 py-1.5 rounded-full bg-white text-black text-xs font-bold">Sync Captions</button>
       </div>
     </div>
   </div>
@@ -814,37 +872,8 @@
     </div>
   </div>
 
-  <!-- OPUSCLIP ANIMATED AI SCANNER OVERLAY -->
-  <div id="aiScannerModal" class="hidden fixed inset-0 bg-[#09090B]/90 backdrop-blur-xl z-50 flex items-center justify-center p-4">
-    <div class="bg-[#13131A] border border-white/15 rounded-3xl max-w-md w-full p-7 text-center space-y-5 shadow-2xl stage-animate">
-      <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
-        <div class="absolute inset-0 rounded-full border-2 border-violet-500/30"></div>
-        <div class="absolute inset-0 rounded-full border-2 border-t-emerald-400 border-r-violet-400 border-b-transparent border-l-transparent animate-spin"></div>
-        <span id="aiScanPct" class="font-mono text-base font-extrabold text-white">0%</span>
-      </div>
-      <div class="space-y-1">
-        <h3 class="text-base font-display font-extrabold text-white" id="aiScanTitle">Analyzing Video with ClipIT AI...</h3>
-        <p class="text-xs text-zinc-400" id="aiScanSub">Detecting vocal energy peaks & high-retention hooks</p>
-      </div>
-      <div class="space-y-2 text-left bg-[#0B0B0E] border border-white/[0.07] rounded-2xl p-3.5 text-xs">
-        <div id="scanStep1" class="flex items-center gap-2 text-emerald-400 font-medium">
-          <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0"></i>
-          <span>Extracting audio peaks & viral moments</span>
-        </div>
-        <div id="scanStep2" class="flex items-center gap-2 text-zinc-500">
-          <i data-lucide="loader-2" class="w-4 h-4 shrink-0 animate-spin"></i>
-          <span>Applying Full-Scene No-Crop 9:16 reframe</span>
-        </div>
-        <div id="scanStep3" class="flex items-center gap-2 text-zinc-500">
-          <i data-lucide="circle" class="w-4 h-4 shrink-0"></i>
-          <span>Ranking Virality Scores (Hook • Flow • Trend)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- TOAST -->
-  <div id="toastBanner" class="fixed bottom-4 right-4 z-50 hidden bg-[#18181F] border border-white/15 text-white px-4 py-2.5 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2">
+  <div id="toastBanner" class="fixed bottom-4 right-4 z-50 hidden bg-[#18181F] border border-white/15 text-white px-4 py-2.5 rounded-full shadow-2xl text-xs font-semibold flex items-center gap-2">
     <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
     <span id="toastText">Ready</span>
   </div>
@@ -853,45 +882,50 @@
   <video id="brollVideo" class="hidden" loop muted playsinline crossorigin="anonymous"></video>
 
   <script>
+    const DEMO_CLOUD_VIDEOS = {
+      funny: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+      podcast: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
+      finance: 'https://media.w3.org/2010/05/bunny/trailer.mp4',
+      gaming: 'https://media.w3.org/2010/05/video/movie_300.mp4'
+    };
+
     const HOOK_STYLES = [
       { id: 'mrbeast', name: 'Viral Slam', badge: '#EF4444', pill: '#FACC15', pillText: '#09090B' },
-      { id: 'breaking', name: 'Comedy Pop', badge: '#8B5CF6', pill: '#10B981', pillText: '#09090B' },
+      { id: 'breaking', name: 'Comedy Pop', badge: '#10B981', pill: '#FFFFFF', pillText: '#09090B' },
       { id: 'luxury', name: 'Dark Luxury', badge: '#F59E0B', pill: '#FDE68A', pillText: '#09090B' },
-      { id: 'podcast', name: 'Podcast Clean', badge: '#10B981', pill: '#FFFFFF', pillText: '#09090B' }
+      { id: 'podcast', name: 'Podcast Clean', badge: '#27272A', pill: '#10B981', pillText: '#09090B' }
     ];
 
     const CAPTION_STYLES = [
       { id: 'hormozi', name: 'Hormozi Bold', active: '#FACC15', base: '#FFFFFF', stroke: '#09090B' },
       { id: 'submagic', name: 'Opus Mint', active: '#34D399', base: '#FFFFFF', stroke: '#09090B' },
-      { id: 'iman', name: 'Violet Pop', active: '#A78BFA', base: '#FFFFFF', stroke: '#09090B' },
-      { id: 'marker', name: 'Box Highlight', active: '#FFFFFF', base: '#E4E4E7', stroke: '#09090B', box: '#8B5CF6' }
+      { id: 'iman', name: 'Clean White', active: '#FFFFFF', base: '#D4D4D8', stroke: '#09090B' },
+      { id: 'marker', name: 'Box Highlight', active: '#09090B', base: '#FFFFFF', stroke: '#09090B', box: '#FACC15' }
     ];
 
     const NICHE_HOOK_BANKS = {
       funny: [
-        { kicker: '😂 WAIT FOR IT', headline: 'BRO DID NOT JUST [DO THAT] 💀', score: 98, hookScore: 99, flowScore: 96, trendScore: 98 },
-        { kicker: '😭 IM CRYING', headline: 'WATCH HIS [REACTION] AT THE END 😂', score: 95, hookScore: 96, flowScore: 94, trendScore: 95 },
-        { kicker: '🤣 ZERO CHILL', headline: 'NOBODY EXPECTED [THIS] TO HAPPEN 💀', score: 92, hookScore: 93, flowScore: 91, trendScore: 92 },
-        { kicker: '🔥 LEGENDARY', headline: 'TRY NOT TO [LAUGH] CHALLENGE 😂', score: 89, hookScore: 90, flowScore: 88, trendScore: 89 }
+        { kicker: '😂 WAIT FOR IT', headline: 'BRO DID NOT JUST [DO THAT] 💀', score: 98, hookScore: 99, flowScore: 96, trendScore: 98, tags: '#funny #comedy #viral #fyp #reels' },
+        { kicker: '😭 IM CRYING', headline: 'WATCH HIS [REACTION] AT THE END 😂', score: 95, hookScore: 96, flowScore: 94, trendScore: 95, tags: '#funnyvideos #memes #reaction #shorts' },
+        { kicker: '🤣 ZERO CHILL', headline: 'NOBODY EXPECTED [THIS] TO HAPPEN 💀', score: 92, hookScore: 93, flowScore: 91, trendScore: 92, tags: '#comedy #laugh #viralclips #trending' }
       ],
       podcast: [
-        { kicker: '🎙️ PODCAST GOLD', headline: 'HE FINALLY [ADMITTED] THE TRUTH 👀', score: 97, hookScore: 98, flowScore: 96, trendScore: 97 },
-        { kicker: '🧠 MINDSET SHIFT', headline: 'THIS CHANGED MY [ENTIRE LIFE] 🎯', score: 94, hookScore: 95, flowScore: 93, trendScore: 94 },
-        { kicker: '⚡ REAL TALK', headline: 'LISTEN TO THIS [ONE RULE] 🔥', score: 91, hookScore: 92, flowScore: 90, trendScore: 91 },
-        { kicker: '🏆 TOP 1%', headline: 'HOW WINNERS [THINK] DIFFERENTLY 💡', score: 88, hookScore: 89, flowScore: 87, trendScore: 88 }
+        { kicker: '🎙️ PODCAST GOLD', headline: 'HE FINALLY [ADMITTED] THE TRUTH 👀', score: 97, hookScore: 98, flowScore: 96, trendScore: 97, tags: '#podcast #mindset #motivation #clips' },
+        { kicker: '🧠 MINDSET SHIFT', headline: 'THIS CHANGED MY [ENTIRE LIFE] 🎯', score: 94, hookScore: 95, flowScore: 93, trendScore: 94, tags: '#success #podcastclips #selfimprovement' },
+        { kicker: '⚡ REAL TALK', headline: 'LISTEN TO THIS [ONE RULE] 🔥', score: 91, hookScore: 92, flowScore: 90, trendScore: 91, tags: '#wisdom #growth #interview #shorts' }
       ],
       finance: [
-        { kicker: '💰 WEALTH RULE', headline: 'WHY [99% FAIL] AT MAKING MONEY 💸', score: 98, hookScore: 99, flowScore: 97, trendScore: 98 },
-        { kicker: '🛑 MONEY TRAP', headline: 'THIS [1 MISTAKE] COSTS THOUSANDS ⚠️', score: 94, hookScore: 95, flowScore: 93, trendScore: 94 },
-        { kicker: '📈 RICH HABIT', headline: 'HOW TO TURN [$0 INTO $10K] FAST 💵', score: 91, hookScore: 92, flowScore: 90, trendScore: 91 }
+        { kicker: '💰 WEALTH RULE', headline: 'WHY [99% FAIL] AT MAKING MONEY 💸', score: 98, hookScore: 99, flowScore: 97, trendScore: 98, tags: '#finance #money #wealth #business' },
+        { kicker: '🛑 MONEY TRAP', headline: 'THIS [1 MISTAKE] COSTS THOUSANDS ⚠️', score: 94, hookScore: 95, flowScore: 93, trendScore: 94, tags: '#investing #entrepreneur #moneytips' },
+        { kicker: '📈 RICH HABIT', headline: 'HOW TO TURN [$0 INTO $10K] FAST 💵', score: 91, hookScore: 92, flowScore: 90, trendScore: 91, tags: '#sidehustle #wealthbuilding #shorts' }
       ],
       gaming: [
-        { kicker: '🎮 INSANE CLUTCH', headline: 'HOW DID HE [SURVIVE] THAT?! 😱', score: 98, hookScore: 99, flowScore: 97, trendScore: 98 },
-        { kicker: '🔥 200 IQ PLAY', headline: 'BRO BROKE THE [ENTIRE LOBBY] 💀', score: 94, hookScore: 95, flowScore: 93, trendScore: 94 },
-        { kicker: '⚡ GOD MODE', headline: 'WATCH THIS [1 IN A MILLION] SHOT 🎯', score: 91, hookScore: 92, flowScore: 90, trendScore: 91 }
+        { kicker: '🎮 INSANE CLUTCH', headline: 'HOW DID HE [SURVIVE] THAT?! 😱', score: 98, hookScore: 99, flowScore: 97, trendScore: 98, tags: '#gaming #clutch #fps #gamingshorts' },
+        { kicker: '🔥 200 IQ PLAY', headline: 'BRO BROKE THE [ENTIRE LOBBY] 💀', score: 94, hookScore: 95, flowScore: 93, trendScore: 94, tags: '#gamer #highlights #viralgaming' },
+        { kicker: '⚡ GOD MODE', headline: 'WATCH THIS [1 IN A MILLION] SHOT 🎯', score: 91, hookScore: 92, flowScore: 90, trendScore: 91, tags: '#esports #proplay #gamingclips' }
       ],
       clean: [
-        { kicker: '', headline: '', score: 96, hookScore: 96, flowScore: 96, trendScore: 96 }
+        { kicker: '', headline: '', score: 96, hookScore: 96, flowScore: 96, trendScore: 96, tags: '#viral #shorts #reels #tiktok' }
       ]
     };
 
@@ -937,7 +971,13 @@
     function switchStage(stage) {
       state.stage = stage;
       ['dashboard', 'results', 'editor'].forEach(s => {
-        const stEl = document.getElementById('stage-' + s); stEl.classList.toggle('hidden', s !== stage); if (s === stage) { stEl.classList.remove('stage-animate'); void stEl.offsetWidth; stEl.classList.add('stage-animate'); }
+        const el = document.getElementById('stage-' + s);
+        el.classList.toggle('hidden', s !== stage);
+        if (s === stage) {
+          el.classList.remove('opus-fade-in');
+          void el.offsetWidth;
+          el.classList.add('opus-fade-in');
+        }
         const btn = document.getElementById('navStage-' + s);
         if (btn) {
           btn.className = s === stage
@@ -955,8 +995,8 @@
         document.getElementById('panel-' + t).classList.toggle('hidden', t !== tab);
         const btn = document.getElementById('tab-' + t);
         btn.className = t === tab
-          ? 'py-1.5 rounded-md text-xs font-bold bg-white/10 text-white transition'
-          : 'py-1.5 rounded-md text-xs font-medium text-zinc-400 hover:text-white transition';
+          ? 'py-1.5 rounded-full text-xs font-bold bg-white text-black transition'
+          : 'py-1.5 rounded-full text-xs font-medium text-zinc-400 hover:text-white transition';
       });
     }
 
@@ -971,6 +1011,7 @@
           c.hookEnabled = eff !== 'clean';
           c.hookKicker = m.kicker;
           c.hookHeadline = m.headline;
+          c.socialTags = m.tags;
           c.title = m.headline ? m.headline.replace(/[\[\]]/g, '') : `${eff.toUpperCase()} Viral Clip #${i + 1}`;
         });
         renderOpusResultsGrid();
@@ -981,12 +1022,18 @@
     }
 
     function detectVideoNiche(title) {
+      const promptTxt = (document.getElementById('clipAnythingPrompt')?.value || '').toLowerCase();
+      if (/funny|comedy|laugh|meme|prank/.test(promptTxt)) return 'funny';
+      if (/money|finance|wealth|business/.test(promptTxt)) return 'finance';
+      if (/game|gaming|clutch|action/.test(promptTxt)) return 'gaming';
+      if (/podcast|talk|motivation/.test(promptTxt)) return 'podcast';
+
       const sel = document.getElementById('dashNicheSelect')?.value || 'auto';
       if (sel !== 'auto') return sel;
       const t = (title || '').toLowerCase();
       if (/funny|comedy|meme|prank|laugh|hilarious|fail|joke|skit/.test(t)) return 'funny';
       if (/money|finance|wealth|business|crypto|trade|rich/.test(t)) return 'finance';
-      if (/game|gaming|pubg|valorant|gta|fortnite|clutch/.test(t)) return 'gaming';
+      if (/game|gaming|pubg|valorant|gta|fortnite|clutch|fps/.test(t)) return 'gaming';
       return 'podcast';
     }
 
@@ -1012,13 +1059,13 @@
         const b = document.getElementById('len-' + s);
         if (b) {
           b.className = s === sec
-            ? 'px-2 py-0.5 rounded bg-white text-[#09090B] text-[10px] font-bold'
-            : 'px-2 py-0.5 rounded bg-[#18181F] text-zinc-400 text-[10px] font-semibold';
+            ? 'px-2 py-0.5 rounded-full bg-white text-black text-[10px] font-bold'
+            : 'px-2 py-0.5 rounded-full bg-[#18181F] text-zinc-400 text-[10px] font-semibold';
         }
       });
       if (state.duration > 0) {
         const peaks = state.lastBlob ? await analyzeAudioPeaks(state.lastBlob, state.duration) : null;
-        buildAiClipsFromDuration(state.duration, state.lastName, peaks, /sample_podcast/i.test(state.lastName));
+        buildAiClipsFromDuration(state.duration, state.lastName, peaks);
         renderOpusResultsGrid();
         renderEditorClipList();
         showToast(`Re-sliced into ~${sec}s viral clips`);
@@ -1026,7 +1073,7 @@
     }
 
     // =========================================================================
-    // VIDEO INGESTION (UPLOAD, TAB CAPTURE, DIRECT MP4, SAMPLE PODCAST)
+    // VIDEO INGESTION (UPLOAD, CLOUD SAMPLE, TAB CAPTURE, DIRECT MP4)
     // =========================================================================
     function handleVideoUpload(e) {
       const file = e.target.files[0];
@@ -1034,14 +1081,75 @@
       loadVideoBlob(file, file.name);
     }
 
+    async function generateInstantLocalDemoVideo(niche = 'funny') {
+      const off = document.createElement('canvas');
+      off.width = 1280;
+      off.height = 720;
+      const octx = off.getContext('2d');
+
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      const actx = new AudioCtx();
+      const dest = actx.createMediaStreamDestination();
+      const osc = actx.createOscillator();
+      const gain = actx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = 160;
+      gain.gain.value = 0.001;
+      osc.connect(gain);
+      gain.connect(dest);
+      osc.start();
+
+      const now = actx.currentTime;
+      for (let t = 0.1; t < 9.5; t += 0.32) {
+        gain.gain.setValueAtTime(0.12, now + t);
+        osc.frequency.setValueAtTime(140 + ((t * 53) % 90), now + t);
+        gain.gain.exponentialRampToValueAtTime(0.002, now + t + 0.22);
+      }
+
+      const stream = off.captureStream(30);
+      dest.stream.getAudioTracks().forEach(tr => stream.addTrack(tr));
+      const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9,opus') ? 'video/webm;codecs=vp9,opus' : 'video/webm';
+      const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8_000_000 });
+      const chunks = [];
+      rec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+      rec.start();
+
+      let frame = 0;
+      const totalFrames = 240; // 8 seconds
+      return new Promise(resolve => {
+        const timer = setInterval(() => {
+          const t = frame / 30;
+          drawRichShowcaseFrame(octx, 1280, 720, t, niche === 'funny' ? 1 : niche === 'gaming' ? 0 : niche === 'finance' ? 2 : 3, true);
+          frame++;
+          if (frame >= totalFrames) {
+            clearInterval(timer);
+            rec.stop();
+          }
+        }, 1000 / 30);
+
+        rec.onstop = async () => {
+          osc.stop();
+          await actx.close();
+          resolve(new Blob(chunks, { type: mime }));
+        };
+      });
+    }
+
+    async function loadDemoCloudSample(niche = 'funny') {
+      syncNicheSelectors(niche);
+      showToast(`Preparing ${niche.toUpperCase()} HD demo clip...`);
+      const blob = await generateInstantLocalDemoVideo(niche);
+      loadVideoBlob(blob, `ClipIT_${niche.toUpperCase()}_Showcase.webm`);
+    }
+
     function handleHeroUrlSubmit() {
       const url = document.getElementById('heroUrlInput').value.trim();
       if (!url) {
-        document.getElementById('globalFileUpload').click();
+        loadDemoCloudSample('funny');
         return;
       }
       if (/youtube\.com|youtu\.be|tiktok\.com|instagram\.com/i.test(url)) {
-        showToast('Tip: Use "Record Browser Tab / Screen" or Upload MP4 for instant 60FPS slicing!');
+        showToast('Tip: Use "Record Tab / Screen" or Upload MP4 for instant 60FPS slicing!');
         startScreenTabCapture();
         return;
       }
@@ -1052,28 +1160,11 @@
       mainVideo.src = url;
       mainVideo.onloadedmetadata = () => {
         state.duration = mainVideo.duration || 15;
-        buildAiClipsFromDuration(state.duration, 'Cloud_Video', null, false);
+        buildAiClipsFromDuration(state.duration, 'Cloud_Video', null);
         switchStage('results');
         showToast(`Generated ${state.clips.length} ranked clips!`);
       };
       mainVideo.onerror = () => showToast('Could not stream URL. Upload MP4 or Record Browser Tab.');
-    }
-
-    async function runOpusAiScannerAnimation() {
-      const modal = document.getElementById('aiScannerModal');
-      const pctEl = document.getElementById('aiScanPct');
-      const s2 = document.getElementById('scanStep2');
-      const s3 = document.getElementById('scanStep3');
-      modal.classList.remove('hidden');
-      lucide.createIcons();
-
-      for (let p = 10; p <= 100; p += 15) {
-        pctEl.textContent = Math.min(100, p) + '%';
-        if (p >= 45) s2.className = 'flex items-center gap-2 text-emerald-400 font-medium';
-        if (p >= 80) s3.className = 'flex items-center gap-2 text-emerald-400 font-medium';
-        await new Promise(r => setTimeout(r, 140));
-      }
-      modal.classList.add('hidden');
     }
 
     async function loadVideoBlob(blob, name) {
@@ -1085,12 +1176,8 @@
 
       mainVideo.onloadedmetadata = async () => {
         state.duration = mainVideo.duration || 15;
-        const [peaks] = await Promise.all([
-          analyzeAudioPeaks(blob, state.duration),
-          runOpusAiScannerAnimation()
-        ]);
-        const isSample = /sample_podcast/i.test(name);
-        buildAiClipsFromDuration(state.duration, name, peaks, isSample);
+        const peaks = await analyzeAudioPeaks(blob, state.duration);
+        buildAiClipsFromDuration(state.duration, name, peaks);
         switchStage('results');
         showToast(`AI found ${state.clips.length} viral moments!`);
       };
@@ -1123,15 +1210,10 @@
       }
     }
 
-    function buildAiClipsFromDuration(dur, title, peaks = null, isSampleDemo = false) {
+    function buildAiClipsFromDuration(dur, title, peaks = null) {
       const niche = detectVideoNiche(title);
       const bank = NICHE_HOOK_BANKS[niche] || NICHE_HOOK_BANKS.podcast;
       const isWide = (mainVideo.videoWidth || 1280) > (mainVideo.videoHeight || 720);
-
-      const sampleScripts = [
-        ['Most people think', 'going viral is pure luck', 'but top creators', 'use one clear hook', 'in the first 3 seconds'],
-        ['If you ignore this', 'your views stay stuck', 'at 200 forever', 'watch what happens', 'when you flip the script']
-      ];
 
       const numClips = peaks && peaks.length ? peaks.length : (dur <= 15 ? 2 : Math.min(5, Math.max(3, Math.floor(dur / 12))));
       const segLen = Math.min(state.targetClipLen || 15, Math.max(4, dur / numClips));
@@ -1142,17 +1224,6 @@
         const end = peaks && peaks[i] ? Math.min(dur, peaks[i].end) : +Math.min(dur, start + segLen).toFixed(1);
         const meta = bank[i % bank.length];
 
-        let captions = [];
-        if (isSampleDemo) {
-          const words = sampleScripts[i % sampleScripts.length];
-          const step = (end - start) / words.length;
-          captions = words.map((txt, idx) => ({
-            start: +(start + idx * step).toFixed(2),
-            end: +(start + (idx + 1) * step).toFixed(2),
-            text: txt
-          }));
-        }
-
         state.clips.push({
           id: 'clip_' + i,
           title: meta.headline ? meta.headline.replace(/[\[\]]/g, '') : `Viral Moment #${i + 1}`,
@@ -1162,6 +1233,7 @@
           hookScore: meta.hookScore,
           flowScore: meta.flowScore,
           trendScore: meta.trendScore,
+          socialTags: meta.tags,
           hookEnabled: niche !== 'clean',
           hookKicker: meta.kicker,
           hookHeadline: meta.headline,
@@ -1183,7 +1255,7 @@
           handleEnabled: true,
           creatorHandle: document.getElementById('creatorHandleInput')?.value || '@ClipIT.Studio',
           grade: 'clean',
-          captions
+          captions: []
         });
       }
 
@@ -1193,12 +1265,12 @@
     }
 
     // =========================================================================
-    // STAGE 2: OPUSCLIP RANKED CLIPS RESULTS RENDERER
+    // STAGE 2: OPUSCLIP RANKED CLIPS & SOCIAL POST PACK
     // =========================================================================
     function renderOpusResultsGrid() {
       const container = document.getElementById('opusResultsGrid');
       if (!state.clips.length) {
-        container.innerHTML = `<div class="opus-card rounded-2xl p-10 text-center text-sm text-zinc-400">No clips generated yet. Upload a video or record a browser tab to start.</div>`;
+        container.innerHTML = `<div class="opus-card rounded-2xl p-10 text-center text-sm text-zinc-400">No clips generated yet. Upload a video, record a browser tab, or click a demo card on Home.</div>`;
         return;
       }
 
@@ -1208,8 +1280,7 @@
       container.innerHTML = state.clips.map((c, idx) => {
         const dashOffset = circumference - (c.score / 100) * circumference;
         return `
-        <div class="opus-card rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-stretch gap-5 card-stagger" style="animation-delay: ${idx * 0.08}s">
-          <!-- Left Rank & Animated SVG Virality Score Ring -->
+        <div class="opus-card rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-stretch gap-5">
           <div class="flex md:flex-col items-center justify-between md:justify-center gap-2.5 md:w-36 shrink-0 border-b md:border-b-0 md:border-r border-white/[0.07] pb-3 md:pb-0 md:pr-4">
             <span class="text-[11px] font-mono font-bold text-zinc-400">#${idx + 1} VIRAL PICK</span>
             <div class="relative w-16 h-16 flex items-center justify-center">
@@ -1227,17 +1298,16 @@
             <span class="text-[11px] font-mono text-zinc-400">${(c.end - c.start).toFixed(1)}s • ${c.start}s–${c.end}s</span>
           </div>
 
-          <!-- Center Title, Animated Virality Breakdown Bars & Transcript Preview -->
           <div class="flex-1 flex flex-col justify-between space-y-3">
             <div>
               <div class="flex flex-wrap items-center gap-2 mb-1">
-                <span class="px-2 py-0.5 rounded bg-violet-500/15 text-violet-300 text-[10px] font-bold">${c.fitMode === 'fit-blur' ? 'Full Scene (No Crop)' : '9:16 Fill'}</span>
-                <span class="px-2 py-0.5 rounded bg-white/[0.06] text-zinc-300 text-[10px] font-medium">${c.captions.length ? c.captions.length + ' Auto-Captions' : 'Ready for Auto-Captions'}</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 text-[10px] font-bold">${c.fitMode === 'fit-blur' ? 'Full Scene (No Crop)' : '9:16 Fill'}</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-white/[0.06] text-zinc-300 text-[10px] font-medium">${c.captions.length ? c.captions.length + ' Auto-Captions' : 'Auto Captions Ready'}</span>
               </div>
               <h3 class="text-base font-bold text-white">${c.title}</h3>
+              <p class="text-[11px] text-zinc-500 font-mono mt-0.5">${c.socialTags || '#viral #shorts #reels'}</p>
             </div>
 
-            <!-- Animated Sub-Metrics (Hook / Flow / Trend) -->
             <div class="grid grid-cols-3 gap-3 max-w-md text-[11px]">
               <div>
                 <div class="flex justify-between text-zinc-400 mb-1"><span>Hook</span><span class="font-mono text-white">${c.hookScore}</span></div>
@@ -1245,26 +1315,21 @@
               </div>
               <div>
                 <div class="flex justify-between text-zinc-400 mb-1"><span>Flow</span><span class="font-mono text-white">${c.flowScore}</span></div>
-                <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-violet-400 metric-bar-fill" style="width:0%" data-target-w="${c.flowScore}%"></div></div>
+                <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-white metric-bar-fill" style="width:0%" data-target-w="${c.flowScore}%"></div></div>
               </div>
               <div>
                 <div class="flex justify-between text-zinc-400 mb-1"><span>Trend</span><span class="font-mono text-white">${c.trendScore}</span></div>
-                <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-sky-400 metric-bar-fill" style="width:0%" data-target-w="${c.trendScore}%"></div></div>
+                <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-emerald-300 metric-bar-fill" style="width:0%" data-target-w="${c.trendScore}%"></div></div>
               </div>
             </div>
-
-            <p class="text-xs text-zinc-400 line-clamp-2">
-              ${c.captions.length ? '"' + c.captions.map(x => x.text).join(' ') + '"' : 'Click "Edit Clip" to generate CapCut Auto Captions, customize framing, or export in 1080p 60FPS.'}
-            </p>
           </div>
 
-          <!-- Right Action Buttons -->
           <div class="flex md:flex-col justify-end gap-2 shrink-0 md:w-40">
-            <button onclick="openClipInEditor(${idx})" class="flex-1 md:flex-none py-2.5 px-4 rounded-xl bg-white hover:bg-zinc-200 text-[#09090B] text-xs font-extrabold flex items-center justify-center gap-1.5 transition hover:scale-[1.02]">
+            <button onclick="openClipInEditor(${idx})" class="flex-1 md:flex-none py-2.5 px-4 rounded-full bg-white hover:bg-zinc-200 text-black text-xs font-extrabold flex items-center justify-center gap-1.5 transition">
               <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
               <span>Edit Clip</span>
             </button>
-            <button onclick="downloadClipByIndex(${idx})" class="flex-1 md:flex-none py-2.5 px-4 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/10 text-xs font-bold flex items-center justify-center gap-1.5 transition">
+            <button onclick="downloadClipByIndex(${idx})" class="flex-1 md:flex-none py-2.5 px-4 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/10 text-xs font-bold flex items-center justify-center gap-1.5 transition">
               <i data-lucide="download" class="w-3.5 h-3.5 text-emerald-400"></i>
               <span>Download HD</span>
             </button>
@@ -1297,7 +1362,7 @@
     }
 
     // =========================================================================
-    // STAGE 3: STUDIO EDITOR & CAPCUT AUTO-CAPTIONS ENGINE
+    // STAGE 3: STUDIO EDITOR, CAPCUT AUTO CAPTIONS & 60FPS RENDERER
     // =========================================================================
     function renderEditorClipList() {
       const container = document.getElementById('editorClipList');
@@ -1323,6 +1388,7 @@
 
       document.getElementById('editorActiveTitle').textContent = `#${idx + 1} ${clip.title}`;
       document.getElementById('editorScoreBadge').textContent = `${clip.score}/100`;
+      document.getElementById('socialPostBox').value = `${clip.title} 🔥\n\nFollow ${clip.creatorHandle} for more!\n${clip.socialTags || '#viral #shorts #reels'}`;
 
       document.getElementById('captionsOnToggle').checked = clip.captionsEnabled !== false;
       document.getElementById('autoEmojiToggle').checked = clip.autoEmoji;
@@ -1351,6 +1417,12 @@
       renderTemplateGrids();
       renderCaptionBlocks();
       updateFitModeButtons();
+    }
+
+    function copySocialPostText() {
+      const txt = document.getElementById('socialPostBox').value;
+      navigator.clipboard?.writeText(txt);
+      showToast('Copied viral title & hashtags!');
     }
 
     function updateActiveClipSettings() {
@@ -1411,7 +1483,7 @@
       const clip = getActiveClip();
       const box = document.getElementById('captionBlocksList');
       if (!clip || !clip.captions.length) {
-        box.innerHTML = `<div class="p-3 rounded-lg bg-[#14141A] text-[11px] text-zinc-400 text-center">No captions yet. Click <strong>Generate Auto</strong> above or <strong>Paste Script / SRT</strong>.</div>`;
+        box.innerHTML = `<div class="p-3 rounded-xl bg-[#14141A] text-[11px] text-zinc-400 text-center">No captions yet. Click <strong>Generate Auto</strong> above or <strong>Paste Script / SRT</strong>.</div>`;
         return;
       }
       box.innerHTML = clip.captions.map((cap, i) => `
@@ -1422,7 +1494,6 @@
       `).join('');
     }
 
-    // CapCut Auto Captions Engine
     let activeCapRecognizer = null;
 
     function toggleClipCaptions(isOn) {
@@ -1530,9 +1601,6 @@
       rec.start();
     }
 
-    // =========================================================================
-    // CANVAS COMPOSITOR (FULL-SCENE NO-CROP, CAPTIONS, HOOKS, BRAND LOGO)
-    // =========================================================================
     function drawVideoCover(c, vid, dx, dy, dw, dh, zoom, panX, panY, filter, fitMode = 'fit-blur') {
       c.save();
       c.imageSmoothingEnabled = true;
@@ -1625,7 +1693,7 @@
           const bw = (W - 140) / bars;
           for (let i = 0; i < bars; i++) {
             const amp = Math.abs(Math.sin(relTime * 8 + i * 0.55)) * 180 + 24;
-            c.fillStyle = i % 2 === 0 ? '#10B981' : '#8B5CF6';
+            c.fillStyle = i % 2 === 0 ? '#10B981' : '#FFFFFF';
             c.beginPath();
             c.roundRect(70 + i * bw, topH + botH / 2 - amp / 2, bw * 0.62, amp, 8);
             c.fill();
@@ -1633,7 +1701,6 @@
         }
       }
 
-      // Hook Banner
       if (clip.hookEnabled && (clip.hookKicker.trim() || clip.hookHeadline.trim())) {
         const style = HOOK_STYLES.find(s => s.id === clip.hookStyle) || HOOK_STYLES[0];
         const scale = clip.hookScale / 100;
@@ -1692,7 +1759,6 @@
         c.restore();
       }
 
-      // Kinetic Captions
       const t = mainVideo.currentTime;
       const activeCap = (clip.captionsEnabled !== false) ? clip.captions.find(cap => t >= cap.start && t <= cap.end) : null;
       if (activeCap) {
@@ -1743,7 +1809,6 @@
         c.restore();
       }
 
-      // Channel Handle & PNG Logo Stamp
       if (clip.handleEnabled) {
         if (state.brandLogoImg) {
           c.save();
@@ -1781,8 +1846,147 @@
       c.restore();
     }
 
+
+    function drawRichShowcaseFrame(c, w, h, t, theme = 0, showBanner = false) {
+      const palettes = [
+        ['#0F2936', '#164E63', '#38BDF8', '#FACC15'], // Gaming / Action
+        ['#2E1042', '#581C87', '#F472B6', '#FDE047'], // Funny / Comedy
+        ['#0B2E26', '#065F46', '#34D399', '#FFFFFF'], // Finance / Wealth
+        ['#361B0E', '#7C2D12', '#FB923C', '#FEF08A'], // Podcast / Studio
+        ['#181B2C', '#312E81', '#818CF8', '#34D399']  // Tech / Creator
+      ];
+      const pal = palettes[theme % palettes.length];
+      const g = c.createLinearGradient(0, 0, w, h);
+      g.addColorStop(0, pal[0]);
+      g.addColorStop(0.55, pal[1]);
+      g.addColorStop(1, '#090A0F');
+      c.fillStyle = g;
+      c.fillRect(0, 0, w, h);
+
+      // Moving cinematic light beams
+      c.save();
+      c.globalAlpha = 0.25;
+      c.fillStyle = pal[2];
+      c.beginPath();
+      c.arc(w * (0.5 + Math.sin(t * 1.4 + theme) * 0.22), h * 0.35, Math.min(w, h) * 0.42, 0, Math.PI * 2);
+      c.fill();
+      c.restore();
+
+      // Animated studio / arena depth bars
+      c.fillStyle = 'rgba(255,255,255,0.05)';
+      for (let i = 0; i < 6; i++) {
+        const bx = ((i * w * 0.22 + t * 28) % (w + 60)) - 30;
+        c.fillRect(bx, h * 0.12, 18, h * 0.62);
+      }
+
+      // Expressive animated host/character
+      const bounce = Math.sin(t * 5 + theme) * 5;
+      const cx = w * 0.5;
+      const cy = h * 0.45 + bounce;
+      const r = Math.min(w, h) * 0.14;
+
+      // Torso
+      c.fillStyle = '#18181B';
+      c.beginPath();
+      c.roundRect(cx - r * 1.7, cy + r * 0.95, r * 3.4, r * 2.5, 24);
+      c.fill();
+
+      // Head
+      c.fillStyle = '#F1C27D';
+      c.beginPath();
+      c.arc(cx, cy, r, 0, Math.PI * 2);
+      c.fill();
+
+      // Sunglasses / Eyes
+      c.fillStyle = '#09090B';
+      c.beginPath();
+      c.roundRect(cx - r * 0.68, cy - r * 0.22, r * 0.56, r * 0.28, 4);
+      c.roundRect(cx + r * 0.12, cy - r * 0.22, r * 0.56, r * 0.28, 4);
+      c.fill();
+
+      // Talking mouth
+      const talk = Math.abs(Math.sin(t * 12 + theme)) * (r * 0.28);
+      c.fillStyle = '#991B1B';
+      c.beginPath();
+      c.ellipse(cx, cy + r * 0.42, r * 0.26, 2 + talk, 0, 0, Math.PI * 2);
+      c.fill();
+
+      // Live audio equalizer bars at bottom
+      const bars = 14;
+      const bw = (w * 0.7) / bars;
+      for (let b = 0; b < bars; b++) {
+        const bh = (Math.abs(Math.sin(t * 9 + b * 0.7 + theme)) * 0.8 + 0.2) * (h * 0.12);
+        c.fillStyle = pal[3];
+        c.globalAlpha = 0.75;
+        c.beginPath();
+        c.roundRect(w * 0.15 + b * bw, h * 0.84 - bh, bw * 0.6, bh, 4);
+        c.fill();
+      }
+      c.globalAlpha = 1;
+
+      if (showBanner) {
+        c.fillStyle = 'rgba(0,0,0,0.65)';
+        c.fillRect(0, h - 64, w, 64);
+        c.fillStyle = '#FFFFFF';
+        c.font = '800 24px Inter, sans-serif';
+        c.textAlign = 'center';
+        c.fillText('CLIPIT 4.0 • LIVE HD DEMO STREAM', w / 2, h - 24);
+      }
+    }
+
+    function updateAllShowcaseCanvases(nowMs) {
+      if (state.stage !== 'dashboard') return;
+      const t = nowMs / 1000;
+
+      const mCan = document.getElementById('showcaseMasterCanvas');
+      if (mCan) {
+        const mc = mCan.getContext('2d');
+        drawRichShowcaseFrame(mc, mCan.width / 2, mCan.height, t, 3, false);
+        mc.save();
+        mc.translate(mCan.width / 2, 0);
+        drawRichShowcaseFrame(mc, mCan.width / 2, mCan.height, t + 1.1, 0, false);
+        mc.restore();
+      }
+
+      for (let i = 0; i < 5; i++) {
+        const fc = document.getElementById('fanCanvas' + i);
+        if (fc) drawRichShowcaseFrame(fc.getContext('2d'), fc.width, fc.height, t + i * 0.8, i, false);
+      }
+
+      const pl = document.getElementById('peekLeftCanvas');
+      if (pl) drawRichShowcaseFrame(pl.getContext('2d'), pl.width, pl.height, t + 0.5, 4, false);
+      const pr = document.getElementById('peekRightCanvas');
+      if (pr) drawRichShowcaseFrame(pr.getContext('2d'), pr.width, pr.height, t + 1.4, 2, false);
+
+      const s1 = document.getElementById('slide1Canvas');
+      if (s1 && currentOpusSlide === 1) drawRichShowcaseFrame(s1.getContext('2d'), s1.width, s1.height, t, 1, false);
+
+      const s2w = document.getElementById('slide2WideCanvas');
+      if (s2w && currentOpusSlide === 2) drawRichShowcaseFrame(s2w.getContext('2d'), s2w.width, s2w.height, t, 3, false);
+      const s2t = document.getElementById('slide2TallCanvas');
+      if (s2t && currentOpusSlide === 2) {
+        const tc = s2t.getContext('2d');
+        tc.fillStyle = '#0D1318';
+        tc.fillRect(0, 0, s2t.width, s2t.height);
+        tc.save();
+        tc.translate(0, s2t.height * 0.28);
+        drawRichShowcaseFrame(tc, s2t.width, s2t.height * 0.44, t, 3, false);
+        tc.restore();
+      }
+
+      const s3 = document.getElementById('slide3SplitCanvas');
+      if (s3 && currentOpusSlide === 3) {
+        const sc = s3.getContext('2d');
+        drawRichShowcaseFrame(sc, s3.width, s3.height * 0.5, t, 3, false);
+        sc.save();
+        sc.translate(0, s3.height * 0.5);
+        drawRichShowcaseFrame(sc, s3.width, s3.height * 0.5, t + 2, 0, false);
+        sc.restore();
+      }
+    }
+
     function renderLoop(nowMs = performance.now()) {
-      renderLiveShowcaseCanvases(nowMs);
+      updateAllShowcaseCanvases(nowMs);
       const clip = getActiveClip();
       if (clip && !state.isRendering && !mainVideo.paused) {
         if (mainVideo.currentTime >= clip.end) mainVideo.currentTime = clip.start;
@@ -1796,10 +2000,11 @@
           document.getElementById('timelineScrubber').value = Math.min(100, (rel / tot) * 100);
         }
       }
-  
+      requestAnimationFrame(renderLoop);
+    }
 
     // =========================================================================
-    // OPUS.PRO LIVE-PLAYING 60FPS VIDEO CANVAS SHOWCASE ENGINE
+    // OPUS.PRO CAROUSEL & LIVE CAPTION CYCLING
     // =========================================================================
     let currentOpusSlide = 0;
     const totalOpusSlides = 5;
@@ -1823,256 +2028,30 @@
       setOpusSlide(currentOpusSlide + delta);
     }
 
-    function drawStudioScene(c, w, h, t, variant = 0) {
-      // Rich studio backdrop
-      const bg = c.createLinearGradient(0, 0, w, h);
-      if (variant === 0) { bg.addColorStop(0, '#132229'); bg.addColorStop(1, '#090D10'); }
-      else if (variant === 1) { bg.addColorStop(0, '#27172E'); bg.addColorStop(1, '#0B0910'); }
-      else if (variant === 2) { bg.addColorStop(0, '#132620'); bg.addColorStop(1, '#080C0B'); }
-      else if (variant === 3) { bg.addColorStop(0, '#2B1F14'); bg.addColorStop(1, '#0D0A08'); }
-      else { bg.addColorStop(0, '#1A1D29'); bg.addColorStop(1, '#090A0F'); }
-      c.fillStyle = bg;
-      c.fillRect(0, 0, w, h);
-
-      // Soft studio rim light
-      c.fillStyle = variant % 2 === 0 ? 'rgba(56,189,248,0.16)' : 'rgba(245,158,11,0.16)';
-      c.beginPath();
-      c.arc(w * 0.5, h * 0.38, w * 0.42, 0, Math.PI * 2);
-      c.fill();
-
-      // Acoustic wall panels
-      c.fillStyle = 'rgba(255,255,255,0.03)';
-      for (let x = 14; x < w - 14; x += 26) {
-        c.fillRect(x, 16, 14, h * 0.65);
-      }
-
-      // Animated speaker silhouette & head movement
-      const nod = Math.sin(t * 4.2 + variant) * 4;
-      const mouthOpen = Math.abs(Math.sin(t * 11 + variant * 2)) * 5;
-      const cx = w * 0.5;
-      const cy = h * 0.42 + nod;
-
-      // Shoulders
-      c.fillStyle = variant === 1 ? '#312E81' : variant === 2 ? '#065F46' : '#27272A';
-      c.beginPath();
-      c.roundRect(cx - w * 0.24, cy + h * 0.11, w * 0.48, h * 0.38, 28);
-      c.fill();
-
-      // Head
-      c.fillStyle = '#E5B896';
-      c.beginPath();
-      c.arc(cx, cy, Math.min(w, h) * 0.13, 0, Math.PI * 2);
-      c.fill();
-
-      // Hair
-      c.fillStyle = '#18181B';
-      c.beginPath();
-      c.arc(cx, cy - 4, Math.min(w, h) * 0.132, Math.PI, Math.PI * 2);
-      c.fill();
-
-      // Animated speaking mouth
-      c.fillStyle = '#7F1D1D';
-      c.beginPath();
-      c.ellipse(cx, cy + Math.min(w, h) * 0.05, 5, 1.5 + mouthOpen * 0.5, 0, 0, Math.PI * 2);
-      c.fill();
-
-      // Podcast broadcast mic arm
-      c.strokeStyle = '#52525B';
-      c.lineWidth = 3;
-      c.beginPath();
-      c.moveTo(w * 0.12, h * 0.85);
-      c.lineTo(cx - 16, cy + 16);
-      c.stroke();
-      c.fillStyle = '#18181B';
-      c.beginPath();
-      c.roundRect(cx - 24, cy + 6, 16, 22, 6);
-      c.fill();
-    }
-
-    function renderLiveShowcaseCanvases(nowMs) {
+    const fanWordCycles = [
+      ['NO WAY 🔥', '200 IQ', 'CLUTCH 💀'],
+      ['BRO WHAT 💀', 'IM CRYING 😂', 'WATCH END'],
+      ['TOP 1% 💡', 'KEY RULE', 'SAVE THIS'],
+      ['REAL TRUTH 👀', '60S+ $$$', 'VIRAL HOOK'],
+      ['WATCH END ⚡', 'ZERO CHILL', 'INSANE 😱']
+    ];
+    let cycleTick = 0;
+    setInterval(() => {
       if (state.stage !== 'dashboard') return;
-      const t = nowMs / 1000;
-
-      // 1. Master 16:9 Dual-Host Podcast Preview
-      const mCan = document.getElementById('showcaseMasterCanvas');
-      if (mCan && currentOpusSlide === 0) {
-        const mc = mCan.getContext('2d');
-        const W = mCan.width, H = mCan.height;
-        drawStudioScene(mc, W / 2, H, t, 0);
-        mc.save();
-        mc.translate(W / 2, 0);
-        drawStudioScene(mc, W / 2, H, t + 1.3, 2);
-        mc.restore();
-        mc.fillStyle = 'rgba(255,255,255,0.12)';
-        mc.fillRect(W / 2 - 1, 0, 2, H);
+      cycleTick++;
+      fanWordCycles.forEach((arr, idx) => {
+        const el = document.getElementById('fanCap' + idx);
+        if (el) el.textContent = arr[cycleTick % arr.length];
+      });
+      const s1 = document.getElementById('slide1LiveCap');
+      if (s1) {
+        const lines = ['TURN CAPTIONS ON 🔥', 'WORD-BY-WORD POP 🎯', 'ZERO WATERMARK 60FPS 🚀'];
+        s1.textContent = lines[cycleTick % lines.length];
       }
-
-      // 2. Five Fanned-Out 9:16 Viral Short Cards (97, 99, 95, 98, 93)
-      const fanMeta = [
-        { score: '97', dur: '0:15', hook: 'CLUTCH', words: ['NO WAY', 'HE HIT', 'THAT SHOT'] },
-        { score: '99', dur: '0:28', hook: 'VIRAL HOOK', words: ['THE REAL', 'SECRET TO', '1M VIEWS'] },
-        { score: '95', dur: '0:45', hook: 'KEY RULE', words: ['NEVER', 'IGNORE', 'THIS SIGN'] },
-        { score: '98', dur: '1:02', hook: '60S+ $$$', words: ['HOW TOP', 'CREATORS', 'SCALE FAST'] },
-        { score: '93', dur: '0:19', hook: 'REACTION', words: ['WAIT FOR', 'HIS FACE', 'AT THE END'] }
-      ];
-
-      if (currentOpusSlide === 0) {
-        fanMeta.forEach((fm, idx) => {
-          const fc = document.getElementById('fanCanvas' + idx);
-          if (!fc) return;
-          const c = fc.getContext('2d');
-          const W = fc.width, H = fc.height;
-          drawStudioScene(c, W, H, t + idx * 0.7, idx);
-
-          // Top Hook Pill
-          c.fillStyle = idx === 1 ? '#FFFFFF' : idx === 3 ? '#FACC15' : '#10B981';
-          c.beginPath();
-          c.roundRect(W * 0.16, 22, W * 0.68, 22, 6);
-          c.fill();
-          c.fillStyle = '#09090B';
-          c.font = '900 10px Montserrat, sans-serif';
-          c.textAlign = 'center';
-          c.fillText(fm.hook, W / 2, 36);
-
-          // Kinetic Popping Word
-          const wIdx = Math.floor((t * 2.4 + idx) % fm.words.length);
-          c.font = '900 15px Montserrat, sans-serif';
-          c.lineWidth = 4;
-          c.strokeStyle = '#000000';
-          c.fillStyle = idx % 2 === 0 ? '#FACC15' : '#34D399';
-          c.strokeText(fm.words[wIdx], W / 2, H * 0.68);
-          c.fillText(fm.words[wIdx], W / 2, H * 0.68);
-
-          // Bottom gradient & Virality Score
-          const grad = c.createLinearGradient(0, H * 0.72, 0, H);
-          grad.addColorStop(0, 'transparent');
-          grad.addColorStop(1, 'rgba(0,0,0,0.92)');
-          c.fillStyle = grad;
-          c.fillRect(0, H * 0.72, W, H * 0.28);
-
-          c.fillStyle = '#34D399';
-          c.font = '800 16px "JetBrains Mono", monospace';
-          c.textAlign = 'left';
-          c.fillText(fm.score, 12, H - 12);
-
-          c.fillStyle = '#A1A1AA';
-          c.font = '600 11px "JetBrains Mono", monospace';
-          c.textAlign = 'right';
-          c.fillText(fm.dur, W - 12, H - 12);
-        });
-      }
-
-      // 3. Slide 1: CapCut Auto Captions Live Demo
-      const capCan = document.getElementById('slideCaptionsCanvas');
-      if (capCan && currentOpusSlide === 1) {
-        const c = capCan.getContext('2d');
-        const W = capCan.width, H = capCan.height;
-        drawStudioScene(c, W, H, t, 1);
-        const phrases = [
-          ['TURN', 'AUTO CAPTIONS', 'ON IN 1 CLICK'],
-          ['WORD BY WORD', 'CAPCUT STYLE', 'ANIMATIONS 🔥'],
-          ['ZERO WATERMARK', '1080P 60FPS', 'EXPORT 🚀']
-        ];
-        const p = phrases[Math.floor(t * 0.8) % phrases.length];
-        const activeW = Math.floor((t * 2.4) % p.length);
-        p.forEach((line, li) => {
-          const y = H * 0.62 + li * 34;
-          c.font = '900 24px Montserrat, sans-serif';
-          c.textAlign = 'center';
-          c.lineWidth = 6;
-          c.strokeStyle = '#09090B';
-          c.fillStyle = li === activeW ? '#FACC15' : '#FFFFFF';
-          c.strokeText(line, W / 2, y);
-          c.fillText(line, W / 2, y);
-        });
-      }
-
-      // 4. Slide 2: AI Reframe Full-Scene No-Crop Demo
-      const refCan = document.getElementById('slideReframeCanvas');
-      if (refCan && currentOpusSlide === 2) {
-        const c = refCan.getContext('2d');
-        const W = refCan.width, H = refCan.height;
-        // Left 16:9 Source
-        drawStudioScene(c, W * 0.54, H, t, 0);
-        c.strokeStyle = '#34D399';
-        c.lineWidth = 2;
-        c.strokeRect(16, 40, W * 0.54 - 32, H - 80);
-        c.fillStyle = '#34D399';
-        c.font = '700 12px "JetBrains Mono", monospace';
-        c.textAlign = 'left';
-        c.fillText('16:9 FULL SCENE LOCKED', 24, 30);
-
-        // Right 9:16 No-Crop Output
-        const rx = W * 0.62, rw = W * 0.32;
-        c.fillStyle = '#12181B';
-        c.fillRect(rx, 16, rw, H - 32);
-        drawStudioScene(c, rw, H * 0.44, t, 0);
-        c.save();
-        c.translate(rx, H * 0.28);
-        drawStudioScene(c, rw, H * 0.44, t, 0);
-        c.restore();
-        c.strokeStyle = 'rgba(255,255,255,0.25)';
-        c.strokeRect(rx, 16, rw, H - 32);
-      }
-
-      // 5. Slide 3: Split-Screen Gameplay / B-Roll
-      const brCan = document.getElementById('slideBrollCanvas');
-      if (brCan && currentOpusSlide === 3) {
-        const c = brCan.getContext('2d');
-        const W = brCan.width, H = brCan.height;
-        drawStudioScene(c, W, H * 0.54, t, 2);
-        c.fillStyle = '#0D1318';
-        c.fillRect(0, H * 0.54, W, H * 0.46);
-        // Animated retro runner / gameplay grid on bottom half
-        c.strokeStyle = 'rgba(16,185,129,0.25)';
-        for (let gx = 0; gx < W; gx += 36) {
-          c.beginPath(); c.moveTo(gx, H * 0.54); c.lineTo(gx, H); c.stroke();
-        }
-        const bx = ((t * 140) % (W - 60)) + 20;
-        c.fillStyle = '#10B981';
-        c.beginPath();
-        c.roundRect(bx, H * 0.72, 44, 44, 10);
-        c.fill();
-      }
-
-      // 6. Slide 4: Audio Peak Waveform
-      const auCan = document.getElementById('slideAudioCanvas');
-      if (auCan && currentOpusSlide === 4) {
-        const c = auCan.getContext('2d');
-        const W = auCan.width, H = auCan.height;
-        c.fillStyle = '#0B0E11';
-        c.fillRect(0, 0, W, H);
-        const bars = 44;
-        const bw = (W - 80) / bars;
-        for (let i = 0; i < bars; i++) {
-          const amp = (Math.abs(Math.sin(t * 5 + i * 0.35)) * 0.75 + 0.2) * (H * 0.55);
-          c.fillStyle = (i > 10 && i < 18) || (i > 28 && i < 36) ? '#34D399' : '#3F3F46';
-          c.beginPath();
-          c.roundRect(40 + i * bw, H / 2 - amp / 2, bw * 0.62, amp, 6);
-          c.fill();
-        }
-      }
-
-      // 7. Left & Right Peek Side Cards
-      const pl = document.getElementById('peekLeftCanvas');
-      if (pl) drawStudioScene(pl.getContext('2d'), pl.width, pl.height, t + 2, 4);
-      const pr = document.getElementById('peekRightCanvas');
-      if (pr) {
-        const pc = pr.getContext('2d');
-        drawStudioScene(pc, pr.width, pr.height, t + 0.8, 3);
-        pc.fillStyle = '#FACC15';
-        pc.font = '900 16px Montserrat, sans-serif';
-        pc.textAlign = 'center';
-        pc.fillText('TO BREAK', pr.width / 2, pr.height * 0.62);
-        pc.fillText('THROUGH', pr.width / 2, pr.height * 0.68);
-      }
-    }
-
-    requestAnimationFrame(renderLoop);
-    }
+    }, 1100);
 
     // =========================================================================
-    // TRANSPORT, FRAMING, SCREEN RECORDING, SAMPLE & 60FPS EXPORT
+    // TRANSPORT, FRAMING, SCREEN RECORDING & 60FPS EXPORT
     // =========================================================================
     function togglePlay() {
       if (!getActiveClip()) return;
@@ -2111,7 +2090,7 @@
       else { previewCanvas.width = 1080; previewCanvas.height = 1080; w.style.width = '360px'; w.style.height = '360px'; }
       ['9:16', '4:5', '1:1'].forEach(r => {
         const b = document.getElementById('ar-' + r.replace(':', '-'));
-        b.className = r === ar ? 'px-2.5 py-1 rounded-md bg-white text-[#09090B] font-bold' : 'px-2.5 py-1 rounded-md text-zinc-400 hover:text-white';
+        b.className = r === ar ? 'px-2.5 py-1 rounded-full bg-white text-black font-bold' : 'px-2.5 py-1 rounded-full text-zinc-400 hover:text-white';
       });
     }
 
@@ -2136,8 +2115,8 @@
       const b1 = document.getElementById('fit-blur-btn');
       const b2 = document.getElementById('fit-fill-btn');
       if (!b1 || !b2) return;
-      b1.className = mode === 'fit-blur' ? 'px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 font-bold' : 'px-2.5 py-1 rounded-md text-zinc-400 hover:text-white';
-      b2.className = mode === 'fill' ? 'px-2.5 py-1 rounded-md bg-white text-[#09090B] font-bold' : 'px-2.5 py-1 rounded-md text-zinc-400 hover:text-white';
+      b1.className = mode === 'fit-blur' ? 'px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold' : 'px-2.5 py-1 rounded-full text-zinc-400 hover:text-white';
+      b2.className = mode === 'fill' ? 'px-2.5 py-1 rounded-full bg-white text-black font-bold' : 'px-2.5 py-1 rounded-full text-zinc-400 hover:text-white';
     }
 
     function setLayoutMode(mode) {
@@ -2147,8 +2126,8 @@
       ['full', 'split-wave', 'split-broll'].forEach(m => {
         const b = document.getElementById('layout-' + m);
         b.className = m === mode
-          ? 'py-2 px-2 rounded-lg bg-white text-[#09090B] text-[11px] font-bold'
-          : 'py-2 px-2 rounded-lg bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-400';
+          ? 'py-2 px-2 rounded-full bg-white text-black text-[11px] font-bold'
+          : 'py-2 px-2 rounded-full bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-400';
       });
       document.getElementById('brollUploadBox').classList.toggle('hidden', mode !== 'split-broll');
     }
@@ -2159,7 +2138,7 @@
       clip.grade = g;
       ['clean', 'viral', 'cinema', 'gold'].forEach(k => {
         const b = document.getElementById('grade-' + k);
-        b.className = k === g ? 'py-1.5 rounded-lg bg-white text-[#09090B] font-bold' : 'py-1.5 rounded-lg bg-[#14141A] text-zinc-400';
+        b.className = k === g ? 'py-1.5 rounded-full bg-white text-black font-bold' : 'py-1.5 rounded-full bg-[#14141A] text-zinc-400';
       });
     }
 
@@ -2247,30 +2226,6 @@
       } catch (e) {
         showToast('Tab/Screen recording cancelled');
       }
-    }
-
-    async function generateSamplePodcast() {
-      showToast('Generating 10s HD Sample Podcast...');
-      const off = document.createElement('canvas');
-      off.width = 1280; off.height = 720;
-      const octx = off.getContext('2d');
-      const stream = off.captureStream(30);
-      const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9') ? 'video/webm;codecs=vp9' : 'video/webm';
-      const rec = new MediaRecorder(stream, { mimeType: mime });
-      const chunks = [];
-      rec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
-      rec.start();
-      let f = 0;
-      const timer = setInterval(() => {
-        const sec = f / 30;
-        octx.fillStyle = '#111118'; octx.fillRect(0, 0, 1280, 720);
-        octx.fillStyle = '#8B5CF6'; octx.beginPath(); octx.arc(640, 290, 95 + Math.sin(sec * 8) * 8, 0, Math.PI * 2); octx.fill();
-        octx.fillStyle = '#FAFAFA'; octx.font = '800 38px Inter, sans-serif'; octx.textAlign = 'center';
-        octx.fillText('SAMPLE PODCAST STUDIO', 640, 460);
-        f++;
-        if (f >= 300) { clearInterval(timer); rec.stop(); }
-      }, 1000 / 30);
-      rec.onstop = () => loadVideoBlob(new Blob(chunks, { type: mime }), 'Sample_Podcast_Demo.webm');
     }
 
     async function exportCurrentClip() {
@@ -2398,7 +2353,7 @@
         clips: JSON.parse(JSON.stringify(state.clips))
       });
       localStorage.setItem('clipit_opus_projects', JSON.stringify(state.savedProjects.slice(0, 15)));
-      document.getElementById('savedCountBadge').textContent = state.savedProjects.length;
+      document.getElementById('savedCountBadge').textContent = `(${state.savedProjects.length})`;
       showToast('Project saved locally');
     }
 
@@ -2408,13 +2363,12 @@
         ? state.savedProjects.map((p, i) => `
             <div class="p-3 rounded-xl bg-[#0B0B0E] border border-white/10 flex items-center justify-between">
               <div><div class="font-bold text-white">${p.name}</div><div class="text-[10px] text-zinc-500">${p.date} • ${p.clips.length} clips</div></div>
-              <button onclick="state.clips=state.savedProjects[${i}].clips;closeModal('projectsModal');switchStage('results');" class="px-3 py-1 rounded-lg bg-white text-[#09090B] font-bold">Load</button>
+              <button onclick="state.clips=state.savedProjects[${i}].clips;closeModal('projectsModal');switchStage('results');" class="px-3 py-1 rounded-full bg-white text-black font-bold">Load</button>
             </div>`).join('')
         : 'No saved projects yet.';
       document.getElementById('projectsModal').classList.remove('hidden');
     }
 
-    // Drag & Drop support on Opus Hero Dropzone
     const dropZone = document.getElementById('heroDropZone');
     dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
     dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
@@ -2425,118 +2379,8 @@
       if (file) loadVideoBlob(file, file.name);
     });
 
-    document.getElementById('savedCountBadge').textContent = state.savedProjects.length;
+    document.getElementById('savedCountBadge').textContent = `(${state.savedProjects.length})`;
     lucide.createIcons();
-
-    // =========================================================================
-    // OPUSCLIP LIVE HERO SHOWCASE ANIMATION ENGINE
-    // =========================================================================
-    const HERO_DEMOS = {
-      funny: {
-        kicker: '😂 WAIT FOR IT',
-        headline: 'BRO DID NOT JUST <span class="bg-emerald-400 text-[#09090B] px-1.5 py-0.5 rounded">DO THAT</span> 💀',
-        words: ['NOBODY', 'EXPECTED', 'THAT ENDING 😂', 'WATCH AGAIN 💀']
-      },
-      podcast: {
-        kicker: '🎙️ PODCAST GOLD',
-        headline: 'HE FINALLY <span class="bg-violet-500 text-white px-1.5 py-0.5 rounded">ADMITTED</span> THE TRUTH 👀',
-        words: ['TOP 1%', 'CREATORS USE', 'THIS EXACT', 'VIRAL HOOK 🔥']
-      },
-      finance: {
-        kicker: '💰 WEALTH RULE',
-        headline: 'WHY <span class="bg-amber-400 text-[#09090B] px-1.5 py-0.5 rounded">99% FAIL</span> AT MAKING MONEY 💸',
-        words: ['STOP WASTING', 'HOURS EDITING', 'POST 10X', 'SHORTS DAILY 🚀']
-      }
-    };
-
-    let currentHeroDemo = 'funny';
-    let demoWordIdx = 0;
-
-    function setHeroDemoMode(mode) {
-      currentHeroDemo = mode;
-      demoWordIdx = 0;
-      ['funny', 'podcast', 'finance'].forEach(m => {
-        const b = document.getElementById('demoMode-' + m);
-        if (b) b.className = m === mode
-          ? 'px-2.5 py-1 rounded-md bg-white/10 text-white font-semibold transition'
-          : 'px-2.5 py-1 rounded-md text-zinc-400 hover:text-white transition';
-      });
-      const cfg = HERO_DEMOS[mode];
-      document.getElementById('demoHookKicker').textContent = cfg.kicker;
-      document.getElementById('demoHookHeadline').innerHTML = cfg.headline;
-    }
-
-    function initHeroShowcaseAnimation() {
-      const wf = document.getElementById('heroDemoWaveform');
-      if (wf) {
-        const laser = wf.innerHTML;
-        let barsHtml = laser;
-        for (let i = 0; i < 36; i++) {
-          const h = 25 + ((i * 29) % 70);
-          const delay = (i * 0.07).toFixed(2);
-          const color = (i > 6 && i < 14) || (i > 22 && i < 29) ? 'bg-emerald-400' : 'bg-violet-400/50';
-          barsHtml += `<div class="flex-1 rounded-full ${color}" style="height:${h}%; animation: waveBounce 1.1s ease-in-out ${delay}s infinite;"></div>`;
-        }
-        wf.innerHTML = barsHtml;
-      }
-
-      setInterval(() => {
-        if (state.stage !== 'dashboard') return;
-        const cfg = HERO_DEMOS[currentHeroDemo];
-        const word = cfg.words[demoWordIdx % cfg.words.length];
-        const box = document.getElementById('demoLiveCaptionBox');
-        const prog = document.getElementById('demoProgressFill');
-        if (box) {
-          box.innerHTML = `<span class="demo-word-active font-montserrat font-black text-sm text-yellow-300 drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">${word}</span>`;
-        }
-        if (prog) {
-          prog.style.width = (((demoWordIdx % cfg.words.length) + 1) / cfg.words.length) * 100 + '%';
-        }
-        demoWordIdx++;
-      }, 950);
-    }
-
-    initHeroShowcaseAnimation();
-
-
-    // =========================================================================
-    // OPUS.PRO CENTERPIECE CAROUSEL & SMOOTH CAPTION PREVIEW CONTROLLER
-    // =========================================================================
-    let currentOpusSlide = 0;
-    const totalOpusSlides = 5;
-
-    function setOpusSlide(idx) {
-      currentOpusSlide = (idx + totalOpusSlides) % totalOpusSlides;
-      for (let i = 0; i < totalOpusSlides; i++) {
-        const slide = document.getElementById('opusSlide-' + i);
-        const tab = document.getElementById('opusTab-' + i);
-        if (slide) slide.classList.toggle('hidden', i !== currentOpusSlide);
-        if (tab) {
-          tab.className = i === currentOpusSlide
-            ? 'px-3.5 py-2 rounded-xl bg-[#18181B] border border-white/15 text-xs font-semibold text-white flex items-center gap-2 transition'
-            : 'px-3.5 py-2 rounded-xl bg-transparent hover:bg-[#141417] border border-transparent text-xs font-medium text-zinc-400 hover:text-white flex items-center gap-2 transition';
-        }
-      }
-      lucide.createIcons();
-    }
-
-    function stepOpusCarousel(delta) {
-      setOpusSlide(currentOpusSlide + delta);
-    }
-
-    const demoCaptionLines = [
-      'WATCH <span class="text-yellow-300">EVERY WORD</span> POP 🔥',
-      '100% <span class="text-emerald-400">AUTO SYNCED</span> CAPTIONS 🎯',
-      'ZERO <span class="text-violet-400">WATERMARK</span> 60FPS 🚀'
-    ];
-    let demoCapIdx = 0;
-    setInterval(() => {
-      if (state.stage !== 'dashboard' || currentOpusSlide !== 1) return;
-      demoCapIdx = (demoCapIdx + 1) % demoCaptionLines.length;
-      const el = document.getElementById('carouselCaptionPreview');
-      if (el) el.innerHTML = demoCaptionLines[demoCapIdx];
-    }, 1600);
-
     requestAnimationFrame(renderLoop);
   </script>
 </body>

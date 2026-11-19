@@ -86,7 +86,75 @@
       transition: border-color 0.18s ease, transform 0.18s ease;
     }
     .opus-card:hover {
-      border-color: rgba(255, 255, 255, 0.18);
+      border-color: rgba(139, 92, 246, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px -15px rgba(0, 0, 0, 0.75);
+    }
+
+    /* OPUSCLIP SIGNATURE MOTION & KINETIC ANIMATIONS */
+    @keyframes floatSlow {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(18px, -22px, 0) scale(1.06); }
+    }
+    @keyframes floatReverse {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-20px, 18px, 0) scale(1.05); }
+    }
+    @keyframes shimmerSweep {
+      0% { transform: translateX(-140%) skewX(-20deg); }
+      60%, 100% { transform: translateX(260%) skewX(-20deg); }
+    }
+    @keyframes stageEnter {
+      from { opacity: 0; transform: translateY(12px) scale(0.992); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes cardStaggerIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scanLaser {
+      0% { left: 4%; }
+      50% { left: 92%; }
+      100% { left: 4%; }
+    }
+    @keyframes waveBounce {
+      0%, 100% { transform: scaleY(0.32); }
+      50% { transform: scaleY(1); }
+    }
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45); }
+      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    @keyframes wordPop {
+      0% { transform: scale(0.86); opacity: 0.6; }
+      60% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .aurora-orb-1 { animation: floatSlow 11s ease-in-out infinite; }
+    .aurora-orb-2 { animation: floatReverse 14s ease-in-out infinite; }
+    .stage-animate { animation: stageEnter 0.38s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .card-stagger { animation: cardStaggerIn 0.48s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .btn-shimmer { position: relative; overflow: hidden; }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 45%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+      animation: shimmerSweep 3.4s ease-in-out infinite;
+    }
+    .scan-laser-line { animation: scanLaser 4.2s ease-in-out infinite; }
+    .score-pulse { animation: pulseRing 2.4s infinite; }
+    .demo-word-active {
+      display: inline-block;
+      animation: wordPop 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .metric-bar-fill {
+      transition: width 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .score-ring-circle {
+      transition: stroke-dashoffset 0.95s cubic-bezier(0.16, 1, 0.3, 1);
     }
   </style>
 </head>
@@ -148,54 +216,57 @@
   <!-- ======================================================================= -->
   <!-- STAGE 1: OPUSCLIP-STYLE HOME & 1-CLICK INGESTION HUB                    -->
   <!-- ======================================================================= -->
-  <div id="stage-dashboard" class="flex-1 opus-hero-glow">
-    <div class="max-w-5xl mx-auto px-4 pt-12 pb-20 space-y-12">
+  <div id="stage-dashboard" class="flex-1 opus-hero-glow relative overflow-hidden stage-animate">
+    <!-- Floating Ambient Aurora Orbs -->
+    <div class="pointer-events-none absolute -top-24 left-1/4 w-96 h-96 rounded-full bg-violet-600/20 blur-[120px] aurora-orb-1"></div>
+    <div class="pointer-events-none absolute top-32 right-1/5 w-80 h-80 rounded-full bg-emerald-500/15 blur-[110px] aurora-orb-2"></div>
+
+    <div class="max-w-5xl mx-auto px-4 pt-10 pb-20 space-y-10 relative z-10">
 
       <!-- OpusClip Signature Hero Headline -->
-      <div class="text-center space-y-3 max-w-2xl mx-auto">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[11px] font-medium text-zinc-300">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          <span>ClipAnything AI • Auto-Captions • Zero Watermark 60FPS</span>
+      <div class="text-center space-y-3 max-w-2xl mx-auto card-stagger" style="animation-delay: 0.04s">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[11px] font-medium text-zinc-300 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>ClipAnything AI • CapCut Auto-Captions • 60FPS Zero Watermark</span>
         </div>
         <h1 class="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-white leading-[1.12]">
           1 long video, 10 viral clips.<br />
-          <span class="text-zinc-400 font-semibold">Create 10x faster.</span>
+          <span class="bg-gradient-to-r from-violet-300 via-white to-emerald-300 bg-clip-text text-transparent font-extrabold">Create 10x faster.</span>
         </h1>
       </div>
 
       <!-- OPUSCLIP SIGNATURE DROPZONE & ACTION BAR -->
-      <div id="heroDropZone" class="max-w-3xl mx-auto opus-drop-ring rounded-2xl p-4 sm:p-5 space-y-4">
+      <div id="heroDropZone" class="max-w-3xl mx-auto opus-drop-ring rounded-2xl p-4 sm:p-5 space-y-4 card-stagger" style="animation-delay: 0.12s">
         <div class="flex flex-col sm:flex-row items-stretch gap-2.5">
           <div class="flex-1 flex items-center gap-2.5 bg-[#0B0B0E] border border-white/10 rounded-xl px-3.5 py-3">
-            <i data-lucide="link-2" class="w-4 h-4 text-zinc-500 shrink-0"></i>
+            <i data-lucide="link-2" class="w-4 h-4 text-violet-400 shrink-0"></i>
             <input type="url" id="heroUrlInput" placeholder="Drop a direct .mp4 link or upload local video below..." class="w-full bg-transparent text-sm text-white placeholder-zinc-500 outline-none" />
           </div>
-          <button onclick="handleHeroUrlSubmit()" class="px-6 py-3 rounded-xl bg-white hover:bg-zinc-200 text-[#09090B] text-sm font-extrabold tracking-tight shadow-lg transition shrink-0">
+          <button onclick="handleHeroUrlSubmit()" class="btn-shimmer px-6 py-3 rounded-xl bg-white hover:bg-zinc-100 text-[#09090B] text-sm font-extrabold tracking-tight shadow-lg shadow-white/10 transition transform hover:scale-[1.02] active:scale-[0.99] shrink-0">
             Get clips in 1 click
           </button>
         </div>
 
-        <!-- Secondary Opus Action Pills: Upload File, Record Tab/Screen, Sample Podcast -->
+        <!-- Secondary Opus Action Pills -->
         <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
           <div class="flex flex-wrap items-center gap-2">
-            <label class="px-3.5 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.11] text-xs font-semibold text-white border border-white/10 flex items-center gap-2 cursor-pointer transition">
+            <label class="px-3.5 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] text-xs font-semibold text-white border border-white/10 flex items-center gap-2 cursor-pointer transition hover:-translate-y-0.5">
               <i data-lucide="upload-cloud" class="w-4 h-4 text-violet-400"></i>
               <span>Upload MP4 / MOV</span>
               <input type="file" accept="video/*" class="hidden" onchange="handleVideoUpload(event)" />
             </label>
 
-            <button onclick="startScreenTabCapture()" class="px-3.5 py-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-xs font-semibold text-emerald-300 border border-emerald-500/30 flex items-center gap-2 transition">
+            <button onclick="startScreenTabCapture()" class="px-3.5 py-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-xs font-semibold text-emerald-300 border border-emerald-500/30 flex items-center gap-2 transition hover:-translate-y-0.5">
               <i data-lucide="monitor-play" class="w-4 h-4"></i>
               <span>Record Browser Tab / Screen</span>
             </button>
 
-            <button onclick="generateSamplePodcast()" class="px-3.5 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.09] text-xs font-medium text-zinc-300 border border-white/[0.08] flex items-center gap-1.5 transition">
+            <button onclick="generateSamplePodcast()" class="px-3.5 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.09] text-xs font-medium text-zinc-300 border border-white/[0.08] flex items-center gap-1.5 transition hover:-translate-y-0.5">
               <i data-lucide="play-circle" class="w-3.5 h-3.5 text-zinc-400"></i>
               <span>Try Sample Podcast</span>
             </button>
           </div>
 
-          <!-- Pre-Slice Options (OpusClip Style) -->
           <div class="flex items-center gap-2 text-xs">
             <select id="dashNicheSelect" onchange="syncNicheSelectors(this.value)" class="bg-[#0B0B0E] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs font-medium text-zinc-300 outline-none">
               <option value="auto">Vibe: Auto-Detect</option>
@@ -215,9 +286,108 @@
         </div>
       </div>
 
-      <!-- OPUSCLIP WORKFLOW HIGHLIGHTS (CLEAN 3-COLUMN FEATURE CARDS) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
-        <div class="opus-card rounded-2xl p-5 space-y-2.5">
+      <!-- OPUSCLIP LIVE ANIMATED TRANSFORMATION SHOWCASE (16:9 SOURCE -> AI ENGINE -> 9:16 VIRAL SHORT) -->
+      <div class="max-w-4xl mx-auto opus-card rounded-2xl p-4 sm:p-6 border border-white/10 shadow-2xl card-stagger" style="animation-delay: 0.20s">
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b border-white/[0.07]">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-xs font-bold text-white tracking-wide">LIVE AI ENGINE PREVIEW</span>
+            <span class="text-[11px] text-zinc-500 hidden sm:inline">• Real-time Hook Detection + Kinetic Captions</span>
+          </div>
+          <div class="flex items-center gap-1 bg-[#0B0B0E] p-1 rounded-lg border border-white/[0.08] text-[11px]">
+            <button onclick="setHeroDemoMode('funny')" id="demoMode-funny" class="px-2.5 py-1 rounded-md bg-white/10 text-white font-semibold transition">😂 Funny</button>
+            <button onclick="setHeroDemoMode('podcast')" id="demoMode-podcast" class="px-2.5 py-1 rounded-md text-zinc-400 hover:text-white transition">🎙️ Podcast</button>
+            <button onclick="setHeroDemoMode('finance')" id="demoMode-finance" class="px-2.5 py-1 rounded-md text-zinc-400 hover:text-white transition">💰 Finance</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-6">
+          <!-- Left: 16:9 Long Video Waveform Scanner -->
+          <div class="md:col-span-6 space-y-3">
+            <div class="relative rounded-xl bg-[#0B0B0E] border border-white/10 p-4 overflow-hidden">
+              <div class="flex items-center justify-between text-[11px] text-zinc-400 mb-3">
+                <span class="font-mono">SOURCE_16x9_MASTER.MP4</span>
+                <span class="px-2 py-0.5 rounded bg-violet-500/15 text-violet-300 font-mono text-[10px]">SCANNING PEAKS</span>
+              </div>
+
+              <!-- Animated Audio Waveform Bars + Sweeping AI Laser -->
+              <div class="relative h-24 flex items-center justify-between gap-1 px-2 bg-[#121218] rounded-lg border border-white/[0.06] overflow-hidden" id="heroDemoWaveform">
+                <div class="scan-laser-line absolute top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#10B981] z-10"></div>
+              </div>
+
+              <!-- Detected Viral Markers -->
+              <div class="grid grid-cols-3 gap-2 mt-3 text-[10px] font-mono">
+                <div class="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 flex items-center justify-between">
+                  <span>#1 Hook</span>
+                  <span class="font-bold">98</span>
+                </div>
+                <div class="p-2 rounded-lg bg-violet-500/10 border border-violet-500/25 text-violet-300 flex items-center justify-between">
+                  <span>#2 Climax</span>
+                  <span class="font-bold">95</span>
+                </div>
+                <div class="p-2 rounded-lg bg-white/[0.04] border border-white/10 text-zinc-300 flex items-center justify-between">
+                  <span>#3 Payoff</span>
+                  <span class="font-bold">92</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Center Animated Flow Arrow -->
+          <div class="md:col-span-1 flex md:flex-col items-center justify-center gap-1.5 text-zinc-500">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-violet-500/20 to-emerald-500/20 border border-white/15 flex items-center justify-center text-white animate-pulse">
+              <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400"></i>
+            </div>
+          </div>
+
+          <!-- Right: Live Animated 9:16 Vertical Short Output -->
+          <div class="md:col-span-5 flex justify-center">
+            <div class="relative w-56 h-80 rounded-2xl bg-gradient-to-b from-[#1A1A24] via-[#111117] to-[#0B0B0E] border border-white/15 shadow-2xl p-3 flex flex-col justify-between overflow-hidden">
+              <!-- Floating Virality Score Badge -->
+              <div class="flex items-center justify-between z-10">
+                <span class="px-2 py-0.5 rounded-md bg-black/60 backdrop-blur text-[10px] font-mono text-zinc-300 border border-white/10">9:16 NO-CROP</span>
+                <div class="score-pulse px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 font-mono text-[11px] font-extrabold">
+                  98/100
+                </div>
+              </div>
+
+              <!-- Animated Top Hook Banner -->
+              <div class="text-center space-y-1.5 z-10 my-auto">
+                <span id="demoHookKicker" class="inline-block px-2.5 py-0.5 rounded-full bg-violet-600 text-white text-[9px] font-extrabold tracking-wider uppercase">
+                  😂 WAIT FOR IT
+                </span>
+                <div id="demoHookHeadline" class="text-xs font-montserrat font-black text-white leading-snug drop-shadow">
+                  BRO DID NOT JUST <span class="bg-emerald-400 text-[#09090B] px-1.5 py-0.5 rounded">DO THAT</span> 💀
+                </div>
+              </div>
+
+              <!-- Animated 16:9 Mini Frame inside 9:16 Blurred Backdrop -->
+              <div class="relative rounded-lg bg-gradient-to-r from-violet-900/40 via-zinc-800/60 to-emerald-900/40 border border-white/15 p-2.5 text-center z-10">
+                <div class="flex items-center justify-center gap-2 text-[10px] text-zinc-300 font-medium">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span>100% Characters Framed</span>
+                </div>
+              </div>
+
+              <!-- Live Popping Word-by-Word CapCut Captions -->
+              <div class="text-center pt-1 pb-2 z-10 min-h-[38px] flex items-center justify-center" id="demoLiveCaptionBox">
+                <span class="demo-word-active font-montserrat font-black text-sm text-yellow-300 drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
+                  WATCH THIS 🔥
+                </span>
+              </div>
+
+              <!-- Animated Progress Bar at Bottom -->
+              <div class="absolute bottom-0 left-0 right-0 h-1 bg-white/10">
+                <div id="demoProgressFill" class="h-full bg-gradient-to-r from-violet-400 to-emerald-400 w-1/3 transition-all duration-300"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPUSCLIP WORKFLOW HIGHLIGHTS -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+        <div class="opus-card rounded-2xl p-5 space-y-2.5 card-stagger" style="animation-delay: 0.26s">
           <div class="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/25 text-emerald-400 flex items-center justify-center font-mono text-xs font-bold">
             99
           </div>
@@ -227,17 +397,17 @@
           </p>
         </div>
 
-        <div class="opus-card rounded-2xl p-5 space-y-2.5">
+        <div class="opus-card rounded-2xl p-5 space-y-2.5 card-stagger" style="animation-delay: 0.32s">
           <div class="w-9 h-9 rounded-xl bg-violet-500/15 border border-violet-500/25 text-violet-400 flex items-center justify-center">
             <i data-lucide="captions" class="w-4 h-4"></i>
           </div>
           <h3 class="text-sm font-bold text-white">CapCut Auto Captions</h3>
           <p class="text-xs text-zinc-400 leading-relaxed">
-            1-click speech-to-caption sync with word-by-word animated highlights, auto-emojis, and 8 trending creator styles.
+            1-click speech-to-caption sync with word-by-word animated highlights, auto-emojis, and trending creator styles.
           </p>
         </div>
 
-        <div class="opus-card rounded-2xl p-5 space-y-2.5">
+        <div class="opus-card rounded-2xl p-5 space-y-2.5 card-stagger" style="animation-delay: 0.38s">
           <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 text-white flex items-center justify-center">
             <i data-lucide="maximize-2" class="w-4 h-4"></i>
           </div>
@@ -658,6 +828,35 @@
     </div>
   </div>
 
+  <!-- OPUSCLIP ANIMATED AI SCANNER OVERLAY -->
+  <div id="aiScannerModal" class="hidden fixed inset-0 bg-[#09090B]/90 backdrop-blur-xl z-50 flex items-center justify-center p-4">
+    <div class="bg-[#13131A] border border-white/15 rounded-3xl max-w-md w-full p-7 text-center space-y-5 shadow-2xl stage-animate">
+      <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full border-2 border-violet-500/30"></div>
+        <div class="absolute inset-0 rounded-full border-2 border-t-emerald-400 border-r-violet-400 border-b-transparent border-l-transparent animate-spin"></div>
+        <span id="aiScanPct" class="font-mono text-base font-extrabold text-white">0%</span>
+      </div>
+      <div class="space-y-1">
+        <h3 class="text-base font-display font-extrabold text-white" id="aiScanTitle">Analyzing Video with ClipIT AI...</h3>
+        <p class="text-xs text-zinc-400" id="aiScanSub">Detecting vocal energy peaks & high-retention hooks</p>
+      </div>
+      <div class="space-y-2 text-left bg-[#0B0B0E] border border-white/[0.07] rounded-2xl p-3.5 text-xs">
+        <div id="scanStep1" class="flex items-center gap-2 text-emerald-400 font-medium">
+          <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0"></i>
+          <span>Extracting audio peaks & viral moments</span>
+        </div>
+        <div id="scanStep2" class="flex items-center gap-2 text-zinc-500">
+          <i data-lucide="loader-2" class="w-4 h-4 shrink-0 animate-spin"></i>
+          <span>Applying Full-Scene No-Crop 9:16 reframe</span>
+        </div>
+        <div id="scanStep3" class="flex items-center gap-2 text-zinc-500">
+          <i data-lucide="circle" class="w-4 h-4 shrink-0"></i>
+          <span>Ranking Virality Scores (Hook • Flow • Trend)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- TOAST -->
   <div id="toastBanner" class="fixed bottom-4 right-4 z-50 hidden bg-[#18181F] border border-white/15 text-white px-4 py-2.5 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2">
     <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
@@ -752,7 +951,7 @@
     function switchStage(stage) {
       state.stage = stage;
       ['dashboard', 'results', 'editor'].forEach(s => {
-        document.getElementById('stage-' + s).classList.toggle('hidden', s !== stage);
+        const stEl = document.getElementById('stage-' + s); stEl.classList.toggle('hidden', s !== stage); if (s === stage) { stEl.classList.remove('stage-animate'); void stEl.offsetWidth; stEl.classList.add('stage-animate'); }
         const btn = document.getElementById('navStage-' + s);
         if (btn) {
           btn.className = s === stage
@@ -874,6 +1073,23 @@
       mainVideo.onerror = () => showToast('Could not stream URL. Upload MP4 or Record Browser Tab.');
     }
 
+    async function runOpusAiScannerAnimation() {
+      const modal = document.getElementById('aiScannerModal');
+      const pctEl = document.getElementById('aiScanPct');
+      const s2 = document.getElementById('scanStep2');
+      const s3 = document.getElementById('scanStep3');
+      modal.classList.remove('hidden');
+      lucide.createIcons();
+
+      for (let p = 10; p <= 100; p += 15) {
+        pctEl.textContent = Math.min(100, p) + '%';
+        if (p >= 45) s2.className = 'flex items-center gap-2 text-emerald-400 font-medium';
+        if (p >= 80) s3.className = 'flex items-center gap-2 text-emerald-400 font-medium';
+        await new Promise(r => setTimeout(r, 140));
+      }
+      modal.classList.add('hidden');
+    }
+
     async function loadVideoBlob(blob, name) {
       if (state.videoUrl && state.videoUrl.startsWith('blob:')) URL.revokeObjectURL(state.videoUrl);
       state.lastBlob = blob;
@@ -883,7 +1099,10 @@
 
       mainVideo.onloadedmetadata = async () => {
         state.duration = mainVideo.duration || 15;
-        const peaks = await analyzeAudioPeaks(blob, state.duration);
+        const [peaks] = await Promise.all([
+          analyzeAudioPeaks(blob, state.duration),
+          runOpusAiScannerAnimation()
+        ]);
         const isSample = /sample_podcast/i.test(name);
         buildAiClipsFromDuration(state.duration, name, peaks, isSample);
         switchStage('results');
@@ -997,19 +1216,32 @@
         return;
       }
 
-      container.innerHTML = state.clips.map((c, idx) => `
-        <div class="opus-card rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-stretch gap-5">
-          <!-- Left Rank & Virality Score Ring (OpusClip Signature) -->
-          <div class="flex md:flex-col items-center justify-between md:justify-center gap-3 md:w-36 shrink-0 border-b md:border-b-0 md:border-r border-white/[0.07] pb-3 md:pb-0 md:pr-4">
-            <span class="text-xs font-mono font-bold text-zinc-400">#${idx + 1} VIRAL PICK</span>
-            <div class="w-16 h-16 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 flex flex-col items-center justify-center">
-              <span class="text-xl font-black text-emerald-400 leading-none">${c.score}</span>
-              <span class="text-[9px] font-mono uppercase text-emerald-300/80 mt-0.5">/ 100</span>
+      const radius = 26;
+      const circumference = 2 * Math.PI * radius;
+
+      container.innerHTML = state.clips.map((c, idx) => {
+        const dashOffset = circumference - (c.score / 100) * circumference;
+        return `
+        <div class="opus-card rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-stretch gap-5 card-stagger" style="animation-delay: ${idx * 0.08}s">
+          <!-- Left Rank & Animated SVG Virality Score Ring -->
+          <div class="flex md:flex-col items-center justify-between md:justify-center gap-2.5 md:w-36 shrink-0 border-b md:border-b-0 md:border-r border-white/[0.07] pb-3 md:pb-0 md:pr-4">
+            <span class="text-[11px] font-mono font-bold text-zinc-400">#${idx + 1} VIRAL PICK</span>
+            <div class="relative w-16 h-16 flex items-center justify-center">
+              <svg class="w-16 h-16 -rotate-90" viewBox="0 0 64 64">
+                <circle cx="32" cy="32" r="${radius}" stroke="rgba(255,255,255,0.08)" stroke-width="5" fill="none" />
+                <circle cx="32" cy="32" r="${radius}" stroke="#10B981" stroke-width="5" fill="none"
+                  stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}"
+                  data-target-offset="${dashOffset}" stroke-linecap="round" class="score-ring-circle" />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span class="text-base font-black text-white leading-none">${c.score}</span>
+                <span class="text-[8px] font-mono text-emerald-400">/100</span>
+              </div>
             </div>
             <span class="text-[11px] font-mono text-zinc-400">${(c.end - c.start).toFixed(1)}s • ${c.start}s–${c.end}s</span>
           </div>
 
-          <!-- Center Title, Virality Breakdown Bars & Transcript Preview -->
+          <!-- Center Title, Animated Virality Breakdown Bars & Transcript Preview -->
           <div class="flex-1 flex flex-col justify-between space-y-3">
             <div>
               <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -1019,19 +1251,19 @@
               <h3 class="text-base font-bold text-white">${c.title}</h3>
             </div>
 
-            <!-- OpusClip Virality Score Sub-Metrics (Hook / Flow / Trend) -->
+            <!-- Animated Sub-Metrics (Hook / Flow / Trend) -->
             <div class="grid grid-cols-3 gap-3 max-w-md text-[11px]">
               <div>
                 <div class="flex justify-between text-zinc-400 mb-1"><span>Hook</span><span class="font-mono text-white">${c.hookScore}</span></div>
-                <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-emerald-400" style="width:${c.hookScore}%"></div></div>
+                <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-emerald-400 metric-bar-fill" style="width:0%" data-target-w="${c.hookScore}%"></div></div>
               </div>
               <div>
                 <div class="flex justify-between text-zinc-400 mb-1"><span>Flow</span><span class="font-mono text-white">${c.flowScore}</span></div>
-                <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-violet-400" style="width:${c.flowScore}%"></div></div>
+                <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-violet-400 metric-bar-fill" style="width:0%" data-target-w="${c.flowScore}%"></div></div>
               </div>
               <div>
                 <div class="flex justify-between text-zinc-400 mb-1"><span>Trend</span><span class="font-mono text-white">${c.trendScore}</span></div>
-                <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-sky-400" style="width:${c.trendScore}%"></div></div>
+                <div class="h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full bg-sky-400 metric-bar-fill" style="width:0%" data-target-w="${c.trendScore}%"></div></div>
               </div>
             </div>
 
@@ -1040,9 +1272,9 @@
             </p>
           </div>
 
-          <!-- Right Action Buttons (OpusClip Style) -->
+          <!-- Right Action Buttons -->
           <div class="flex md:flex-col justify-end gap-2 shrink-0 md:w-40">
-            <button onclick="openClipInEditor(${idx})" class="flex-1 md:flex-none py-2.5 px-4 rounded-xl bg-white hover:bg-zinc-200 text-[#09090B] text-xs font-extrabold flex items-center justify-center gap-1.5 transition">
+            <button onclick="openClipInEditor(${idx})" class="flex-1 md:flex-none py-2.5 px-4 rounded-xl bg-white hover:bg-zinc-200 text-[#09090B] text-xs font-extrabold flex items-center justify-center gap-1.5 transition hover:scale-[1.02]">
               <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
               <span>Edit Clip</span>
             </button>
@@ -1052,8 +1284,17 @@
             </button>
           </div>
         </div>
-      `).join('');
+      `;}).join('');
+
       lucide.createIcons();
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.score-ring-circle').forEach(el => {
+          el.style.strokeDashoffset = el.dataset.targetOffset;
+        });
+        document.querySelectorAll('.metric-bar-fill').forEach(el => {
+          el.style.width = el.dataset.targetW;
+        });
+      });
     }
 
     function openClipInEditor(idx) {
@@ -1489,6 +1730,14 @@
         words.forEach((word, idx) => {
           const isCur = idx === activeIdx;
           const w = widths[idx];
+          c.save();
+          if (isCur) {
+            const wordPhase = (prog * words.length) - idx;
+            const popScale = 1 + Math.sin(Math.min(1, wordPhase) * Math.PI) * 0.14;
+            c.translate(x + w / 2, capY);
+            c.scale(popScale, popScale);
+            c.translate(-(x + w / 2), -capY);
+          }
           if (isCur && cStyle.box) {
             c.fillStyle = cStyle.box;
             c.beginPath();
@@ -1502,6 +1751,7 @@
           c.textBaseline = 'middle';
           c.strokeText(word, x, capY);
           c.fillText(word, x, capY);
+          c.restore();
           x += w + spaceW;
         });
         c.restore();
@@ -1559,7 +1809,78 @@
           document.getElementById('timelineScrubber').value = Math.min(100, (rel / tot) * 100);
         }
       }
-      requestAnimationFrame(renderLoop);
+  
+    // =========================================================================
+    // OPUSCLIP LIVE HERO SHOWCASE ANIMATION ENGINE
+    // =========================================================================
+    const HERO_DEMOS = {
+      funny: {
+        kicker: '😂 WAIT FOR IT',
+        headline: 'BRO DID NOT JUST <span class="bg-emerald-400 text-[#09090B] px-1.5 py-0.5 rounded">DO THAT</span> 💀',
+        words: ['NOBODY', 'EXPECTED', 'THAT ENDING 😂', 'WATCH AGAIN 💀']
+      },
+      podcast: {
+        kicker: '🎙️ PODCAST GOLD',
+        headline: 'HE FINALLY <span class="bg-violet-500 text-white px-1.5 py-0.5 rounded">ADMITTED</span> THE TRUTH 👀',
+        words: ['TOP 1%', 'CREATORS USE', 'THIS EXACT', 'VIRAL HOOK 🔥']
+      },
+      finance: {
+        kicker: '💰 WEALTH RULE',
+        headline: 'WHY <span class="bg-amber-400 text-[#09090B] px-1.5 py-0.5 rounded">99% FAIL</span> AT MAKING MONEY 💸',
+        words: ['STOP WASTING', 'HOURS EDITING', 'POST 10X', 'SHORTS DAILY 🚀']
+      }
+    };
+
+    let currentHeroDemo = 'funny';
+    let demoWordIdx = 0;
+
+    function setHeroDemoMode(mode) {
+      currentHeroDemo = mode;
+      demoWordIdx = 0;
+      ['funny', 'podcast', 'finance'].forEach(m => {
+        const b = document.getElementById('demoMode-' + m);
+        if (b) b.className = m === mode
+          ? 'px-2.5 py-1 rounded-md bg-white/10 text-white font-semibold transition'
+          : 'px-2.5 py-1 rounded-md text-zinc-400 hover:text-white transition';
+      });
+      const cfg = HERO_DEMOS[mode];
+      document.getElementById('demoHookKicker').textContent = cfg.kicker;
+      document.getElementById('demoHookHeadline').innerHTML = cfg.headline;
+    }
+
+    function initHeroShowcaseAnimation() {
+      const wf = document.getElementById('heroDemoWaveform');
+      if (wf) {
+        const laser = wf.innerHTML;
+        let barsHtml = laser;
+        for (let i = 0; i < 36; i++) {
+          const h = 25 + ((i * 29) % 70);
+          const delay = (i * 0.07).toFixed(2);
+          const color = (i > 6 && i < 14) || (i > 22 && i < 29) ? 'bg-emerald-400' : 'bg-violet-400/50';
+          barsHtml += `<div class="flex-1 rounded-full ${color}" style="height:${h}%; animation: waveBounce 1.1s ease-in-out ${delay}s infinite;"></div>`;
+        }
+        wf.innerHTML = barsHtml;
+      }
+
+      setInterval(() => {
+        if (state.stage !== 'dashboard') return;
+        const cfg = HERO_DEMOS[currentHeroDemo];
+        const word = cfg.words[demoWordIdx % cfg.words.length];
+        const box = document.getElementById('demoLiveCaptionBox');
+        const prog = document.getElementById('demoProgressFill');
+        if (box) {
+          box.innerHTML = `<span class="demo-word-active font-montserrat font-black text-sm text-yellow-300 drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">${word}</span>`;
+        }
+        if (prog) {
+          prog.style.width = (((demoWordIdx % cfg.words.length) + 1) / cfg.words.length) * 100 + '%';
+        }
+        demoWordIdx++;
+      }, 950);
+    }
+
+    initHeroShowcaseAnimation();
+
+    requestAnimationFrame(renderLoop);
     }
 
     // =========================================================================
@@ -1918,6 +2239,77 @@
 
     document.getElementById('savedCountBadge').textContent = state.savedProjects.length;
     lucide.createIcons();
+
+    // =========================================================================
+    // OPUSCLIP LIVE HERO SHOWCASE ANIMATION ENGINE
+    // =========================================================================
+    const HERO_DEMOS = {
+      funny: {
+        kicker: '😂 WAIT FOR IT',
+        headline: 'BRO DID NOT JUST <span class="bg-emerald-400 text-[#09090B] px-1.5 py-0.5 rounded">DO THAT</span> 💀',
+        words: ['NOBODY', 'EXPECTED', 'THAT ENDING 😂', 'WATCH AGAIN 💀']
+      },
+      podcast: {
+        kicker: '🎙️ PODCAST GOLD',
+        headline: 'HE FINALLY <span class="bg-violet-500 text-white px-1.5 py-0.5 rounded">ADMITTED</span> THE TRUTH 👀',
+        words: ['TOP 1%', 'CREATORS USE', 'THIS EXACT', 'VIRAL HOOK 🔥']
+      },
+      finance: {
+        kicker: '💰 WEALTH RULE',
+        headline: 'WHY <span class="bg-amber-400 text-[#09090B] px-1.5 py-0.5 rounded">99% FAIL</span> AT MAKING MONEY 💸',
+        words: ['STOP WASTING', 'HOURS EDITING', 'POST 10X', 'SHORTS DAILY 🚀']
+      }
+    };
+
+    let currentHeroDemo = 'funny';
+    let demoWordIdx = 0;
+
+    function setHeroDemoMode(mode) {
+      currentHeroDemo = mode;
+      demoWordIdx = 0;
+      ['funny', 'podcast', 'finance'].forEach(m => {
+        const b = document.getElementById('demoMode-' + m);
+        if (b) b.className = m === mode
+          ? 'px-2.5 py-1 rounded-md bg-white/10 text-white font-semibold transition'
+          : 'px-2.5 py-1 rounded-md text-zinc-400 hover:text-white transition';
+      });
+      const cfg = HERO_DEMOS[mode];
+      document.getElementById('demoHookKicker').textContent = cfg.kicker;
+      document.getElementById('demoHookHeadline').innerHTML = cfg.headline;
+    }
+
+    function initHeroShowcaseAnimation() {
+      const wf = document.getElementById('heroDemoWaveform');
+      if (wf) {
+        const laser = wf.innerHTML;
+        let barsHtml = laser;
+        for (let i = 0; i < 36; i++) {
+          const h = 25 + ((i * 29) % 70);
+          const delay = (i * 0.07).toFixed(2);
+          const color = (i > 6 && i < 14) || (i > 22 && i < 29) ? 'bg-emerald-400' : 'bg-violet-400/50';
+          barsHtml += `<div class="flex-1 rounded-full ${color}" style="height:${h}%; animation: waveBounce 1.1s ease-in-out ${delay}s infinite;"></div>`;
+        }
+        wf.innerHTML = barsHtml;
+      }
+
+      setInterval(() => {
+        if (state.stage !== 'dashboard') return;
+        const cfg = HERO_DEMOS[currentHeroDemo];
+        const word = cfg.words[demoWordIdx % cfg.words.length];
+        const box = document.getElementById('demoLiveCaptionBox');
+        const prog = document.getElementById('demoProgressFill');
+        if (box) {
+          box.innerHTML = `<span class="demo-word-active font-montserrat font-black text-sm text-yellow-300 drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">${word}</span>`;
+        }
+        if (prog) {
+          prog.style.width = (((demoWordIdx % cfg.words.length) + 1) / cfg.words.length) * 100 + '%';
+        }
+        demoWordIdx++;
+      }, 950);
+    }
+
+    initHeroShowcaseAnimation();
+
     requestAnimationFrame(renderLoop);
   </script>
 </body>

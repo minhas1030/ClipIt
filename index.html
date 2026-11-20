@@ -499,6 +499,10 @@
       </div>
 
       <div class="flex items-center gap-2">
+        <button onclick="applyStreamerGtaPreset()" class="px-3 py-1 rounded-full bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 font-bold border border-emerald-400/40 flex items-center gap-1.5 transition" title="Apply 35/65 Facecam + Gameplay Split, Seam-Line 3s Hook & Karaoke Captions">
+          <i data-lucide="gamepad-2" class="w-3.5 h-3.5"></i>
+          <span>GTA 6 / Streamer Viral</span>
+        </button>
         <button onclick="startScreenTabCapture()" id="recordScreenBtn" class="px-3 py-1 rounded-full bg-white/[0.07] hover:bg-white/[0.14] text-emerald-300 font-semibold border border-white/10 flex items-center gap-1.5 transition">
           <i data-lucide="radio" class="w-3 h-3"></i>
           <span id="recordScreenLabel">Record Tab</span>
@@ -685,10 +689,36 @@
           <div id="panel-layout" class="hidden space-y-4">
             <div class="space-y-2">
               <span class="text-xs font-bold text-white">OpusClip Screen Layouts</span>
-              <div class="grid grid-cols-3 gap-1.5">
+              <div class="grid grid-cols-2 gap-1.5">
                 <button onclick="setLayoutMode('full')" id="layout-full" class="py-2 px-2 rounded-full bg-white text-black text-[11px] font-bold">Single Full</button>
+                <button onclick="setLayoutMode('facecam-split')" id="layout-facecam-split" class="py-2 px-2 rounded-full bg-[#14141A] border border-emerald-400/30 text-[11px] font-bold text-emerald-300">Streamer 35/65</button>
                 <button onclick="setLayoutMode('split-wave')" id="layout-split-wave" class="py-2 px-2 rounded-full bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-400">Split + Wave</button>
-                <button onclick="setLayoutMode('split-broll')" id="layout-split-broll" class="py-2 px-2 rounded-full bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-400">Gameplay Split</button>
+                <button onclick="setLayoutMode('split-broll')" id="layout-split-broll" class="py-2 px-2 rounded-full bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-400">2-Video Split</button>
+              </div>
+              <div id="facecamControlsBox" class="hidden p-3 rounded-xl bg-[#14141A] border border-emerald-400/25 space-y-2.5 mt-2">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="font-bold text-emerald-300">Streamer Facecam Corner</span>
+                  <div class="flex gap-1">
+                    <button onclick="setFacecamCorner('tl')" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-[10px] font-mono text-white">Top-L</button>
+                    <button onclick="setFacecamCorner('bl')" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-[10px] font-mono text-white">Bot-L</button>
+                    <button onclick="setFacecamCorner('tr')" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-[10px] font-mono text-white">Top-R</button>
+                    <button onclick="setFacecamCorner('br')" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-[10px] font-mono text-white">Bot-R</button>
+                  </div>
+                </div>
+                <div class="grid grid-cols-3 gap-2">
+                  <div>
+                    <label class="text-[10px] text-zinc-400">Cam Zoom</label>
+                    <input type="range" id="camZoomSlider" min="150" max="420" value="260" oninput="updateActiveClipSettings()" class="w-full mt-1" />
+                  </div>
+                  <div>
+                    <label class="text-[10px] text-zinc-400">Cam X</label>
+                    <input type="range" id="camPanXSlider" min="-45" max="45" value="-32" oninput="updateActiveClipSettings()" class="w-full mt-1" />
+                  </div>
+                  <div>
+                    <label class="text-[10px] text-zinc-400">Cam Y</label>
+                    <input type="range" id="camPanYSlider" min="-45" max="45" value="25" oninput="updateActiveClipSettings()" class="w-full mt-1" />
+                  </div>
+                </div>
               </div>
               <div id="brollUploadBox" class="hidden pt-1">
                 <label class="w-full py-2.5 px-3 rounded-xl bg-[#14141A] hover:bg-[#1C1C24] border border-dashed border-white/20 text-xs text-zinc-300 flex items-center justify-center gap-2 cursor-pointer">
@@ -761,10 +791,20 @@
 
             <div id="hookTemplateGrid" class="grid grid-cols-2 gap-2"></div>
 
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <button onclick="snapHookToSeamLine()" class="py-2 px-3 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-400/30 text-emerald-300 font-bold transition">
+                Snap to 35% Seam
+              </button>
+              <label class="p-2 rounded-xl bg-[#14141A] border border-white/10 flex items-center justify-between cursor-pointer">
+                <span class="text-zinc-300">First 3s Flash</span>
+                <input type="checkbox" id="hookFirst3sToggle" onchange="updateActiveClipSettings()" class="accent-emerald-400" />
+              </label>
+            </div>
+
             <div class="grid grid-cols-2 gap-3 pt-2 border-t border-white/[0.07]">
               <div>
                 <label class="text-[11px] text-zinc-400">Y-Position</label>
-                <input type="range" id="hookYSlider" min="6" max="32" value="11" oninput="updateActiveClipSettings()" class="w-full mt-1" />
+                <input type="range" id="hookYSlider" min="6" max="48" value="11" oninput="updateActiveClipSettings()" class="w-full mt-1" />
               </div>
               <div>
                 <label class="text-[11px] text-zinc-400">Scale</label>
@@ -1372,6 +1412,10 @@
       document.getElementById('hookHeadlineInput').value = clip.hookHeadline;
       document.getElementById('hookYSlider').value = clip.hookY;
       document.getElementById('hookScaleSlider').value = clip.hookScale;
+      if (document.getElementById('hookFirst3sToggle')) document.getElementById('hookFirst3sToggle').checked = !!clip.hookFirst3sOnly;
+      if (document.getElementById('camZoomSlider')) document.getElementById('camZoomSlider').value = clip.camZoom || 260;
+      if (document.getElementById('camPanXSlider')) document.getElementById('camPanXSlider').value = clip.camPanX !== undefined ? clip.camPanX : -32;
+      if (document.getElementById('camPanYSlider')) document.getElementById('camPanYSlider').value = clip.camPanY !== undefined ? clip.camPanY : 25;
 
       document.getElementById('handleEnabled').checked = clip.handleEnabled !== false;
       document.getElementById('creatorHandleInput').value = clip.creatorHandle || '@ClipIT.Studio';
@@ -1410,6 +1454,10 @@
       clip.hookHeadline = document.getElementById('hookHeadlineInput').value;
       clip.hookY = +document.getElementById('hookYSlider').value;
       clip.hookScale = +document.getElementById('hookScaleSlider').value;
+      if (document.getElementById('hookFirst3sToggle')) clip.hookFirst3sOnly = document.getElementById('hookFirst3sToggle').checked;
+      if (document.getElementById('camZoomSlider')) clip.camZoom = +document.getElementById('camZoomSlider').value;
+      if (document.getElementById('camPanXSlider')) clip.camPanX = +document.getElementById('camPanXSlider').value;
+      if (document.getElementById('camPanYSlider')) clip.camPanY = +document.getElementById('camPanYSlider').value;
 
       clip.handleEnabled = document.getElementById('handleEnabled').checked;
       clip.creatorHandle = document.getElementById('creatorHandleInput').value;
@@ -1644,6 +1692,21 @@
 
       if (clip.layout === 'full') {
         drawVideoCover(c, mainVideo, 0, 0, W, H, zoomMult, clip.panX, clip.panY, filter, clip.fitMode || 'fit-blur');
+      } else if (clip.layout === 'facecam-split') {
+        const topH = Math.round(H * 0.35);
+        const botH = H - topH;
+        // Top 35%: Cropped Streamer Facecam Reaction
+        const camZ = (clip.camZoom || 260) / 100;
+        const camX = clip.camPanX !== undefined ? clip.camPanX : -32;
+        const camY = clip.camPanY !== undefined ? clip.camPanY : 25;
+        drawVideoCover(c, mainVideo, 0, 0, W, topH, camZ, camX, camY, filter, 'fill');
+
+        // Bottom 65%: Full Gameplay Action
+        drawVideoCover(c, mainVideo, 0, topH, W, botH, zoomMult, clip.panX, clip.panY, filter, 'fill');
+
+        // Sleek Viral Seam Divider Line
+        c.fillStyle = 'rgba(255, 255, 255, 0.22)';
+        c.fillRect(0, topH - 2, W, 4);
       } else {
         const topH = Math.round(H * 0.56);
         const botH = H - topH;
@@ -1665,7 +1728,8 @@
         }
       }
 
-      if (clip.hookEnabled && (clip.hookKicker.trim() || clip.hookHeadline.trim())) {
+      const showHookNow = clip.hookEnabled && (!clip.hookFirst3sOnly || relTime <= 3.0);
+      if (showHookNow && (clip.hookKicker.trim() || clip.hookHeadline.trim())) {
         const style = HOOK_STYLES.find(s => s.id === clip.hookStyle) || HOOK_STYLES[0];
         const scale = clip.hookScale / 100;
         const centerY = (clip.hookY / 100) * H;
@@ -1956,17 +2020,66 @@
       b2.className = mode === 'fill' ? 'px-2.5 py-1 rounded-full bg-white text-black font-bold' : 'px-2.5 py-1 rounded-full text-zinc-400 hover:text-white';
     }
 
+
+    function applyStreamerGtaPreset() {
+      const clip = getActiveClip();
+      if (!clip) return showToast('Load or upload a gameplay/stream video first');
+      clip.layout = 'facecam-split';
+      clip.camZoom = 260;
+      clip.camPanX = -32;
+      clip.camPanY = 25;
+      clip.hookEnabled = true;
+      clip.hookFirst3sOnly = true;
+      clip.hookKicker = 'GTA 6 / STREAM CLIP';
+      clip.hookHeadline = 'DID YOU SEE [THAT REACTION]';
+      clip.hookY = 35;
+      clip.hookScale = 94;
+      clip.capStyle = 'hormozi';
+      clip.capY = 44;
+      clip.capSize = 62;
+      clip.autoZoom = true;
+      clip.grade = 'viral';
+      selectClip(state.activeClipIndex);
+      setLayoutMode('facecam-split');
+      showToast('Applied GTA 6 / Streamer Viral Preset (35/65 Split + Seam Hook)!');
+    }
+
+    function setFacecamCorner(corner) {
+      const clip = getActiveClip();
+      if (!clip) return;
+      if (corner === 'tl') { clip.camPanX = 32; clip.camPanY = 25; }
+      else if (corner === 'tr') { clip.camPanX = -32; clip.camPanY = 25; }
+      else if (corner === 'bl') { clip.camPanX = 32; clip.camPanY = -25; }
+      else { clip.camPanX = -32; clip.camPanY = -25; }
+      document.getElementById('camPanXSlider').value = clip.camPanX;
+      document.getElementById('camPanYSlider').value = clip.camPanY;
+      showToast('Snapped facecam crop to ' + corner.toUpperCase());
+    }
+
+    function snapHookToSeamLine() {
+      const clip = getActiveClip();
+      if (!clip) return;
+      clip.hookY = 35;
+      clip.hookFirst3sOnly = true;
+      document.getElementById('hookYSlider').value = 35;
+      document.getElementById('hookFirst3sToggle').checked = true;
+      showToast('Hook snapped to 35% seam line (First 3s Flash ON)');
+    }
+
     function setLayoutMode(mode) {
       const clip = getActiveClip();
       if (!clip) return;
       clip.layout = mode;
-      ['full', 'split-wave', 'split-broll'].forEach(m => {
+      ['full', 'facecam-split', 'split-wave', 'split-broll'].forEach(m => {
         const b = document.getElementById('layout-' + m);
+        if (!b) return;
         b.className = m === mode
           ? 'py-2 px-2 rounded-full bg-white text-black text-[11px] font-bold'
           : 'py-2 px-2 rounded-full bg-[#14141A] border border-white/10 text-[11px] font-semibold text-zinc-400';
       });
       document.getElementById('brollUploadBox').classList.toggle('hidden', mode !== 'split-broll');
+      const fcBox = document.getElementById('facecamControlsBox');
+      if (fcBox) fcBox.classList.toggle('hidden', mode !== 'facecam-split');
     }
 
     function setColorGrade(g) {
